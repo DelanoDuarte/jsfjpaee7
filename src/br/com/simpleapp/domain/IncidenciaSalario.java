@@ -22,7 +22,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "salario_base", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "tipo_incidencia_salario", discriminatorType = DiscriminatorType.STRING)
 public abstract class IncidenciaSalario implements Serializable {
 
 	/**
