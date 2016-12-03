@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import br.com.simpleapp.util.JPAUtil;
 
@@ -20,7 +19,9 @@ public abstract class AbstractRepository<T> {
 
 	private Logger logger = Logger.getLogger("Abstract Repository");
 
+	// @PersistenceContext
 	protected EntityManager entityManager = JPAUtil.getEntityManager();
+
 	protected Class<T> clazz = null;
 
 	@SuppressWarnings("unchecked")
@@ -34,9 +35,10 @@ public abstract class AbstractRepository<T> {
 			entityManager.getTransaction().begin();
 			entityManager.persist(entity);
 			entityManager.getTransaction().commit();
-			entityManager.close();
 		} catch (Exception e) {
 			logger.info("Erro ao Salvar" + e.getMessage());
+		} finally {
+			entityManager.close();
 		}
 
 	}
@@ -47,10 +49,10 @@ public abstract class AbstractRepository<T> {
 			entityManager.getTransaction().begin();
 			entity = entityManager.merge(entity);
 			entityManager.getTransaction().commit();
-			entityManager.close();
-
 		} catch (Exception e) {
 			logger.info("Erro ao Atualizar" + e.getMessage());
+		} finally {
+			entityManager.close();
 		}
 
 		return entity;
@@ -61,9 +63,10 @@ public abstract class AbstractRepository<T> {
 			entityManager.getTransaction().begin();
 			entityManager.remove(entity);
 			entityManager.getTransaction().commit();
-			entityManager.close();
 		} catch (Exception e) {
 			logger.info("Erro ao Deletar" + e.getMessage());
+		} finally {
+			entityManager.close();
 		}
 
 	}
@@ -81,13 +84,12 @@ public abstract class AbstractRepository<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		try {
-			Query query = entityManager.createQuery("from " + clazz.getName());
-			List<T> resultList = query.getResultList();
-			return resultList;
+			return entityManager.createQuery("from " + clazz.getName()).getResultList();
 		} catch (Exception e) {
 			logger.info("Erro ao Buscar Todos" + e.getMessage());
-
 			return null;
+		} finally {
+			// entityManager.close();
 		}
 
 	}

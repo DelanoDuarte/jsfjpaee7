@@ -34,6 +34,7 @@ public class PersonBean implements Serializable {
 	}
 
 	private PersonRepository personRepository = new PersonRepository();
+
 	private PersonService personService = new PersonService();
 
 	public String salvar() {
@@ -42,7 +43,7 @@ public class PersonBean implements Serializable {
 	}
 
 	public void buscarPersonPorId() {
-		this.person = personRepository.buscarPorId2(this.person.getId());
+		this.person = personRepository.findById(this.person.getId());
 	}
 
 	public List<Person> getPersons() {

@@ -54,7 +54,7 @@ public class Person implements Serializable {
 	private Company company;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_beneficio"))
+	@JoinTable(name = "tb_person_beneficios", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_beneficio"))
 	private List<Beneficio> beneficios;
 
 	public Person() {

@@ -36,7 +36,7 @@ public class CompanyBean implements Serializable {
 	}
 
 	public void buscarEmpresaPorId() {
-		this.company = companyRepository.buscarPorId2(this.company.getId());
+		this.company = companyRepository.findById(this.company.getId());
 	}
 
 	public Company getCompany() {
@@ -49,7 +49,7 @@ public class CompanyBean implements Serializable {
 
 	public List<Company> getCompanies() {
 		if (this.companies == null)
-			this.companies = companyRepository.findAll();
+			this.companies = companyRepository.buscarTodos();
 		return companies;
 	}
 
