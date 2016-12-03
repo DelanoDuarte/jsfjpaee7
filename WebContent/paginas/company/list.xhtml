@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+	<ui:define name="content">
+
+		<h:form>
+			<b:dataTable value="#{companyBean.companies}" var="_company">
+				<b:dataTableColumn value="#{_company.nomeFantasia}" label="Nome" />
+
+				<b:dataTableColumn label="">
+					<b:button value="Show" look="success"
+						outcome="/paginas/company/detalhesCompany">
+						<f:param name="companyId" value="#{_company.id}" />
+					</b:button>
+				</b:dataTableColumn>
+			</b:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

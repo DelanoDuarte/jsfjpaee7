@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<f:viewParam name="companyId" value="#{companyBean.company.id}" />
+			<f:event listener="#{companyBean.buscarEmpresaPorId()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
+
+		<h:form>
+			<p:panel header="Dados da Empresa">
+				<br />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
+					<p:outputLabel id="labelNomeEmpresa"
+						value="#{companyBean.company.nomeFantasia}" />
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+
+		<br />
+
+		<h:form>
+			<p:panel header="Funcionários da Empresa ">
+				<p:dataTable value="#{companyBean.company.persons}" var="_person">
+
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_person.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Sobrenome</f:facet>
+						<p:outputLabel value="#{_person.sobrenome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Salario</f:facet>
+						<p:outputLabel value="#{_person.salario}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
