@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import br.com.simpleapp.domain.Beneficio;
+import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.PersonRepository;
 
@@ -23,29 +24,31 @@ public class PersonService implements Serializable {
 
 	private PersonRepository personRepository = new PersonRepository();
 
+	// Setando o valor do salario com Descontos para que seja igual ao
+	// salario.
+	// pegando todos os beneficios selecionados para o funcionário
+	// atribuindo a um variável temporaria o valor do salario com
+	// descontos/beneficios
+	// percorrendo a lista de descontos/beneficios para acrescentar ou
+	// diminuir no salario
+	// atribuindo a coluna salarioBeneficios o valor da váriavel temporária
 	public void salvarFuncionario(Person person) {
 
-		// Setando o valor do salario com Descontos para que seja igual ao
-		// salario.
 		person.setSalarioBeneficios(person.getSalario());
 
-		// pegando todos os beneficios selecionados para o funcionário
 		List<Beneficio> beneficios = person.getBeneficios();
+		List<Desconto> descontos = person.getDescontos();
 
-		// atribuindo a um variável temporaria o valor do salario com
-		// descontos/beneficios
 		double salarioTemp = person.getSalarioBeneficios();
 
-		// percorrendo a lista de descontos/beneficios para acrescentar ou
-		// diminuir no salario
 		for (Beneficio beneficio : beneficios) {
-			salarioTemp -= beneficio.getValor();
+			for (Desconto desconto : descontos) {
+				salarioTemp -= desconto.getValor();
+			}
+			salarioTemp += beneficio.getValor();
 		}
 
-		// atribuindo a coluna salarioBeneficios o valor da váriavel temporária
 		person.setSalarioBeneficios(salarioTemp);
-
-		// salvando o valor final
 		personRepository.update(person);
 	}
 

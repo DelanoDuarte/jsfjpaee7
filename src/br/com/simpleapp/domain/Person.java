@@ -57,12 +57,16 @@ public class Person implements Serializable {
 	@JoinTable(name = "tb_person_beneficios", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_beneficio"))
 	private List<Beneficio> beneficios;
 
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "tb_person_descontos", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_desconto"))
+	private List<Desconto> descontos;
+
 	public Person() {
 		super();
 	}
 
 	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, Company company,
-			List<Beneficio> beneficios) {
+			List<Beneficio> beneficios, List<Desconto> descontos) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -70,6 +74,7 @@ public class Person implements Serializable {
 		this.salarioBeneficios = salarioBeneficios;
 		this.company = company;
 		this.beneficios = beneficios;
+		this.descontos = descontos;
 	}
 
 	public Long getId() {
@@ -128,12 +133,21 @@ public class Person implements Serializable {
 		this.beneficios = beneficios;
 	}
 
+	public List<Desconto> getDescontos() {
+		return descontos;
+	}
+
+	public void setDescontos(List<Desconto> descontos) {
+		this.descontos = descontos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((beneficios == null) ? 0 : beneficios.hashCode());
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
+		result = prime * result + ((descontos == null) ? 0 : descontos.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
@@ -164,6 +178,11 @@ public class Person implements Serializable {
 				return false;
 		} else if (!company.equals(other.company))
 			return false;
+		if (descontos == null) {
+			if (other.descontos != null)
+				return false;
+		} else if (!descontos.equals(other.descontos))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -190,7 +209,7 @@ public class Person implements Serializable {
 	public String toString() {
 		return "Person [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", salario=" + salario
 				+ ", salarioBeneficios=" + salarioBeneficios + ", company=" + company + ", beneficios=" + beneficios
-				+ "]";
+				+ ", descontos=" + descontos + "]";
 	}
 
 }

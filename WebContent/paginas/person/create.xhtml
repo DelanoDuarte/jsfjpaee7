@@ -29,15 +29,26 @@
 							noSelectionOption="--Selecione--" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="Beneficios:" />
+				</p:panelGrid>
+
+				<p:panel header="Gratificações:">
+					<p:outputLabel value="Gratificações:" />
 					<p:selectManyMenu value="#{personBean.person.beneficios}"
 						converter="entityConverter" showCheckbox="true">
 						<f:selectItems value="#{beneficioBean.beneficios}"
 							var="_beneficio" itemLabel="#{_beneficio.nome}" />
 
 					</p:selectManyMenu>
-				</p:panelGrid>
+				</p:panel>
 
+				<p:panel header="Descontos">
+					<p:outputLabel value="Descontos:" />
+					<p:selectManyMenu value="#{personBean.person.descontos}"
+						converter="entityConverter" showCheckbox="true">
+						<f:selectItems value="#{descontoBean.descontos}" var="_desconto"
+							itemLabel="#{_desconto.nome}" />
+					</p:selectManyMenu>
+				</p:panel>
 
 				<br />
 				<b:commandButton value="Salvar" look="primary"

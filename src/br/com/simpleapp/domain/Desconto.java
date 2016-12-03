@@ -13,8 +13,8 @@ import javax.persistence.Entity;
  *
  */
 @Entity
-@DiscriminatorValue(value = "Gratificacao")
-public class Beneficio extends IncidenciaSalario implements Serializable {
+@DiscriminatorValue(value = "Desconto")
+public class Desconto extends IncidenciaSalario implements Serializable {
 
 	/**
 	 * 

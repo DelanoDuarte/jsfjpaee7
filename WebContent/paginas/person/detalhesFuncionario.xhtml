@@ -40,7 +40,8 @@
 					<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
 					<p:outputLabel id="labelSalarioAtual"
 						value="#{personBean.person.salario}" />
-					<p:outputLabel value="Salario(Com Descontos):" for="labelSalario" />
+					<p:outputLabel value="Salario(Com Descontos e Gratificações):"
+						for="labelSalario" />
 					<p:outputLabel id="labelSalario"
 						value="#{personBean.person.salarioBeneficios}" />
 				</p:panelGrid>
@@ -50,7 +51,7 @@
 
 
 		<h:form>
-			<p:panel header="Benefícios do Funcionário ">
+			<p:panel header="Gratificações do Funcionário ">
 				<p:dataTable value="#{personBean.person.beneficios}"
 					var="_beneficio">
 
@@ -62,6 +63,23 @@
 					<p:column>
 						<f:facet name="header">Valor</f:facet>
 						<p:outputLabel value="#{_beneficio.valor}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+		<h:form>
+			<p:panel header="Descontos do Funcionário ">
+				<p:dataTable value="#{personBean.person.descontos}" var="_desconto">
+
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_desconto.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Valor</f:facet>
+						<p:outputLabel value="#{_desconto.valor}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>
