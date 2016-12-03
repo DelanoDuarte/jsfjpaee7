@@ -28,12 +28,4 @@ public class PersonRepository extends AbstractRepository<Person> {
 		}
 	}
 
-	public Person buscarPorId2(Long id) {
-		try {
-			EntityManager entityManager = JPAUtil.getEntityManager();
-			return entityManager.find(Person.class, id);
-		} catch (Exception e) {
-			return null;
-		}
-	}
 }

@@ -28,12 +28,4 @@ public class CompanyRepository extends AbstractRepository<Company> {
 		}
 	}
 
-	public Company buscarPorId2(Long id) {
-		try {
-			EntityManager entityManager = JPAUtil.getEntityManager();
-			return entityManager.find(Company.class, id);
-		} catch (Exception e) {
-			return null;
-		}
-	}
 }
