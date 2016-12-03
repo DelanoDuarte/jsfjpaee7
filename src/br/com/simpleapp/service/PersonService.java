@@ -42,10 +42,11 @@ public class PersonService implements Serializable {
 		double salarioTemp = person.getSalarioBeneficios();
 
 		for (Beneficio beneficio : beneficios) {
-			for (Desconto desconto : descontos) {
-				salarioTemp -= desconto.getValor();
-			}
 			salarioTemp += beneficio.getValor();
+		}
+
+		for (Desconto desconto : descontos) {
+			salarioTemp -= desconto.getValor();
 		}
 
 		person.setSalarioBeneficios(salarioTemp);
