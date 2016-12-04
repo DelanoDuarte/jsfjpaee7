@@ -9,6 +9,13 @@
 
 	<ui:define name="content">
 
+		<f:metadata>
+			<f:viewParam name="funcionarioId" value="#{personBean.person.id}" />
+			<f:event listener="#{personBean.buscarPersonPorId()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
 		<h:form>
 			<p:panel>
 

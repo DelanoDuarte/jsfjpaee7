@@ -19,7 +19,6 @@ public abstract class AbstractRepository<T> {
 
 	private Logger logger = Logger.getLogger("Abstract Repository");
 
-	// @PersistenceContext
 	protected EntityManager entityManager = JPAUtil.getEntityManager();
 
 	protected Class<T> clazz = null;
@@ -35,10 +34,11 @@ public abstract class AbstractRepository<T> {
 			entityManager.getTransaction().begin();
 			entityManager.persist(entity);
 			entityManager.getTransaction().commit();
+			entityManager.close();
 		} catch (Exception e) {
 			logger.info("Erro ao Salvar" + e.getMessage());
 		} finally {
-			entityManager.close();
+
 		}
 
 	}
@@ -49,13 +49,14 @@ public abstract class AbstractRepository<T> {
 			entityManager.getTransaction().begin();
 			entity = entityManager.merge(entity);
 			entityManager.getTransaction().commit();
+			entityManager.close();
 		} catch (Exception e) {
 			logger.info("Erro ao Atualizar" + e.getMessage());
 		} finally {
-			entityManager.close();
-		}
 
+		}
 		return entity;
+
 	}
 
 	public void delete(T entity) {
@@ -73,12 +74,15 @@ public abstract class AbstractRepository<T> {
 
 	public T findById(Long id) {
 		try {
-			return entityManager.find(clazz, id);
+			if (id != null) {
+				return entityManager.find(clazz, id);
+			} else {
+				return null;
+			}
 		} catch (Exception e) {
-			logger.info("Erro ao Buscaro por Id" + e.getMessage());
+			logger.info("Erro ao Buscar por Id " + e.getMessage());
 			return null;
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")

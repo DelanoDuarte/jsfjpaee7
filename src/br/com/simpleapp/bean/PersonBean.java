@@ -39,7 +39,7 @@ public class PersonBean implements Serializable {
 
 	public String salvar() {
 		personService.salvarFuncionario(person);
-		return "/paginas/company/list";
+		return "/paginas/person/list";
 	}
 
 	public void buscarPersonPorId() {
@@ -48,7 +48,7 @@ public class PersonBean implements Serializable {
 
 	public List<Person> getPersons() {
 		if (this.persons == null)
-			this.persons = personRepository.findAll();
+			this.persons = personRepository.buscarTodos();
 		return persons;
 	}
 

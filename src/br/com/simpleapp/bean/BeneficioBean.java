@@ -33,7 +33,7 @@ public class BeneficioBean implements Serializable {
 	private BeneficioRepository beneficioRepository = new BeneficioRepository();
 
 	public String salvar() {
-		beneficioRepository.update(beneficio);
+		beneficioRepository.create(beneficio);
 		return "/paginas/company/create";
 	}
 

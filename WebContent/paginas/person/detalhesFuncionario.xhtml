@@ -85,6 +85,19 @@
 			</p:panel>
 		</h:form>
 
+		<h:form>
+
+			<div align="center">
+				<b:button value="Voltar" outcome="/paginas/person/list"
+					look="primary"/>
+				<b:button value="Editar" outcome="/paginas/person/create"
+					look="warning">
+					<f:param name="funcionarioId" value="#{personBean.person.id}" />
+				</b:button>
+
+			</div>
+		</h:form>
+
 
 	</ui:define>
 </ui:composition>
