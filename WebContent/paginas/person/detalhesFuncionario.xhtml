@@ -39,11 +39,11 @@
 						value="#{personBean.person.nome}  #{personBean.person.sobrenome}" />
 					<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
 					<p:outputLabel id="labelSalarioAtual"
-						value="#{personBean.person.salario}" />
+						value="R$ #{personBean.person.salario}" />
 					<p:outputLabel value="Salario(Com Descontos e Gratificações):"
 						for="labelSalario" />
 					<p:outputLabel id="labelSalario"
-						value="#{personBean.person.salarioBeneficios}" />
+						value="R$ #{personBean.person.salarioBeneficios}" />
 				</p:panelGrid>
 				<br />
 			</p:panel>
@@ -85,11 +85,13 @@
 			</p:panel>
 		</h:form>
 
+		<br />
+
 		<h:form>
 
 			<div align="center">
 				<b:button value="Voltar" outcome="/paginas/person/list"
-					look="primary"/>
+					look="primary" />
 				<b:button value="Editar" outcome="/paginas/person/create"
 					look="warning">
 					<f:param name="funcionarioId" value="#{personBean.person.id}" />

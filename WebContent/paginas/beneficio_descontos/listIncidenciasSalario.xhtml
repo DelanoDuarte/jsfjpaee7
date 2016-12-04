@@ -6,39 +6,45 @@
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	template="/template/template.xhtml">
 
-
 	<ui:define name="content">
 
 		<h:form>
-			<p:panel header="Todos os Funcionários Cadastrados">
-				<p:dataTable value="#{personBean.persons}" var="_person"
-					paginator="true" rows="10">
+			<p:panel header="Todas Gratificações">
+				<p:dataTable value="#{beneficioBean.beneficios}" var="_beneficios"
+					paginator="true" rows="5">
 					<p:column>
 						<f:facet name="header">Nome</f:facet>
-						<p:outputLabel value="#{_person.nome}" />
+						<p:outputLabel value="#{_beneficios.nome}" />
 					</p:column>
 
 					<p:column>
-						<f:facet name="header">Sobrenome</f:facet>
-						<p:outputLabel value="#{_person.sobrenome}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Empresa</f:facet>
-						<p:outputLabel value="#{_person.company.nomeFantasia}" />
-					</p:column>
-
-					<p:column>
-						<div align="center">
-							<b:button value="Show"
-								outcome="/paginas/person/detalhesFuncionario" look="success">
-								<f:param name="funcionarioId" value="#{_person.id}" />
-							</b:button>
-						</div>
+						<f:facet name="header">Valor</f:facet>
+						<p:outputLabel value="#{_beneficios.valor}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>
 		</h:form>
+
+		<h:form>
+			<p:panel header="Todos Descontos">
+				<p:dataTable value="#{descontoBean.descontos}" var="_desconto"
+					paginator="true" rows="5">
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_desconto.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Valor</f:facet>
+						<p:outputLabel value="#{_desconto.valor}" />
+					</p:column>
+				</p:dataTable>
+
+			</p:panel>
+		</h:form>
+
+		<br />
+
 	</ui:define>
 
 </ui:composition>
