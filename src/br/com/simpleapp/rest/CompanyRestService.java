@@ -3,6 +3,7 @@
  */
 package br.com.simpleapp.rest;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -18,15 +19,19 @@ import br.com.simpleapp.repository.CompanyRepository;
  *
  */
 @Path("/company")
-public class CompanyRestService {
+public class CompanyRestService implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CompanyRepository companyRepository = new CompanyRepository();
 
 	@Path("/list")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Company> todasEmpresasJSON() {
-		return companyRepository.findAll();
+		return companyRepository.buscarTodos();
 	}
 
 	public CompanyRepository getCompanyRepository() {
