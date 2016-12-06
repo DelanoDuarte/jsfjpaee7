@@ -20,6 +20,7 @@ public class PersonService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private PersonRepository personRepository = new PersonRepository();
+
 	private CalculosPerson calculosPerson;
 
 	public void salvarFuncionario(Person person) {
@@ -29,6 +30,7 @@ public class PersonService implements Serializable {
 
 		calculosPerson = new CalculoPersonValorPorcentagem();
 		calculosPerson.calcularGratificaDesconto(person);
+
 		personRepository.update(person);
 	}
 

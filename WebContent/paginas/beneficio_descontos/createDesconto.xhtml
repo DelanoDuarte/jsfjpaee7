@@ -12,9 +12,13 @@
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Nome:" />
 					<p:inputText value="#{descontoBean.desconto.nome}" />
-					<p:outputLabel value="Valor:" />
+					<p:outputLabel value="Valor Numerico:" />
 					<p:inputNumber value="#{descontoBean.desconto.valorNumerico}"
 						placeholder="R$" symbol="R$" decimalPlaces="2" />
+
+					<p:outputLabel value="Valor Porcentagem:" />
+					<p:inputNumber value="#{descontoBean.desconto.valorPorcetagem}"
+						placeholder="R$" symbol="%" decimalPlaces="2" />
 
 				</p:panelGrid>
 

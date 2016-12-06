@@ -85,6 +85,7 @@ public abstract class IncidenciaSalario implements Serializable {
 
 	public void setValorPorcetagem(double valorPorcetagem) {
 		this.valorPorcetagem = valorPorcetagem;
+
 	}
 
 	@Override
