@@ -61,9 +61,13 @@
 					</p:column>
 
 					<p:column>
-						<f:facet name="header">Valor</f:facet>
+						<f:facet name="header">Valor Fixo</f:facet>
 						<p:outputLabel value="R$ #{_beneficio.valorNumerico}" />
-						<p:outputLabel value="#{_beneficio.valorNumerico}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Valor em Porcentagem</f:facet>
+						<p:outputLabel value="% #{_beneficio.valorPorcetagem}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>
@@ -79,9 +83,13 @@
 					</p:column>
 
 					<p:column>
-						<f:facet name="header">Valor</f:facet>
+						<f:facet name="header">Valor Fixo</f:facet>
 						<p:outputLabel value="R$ #{_desconto.valorNumerico}" />
-						<p:outputLabel value="#{_desconto.valorNumerico}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Valor em Porcentagem</f:facet>
+						<p:outputLabel value="R$ #{_desconto.valorPorcetagem}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>

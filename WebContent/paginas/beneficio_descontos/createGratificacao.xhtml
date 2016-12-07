@@ -9,18 +9,23 @@
 
 	<ui:define name="content">
 
-		<h:form>
-
-
-
-
-
-
-		</h:form>
 
 		<h:form>
-			<p:panel header="Novo Benefício">
-				<p:panelGrid columns="2">
+			<p:panel header="Nova Gratificação">
+
+				<!-- <p:panel header="Tipo de Gratificação">
+					<p:selectOneRadio id="radioTipoGratificacao"
+						value="#{beneficioBean.tipoGratificacao}" required="true">
+						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
+						<f:selectItem itemLabel="Porcentagem" itemValue="P" />
+						<p:ajax update="panelInputs" />
+					</p:selectOneRadio>
+				</p:panel> -->
+
+				<br />
+				<br />
+
+				<p:panelGrid id="panelInputs" columns="2">
 					<p:outputLabel value="Nome:" />
 					<p:inputText value="#{beneficioBean.beneficio.nome}" />
 					<p:outputLabel value="Valor:" />
@@ -28,9 +33,12 @@
 						placeholder="R$" symbol="R$" decimalPlaces="2" />
 					<p:outputLabel value="Porcentagem:" />
 					<p:inputNumber value="#{beneficioBean.beneficio.valorPorcetagem}"
-						placeholder="R%" symbol="%" decimalPlaces="2" />
+						placeholder="R%" symbol="%" decimalPlaces="2"
+						symbolPosition="suffix" />
 
 				</p:panelGrid>
+
+				<br />
 
 				<b:commandButton value="Salvar" action="#{beneficioBean.salvar()}"
 					look="primary" />

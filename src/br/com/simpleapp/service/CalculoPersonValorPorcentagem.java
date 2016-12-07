@@ -23,30 +23,31 @@ public class CalculoPersonValorPorcentagem extends CalculosPerson {
 	 * simpleapp.domain.Person)
 	 */
 	@Override
-	public void calcularGratificaDesconto(Person person) {
-		person.setSalarioBeneficios(person.getSalario());
+	public double calcularGratificaDesconto(Person person) {
+		// person.setSalarioBeneficios(person.getSalario());
 
 		List<Beneficio> beneficios = person.getBeneficios();
 		List<Desconto> descontos = person.getDescontos();
 
-		double salarioTemp = person.getSalarioBeneficios();
+		double salarioTemp = 0.0;
 
 		for (Beneficio beneficio : beneficios) {
 			double valorBeneficio = beneficio.getValorPorcetagem();
 			double valorCalculo = valorBeneficio / 100;
-			double valorTotal = salarioTemp * valorCalculo;
-			salarioTemp += valorTotal;
+			double valorTotal = person.getSalario() * valorCalculo;
+			salarioTemp = valorTotal;
 		}
 
 		for (Desconto desconto : descontos) {
 			double valorBeneficio = desconto.getValorPorcetagem();
 			double valorCalculo = valorBeneficio / 100;
-			double valorTotal = salarioTemp * valorCalculo;
-			salarioTemp -= valorTotal;
+			double valorTotal = person.getSalario() * valorCalculo;
+			salarioTemp = valorTotal;
 		}
 
-		person.setSalarioBeneficios(salarioTemp);
+		// person.setSalarioBeneficios(salarioTemp);
 
+		return salarioTemp;
 	}
 
 }

@@ -9,7 +9,21 @@
 	<ui:define name="content">
 		<h:form>
 			<p:panel header="Novo Desconto">
-				<p:panelGrid columns="2">
+
+				<!-- <p:panel header="Tipo de Gratificação">
+					<p:selectOneRadio id="radioTipoGratificacao"
+						value="#{descontoBean.tipoDesconto}" required="true">
+						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
+						<f:selectItem itemLabel="Porcentagem" itemValue="P" />
+						<f:ajax render="panelInputs" />
+					</p:selectOneRadio>
+				</p:panel> -->
+
+				<br />
+				<br />
+
+
+				<p:panelGrid id="panelInputs" columns="2">
 					<p:outputLabel value="Nome:" />
 					<p:inputText value="#{descontoBean.desconto.nome}" />
 					<p:outputLabel value="Valor Numerico:" />
@@ -18,9 +32,12 @@
 
 					<p:outputLabel value="Valor Porcentagem:" />
 					<p:inputNumber value="#{descontoBean.desconto.valorPorcetagem}"
-						placeholder="R$" symbol="%" decimalPlaces="2" />
+						placeholder="R$" symbol="%" decimalPlaces="2"
+						symbolPosition="suffix" />
 
 				</p:panelGrid>
+
+				<br />
 
 				<b:commandButton value="Salvar" action="#{descontoBean.salvar()}"
 					look="primary" />

@@ -22,25 +22,29 @@ public class CalculoPersonValorNumerico extends CalculosPerson {
 	 */
 
 	@Override
-	public void calcularGratificaDesconto(Person person) {
-		person.setSalarioBeneficios(person.getSalario());
+	public double calcularGratificaDesconto(Person person) {
+		// person.setSalarioBeneficios(person.getSalario());
 
 		List<Beneficio> beneficios = person.getBeneficios();
 		List<Desconto> descontos = person.getDescontos();
 
-		double salarioTemp = person.getSalarioBeneficios();
+		// 2500
+		double salarioTemp = 0.0;
 
+		// 1 - 50
+		// 2500 + 50 = 2550
 		for (Beneficio beneficio : beneficios) {
 			salarioTemp += beneficio.getValorNumerico();
-
 		}
 
 		for (Desconto desconto : descontos) {
-
-			salarioTemp -= desconto.getValorNumerico();
+			salarioTemp += desconto.getValorNumerico();
 		}
 
-		person.setSalarioBeneficios(salarioTemp);
+		/*
+		 * if(salarioTemp < 0){ salarioTemp += (salarioTemp * 2); }
+		 */
 
+		return salarioTemp;
 	}
 }

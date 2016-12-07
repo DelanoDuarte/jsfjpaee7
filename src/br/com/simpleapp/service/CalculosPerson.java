@@ -11,6 +11,6 @@ import br.com.simpleapp.domain.Person;
  */
 public abstract class CalculosPerson {
 
-	public abstract void calcularGratificaDesconto(Person person);
+	public abstract double calcularGratificaDesconto(Person person);
 
 }

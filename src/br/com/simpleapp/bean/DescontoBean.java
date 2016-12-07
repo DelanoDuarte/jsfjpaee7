@@ -27,6 +27,7 @@ public class DescontoBean implements Serializable {
 
 	private Desconto desconto = new Desconto();
 	private List<Desconto> descontos = null;
+	private String tipoDesconto;
 
 	private DescontoRepository descontoRepository = new DescontoRepository();
 
@@ -59,6 +60,14 @@ public class DescontoBean implements Serializable {
 
 	public void setDescontos(List<Desconto> descontos) {
 		this.descontos = descontos;
+	}
+
+	public String getTipoDesconto() {
+		return tipoDesconto;
+	}
+
+	public void setTipoDesconto(String tipoDesconto) {
+		this.tipoDesconto = tipoDesconto;
 	}
 
 }

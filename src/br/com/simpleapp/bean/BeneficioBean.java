@@ -29,6 +29,7 @@ public class BeneficioBean implements Serializable {
 	private Beneficio beneficio = new Beneficio();
 
 	private List<Beneficio> beneficios = null;
+	private String tipoGratificacao;
 
 	private BeneficioRepository beneficioRepository = new BeneficioRepository();
 
@@ -61,6 +62,14 @@ public class BeneficioBean implements Serializable {
 
 	public void setBeneficioRepository(BeneficioRepository beneficioRepository) {
 		this.beneficioRepository = beneficioRepository;
+	}
+
+	public String getTipoGratificacao() {
+		return tipoGratificacao;
+	}
+
+	public void setTipoGratificacao(String tipoGratificacao) {
+		this.tipoGratificacao = tipoGratificacao;
 	}
 
 }
