@@ -1,7 +1,5 @@
 package br.com.simpleapp.service;
 
-import java.util.List;
-
 /**
  * @author delano.junior
  *
@@ -22,29 +20,28 @@ public class CalculoPersonValorNumerico extends CalculosPerson {
 	 */
 
 	@Override
-	public double calcularGratificaDesconto(Person person) {
-		// person.setSalarioBeneficios(person.getSalario());
+	public void calcularGratificacoesDescontos(Person person) {
 
-		List<Beneficio> beneficios = person.getBeneficios();
-		List<Desconto> descontos = person.getDescontos();
+		double salarioTemp = person.getSalario();
 
-		// 2500
-		double salarioTemp = 0.0;
-
-		// 1 - 50
-		// 2500 + 50 = 2550
-		for (Beneficio beneficio : beneficios) {
-			salarioTemp += beneficio.getValorNumerico();
+		for (Beneficio beneficio : person.getBeneficios()) {
+			double valorBeneficioNumerico = beneficio.getValorNumerico();
+			double valorBeneficioPorcentagem = beneficio.getValorPorcetagem();
+			double valorCalculo = valorBeneficioPorcentagem / 100;
+			double valorTotal = valorBeneficioNumerico + (salarioTemp * valorCalculo);
+			salarioTemp += valorTotal;
 		}
 
-		for (Desconto desconto : descontos) {
-			salarioTemp += desconto.getValorNumerico();
+		for (Desconto desconto : person.getDescontos()) {
+			double valorDescontoNumerico = desconto.getValorNumerico();
+			double valorDescontoPorcentagem = desconto.getValorPorcetagem();
+			double valorCalculo = valorDescontoPorcentagem / 100;
+			double valorTotal = valorDescontoNumerico - (salarioTemp * valorCalculo);
+			salarioTemp -= valorTotal;
 		}
 
-		/*
-		 * if(salarioTemp < 0){ salarioTemp += (salarioTemp * 2); }
-		 */
+		person.setSalarioBeneficios(salarioTemp);
 
-		return salarioTemp;
 	}
+
 }

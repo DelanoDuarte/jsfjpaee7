@@ -3,8 +3,6 @@
  */
 package br.com.simpleapp.service;
 
-import java.util.List;
-
 import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.domain.Person;
@@ -23,31 +21,34 @@ public class CalculoPersonValorPorcentagem extends CalculosPerson {
 	 * simpleapp.domain.Person)
 	 */
 	@Override
-	public double calcularGratificaDesconto(Person person) {
-		// person.setSalarioBeneficios(person.getSalario());
+	public void calcularGratificacoesDescontos(Person person) {
 
-		List<Beneficio> beneficios = person.getBeneficios();
-		List<Desconto> descontos = person.getDescontos();
+		// 2000
+		double salarioTemp = person.getSalario();
 
-		double salarioTemp = 0.0;
-
-		for (Beneficio beneficio : beneficios) {
+		for (Beneficio beneficio : person.getBeneficios()) {
+			// 10
 			double valorBeneficio = beneficio.getValorPorcetagem();
+			// 0.1
 			double valorCalculo = valorBeneficio / 100;
-			double valorTotal = person.getSalario() * valorCalculo;
-			salarioTemp = valorTotal;
+			// 2000 * 0.1 = 200
+			double valorTotal = salarioTemp * valorCalculo;
+			// 2000 + 200 = 2200
+			salarioTemp += valorTotal;
 		}
 
-		for (Desconto desconto : descontos) {
+		for (Desconto desconto : person.getDescontos()) {
+			// 5
 			double valorBeneficio = desconto.getValorPorcetagem();
+			// 0.05
 			double valorCalculo = valorBeneficio / 100;
-			double valorTotal = person.getSalario() * valorCalculo;
-			salarioTemp = valorTotal;
+			// 2000 * 0,05 = 100
+			double valorTotal = salarioTemp * valorCalculo;
+			// 2000 - 100 = 1900
+			salarioTemp -= valorTotal;
 		}
 
-		// person.setSalarioBeneficios(salarioTemp);
-
-		return salarioTemp;
+		person.setSalarioBeneficios(salarioTemp);
 	}
 
 }
