@@ -25,7 +25,7 @@ public class PersonService implements Serializable {
 
 	public void salvarFuncionario(Person person) {
 
-		calculosPerson = new CalculoPersonValorNumerico();
+		calculosPerson = new CalculoPersonGratificacoesDescontos();
 		calculosPerson.calcularPerson(person);
 
 		personRepository.update(person);

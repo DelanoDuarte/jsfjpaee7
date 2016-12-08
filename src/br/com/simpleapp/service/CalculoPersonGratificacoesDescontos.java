@@ -9,7 +9,7 @@ import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.domain.Person;
 
-public class CalculoPersonValorNumerico extends CalculosPerson {
+public class CalculoPersonGratificacoesDescontos extends CalculosPerson {
 
 	/*
 	 * (non-Javadoc)
@@ -37,7 +37,7 @@ public class CalculoPersonValorNumerico extends CalculosPerson {
 			double valorDescontoPorcentagem = desconto.getValorPorcetagem();
 			double valorCalculo = valorDescontoPorcentagem / 100;
 			double valorTotal = valorDescontoNumerico - (salarioTemp * valorCalculo);
-			salarioTemp -= valorTotal;
+			salarioTemp -= Math.abs(valorTotal);
 		}
 
 		person.setSalarioBeneficios(salarioTemp);
