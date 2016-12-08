@@ -16,6 +16,11 @@ import br.com.simpleapp.util.JPAUtil;
  */
 public class PersonRepository extends AbstractRepository<Person> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@SuppressWarnings("unchecked")
 	public List<Person> buscarTodos() {
 		try {

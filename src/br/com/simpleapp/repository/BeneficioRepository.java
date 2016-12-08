@@ -11,4 +11,9 @@ import br.com.simpleapp.domain.Beneficio;
  */
 public class BeneficioRepository extends AbstractRepository<Beneficio> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

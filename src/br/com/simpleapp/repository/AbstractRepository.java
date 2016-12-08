@@ -3,6 +3,7 @@
  */
 package br.com.simpleapp.repository;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.logging.Logger;
@@ -15,7 +16,12 @@ import br.com.simpleapp.util.JPAUtil;
  * @author delano.junior
  *
  */
-public abstract class AbstractRepository<T> {
+public abstract class AbstractRepository<T> implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Logger logger = Logger.getLogger("Abstract Repository");
 
