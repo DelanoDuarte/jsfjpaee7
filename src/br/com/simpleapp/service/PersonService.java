@@ -21,14 +21,18 @@ public class PersonService implements Serializable {
 
 	private PersonRepository personRepository = new PersonRepository();
 
-	private CalculosPerson calculosPerson;
+	private CalculoPersonGratificacoesDescontos gratificacoesDescontos;
+	private Calculo13Salario calculo13Salario;
 
 	public void salvarFuncionario(Person person) {
-
-		calculosPerson = new CalculoPersonGratificacoesDescontos();
-		calculosPerson.calcularPerson(person);
-
+		gratificacoesDescontos = new CalculoPersonGratificacoesDescontos();
+		gratificacoesDescontos.calcularSalarioGratificacoesDescontos(person);
 		personRepository.update(person);
+	}
+
+	public double calcular13Salario(Person person, Integer meses) {
+		calculo13Salario = new Calculo13Salario();
+		return calculo13Salario.calcular13Salario(person, meses);
 	}
 
 	public PersonRepository getPersonRepository() {
@@ -39,12 +43,12 @@ public class PersonService implements Serializable {
 		this.personRepository = personRepository;
 	}
 
-	public CalculosPerson getCalculosPerson() {
-		return calculosPerson;
+	public CalculoPersonGratificacoesDescontos getGratificacoesDescontos() {
+		return gratificacoesDescontos;
 	}
 
-	public void setCalculosPerson(CalculosPerson calculosPerson) {
-		this.calculosPerson = calculosPerson;
+	public void setGratificacoesDescontos(CalculoPersonGratificacoesDescontos gratificacoesDescontos) {
+		this.gratificacoesDescontos = gratificacoesDescontos;
 	}
 
 }

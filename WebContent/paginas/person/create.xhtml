@@ -19,7 +19,7 @@
 		<h:form>
 			<p:panel>
 
-				<p:panelGrid columns="2">
+				<p:panelGrid columns="4">
 					<h:outputLabel value="Nome:" />
 					<p:inputText value="#{personBean.person.nome}" />
 					<h:outputLabel value="Sobrenome:" />
@@ -33,6 +33,12 @@
 						<f:selectItems value="#{companyBean.companies}" var="_company"
 							itemLabel="#{_company.nomeFantasia}"
 							noSelectionOption="--Selecione--" />
+					</p:selectOneMenu>
+
+					<h:outputLabel value="Tipo de Funcionário:" />
+					<p:selectOneMenu value="#{personBean.person.tipoContrato}"
+						converter="entityConverter">
+						<f:selectItems value="#{personBean.tipoContratos}" />
 					</p:selectOneMenu>
 
 				</p:panelGrid>

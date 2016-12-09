@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -65,12 +67,15 @@ public class Person implements Serializable {
 	@JoinTable(name = "tb_person_descontos", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_desconto"))
 	private List<Desconto> descontos;
 
+	@Enumerated(EnumType.STRING)
+	private TipoContrato tipoContrato;
+
 	public Person() {
 		super();
 	}
 
 	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, Company company,
-			List<Beneficio> beneficios, List<Desconto> descontos) {
+			List<Beneficio> beneficios, List<Desconto> descontos, TipoContrato tipoContrato) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -79,6 +84,7 @@ public class Person implements Serializable {
 		this.company = company;
 		this.beneficios = beneficios;
 		this.descontos = descontos;
+		this.tipoContrato = tipoContrato;
 	}
 
 	public Long getId() {
@@ -145,6 +151,14 @@ public class Person implements Serializable {
 		this.descontos = descontos;
 	}
 
+	public TipoContrato getTipoContrato() {
+		return tipoContrato;
+	}
+
+	public void setTipoContrato(TipoContrato tipoContrato) {
+		this.tipoContrato = tipoContrato;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,6 +174,7 @@ public class Person implements Serializable {
 		temp = Double.doubleToLongBits(salarioBeneficios);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
+		result = prime * result + ((tipoContrato == null) ? 0 : tipoContrato.hashCode());
 		return result;
 	}
 
@@ -206,6 +221,8 @@ public class Person implements Serializable {
 				return false;
 		} else if (!sobrenome.equals(other.sobrenome))
 			return false;
+		if (tipoContrato != other.tipoContrato)
+			return false;
 		return true;
 	}
 
@@ -213,7 +230,7 @@ public class Person implements Serializable {
 	public String toString() {
 		return "Person [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", salario=" + salario
 				+ ", salarioBeneficios=" + salarioBeneficios + ", company=" + company + ", beneficios=" + beneficios
-				+ ", descontos=" + descontos + "]";
+				+ ", descontos=" + descontos + ", tipoContrato=" + tipoContrato + "]";
 	}
 
 }

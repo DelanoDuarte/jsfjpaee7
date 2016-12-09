@@ -9,38 +9,34 @@ import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.domain.Person;
 
-public class CalculoPersonGratificacoesDescontos extends CalculosPerson {
+public class CalculoPersonGratificacoesDescontos {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * br.com.simpleapp.service.CalculosPerson#calcularGratificaDesconto(br.com.
-	 * simpleapp.domain.Person)
-	 */
+	public void calcularSalarioGratificacoesDescontos(Person person) {
 
-	@Override
-	public void calcularGratificacoesDescontos(Person person) {
+		try {
+			double salarioTemp = person.getSalario();
 
-		double salarioTemp = person.getSalario();
+			for (Beneficio beneficio : person.getBeneficios()) {
+				double valorBeneficioNumerico = beneficio.getValorNumerico();
+				double valorBeneficioPorcentagem = beneficio.getValorPorcetagem();
+				double valorCalculo = valorBeneficioPorcentagem / 100;
+				double valorTotal = valorBeneficioNumerico + (person.getSalario() * valorCalculo);
+				salarioTemp += valorTotal;
+			}
 
-		for (Beneficio beneficio : person.getBeneficios()) {
-			double valorBeneficioNumerico = beneficio.getValorNumerico();
-			double valorBeneficioPorcentagem = beneficio.getValorPorcetagem();
-			double valorCalculo = valorBeneficioPorcentagem / 100;
-			double valorTotal = valorBeneficioNumerico + (salarioTemp * valorCalculo);
-			salarioTemp += valorTotal;
+			for (Desconto desconto : person.getDescontos()) {
+				double valorDescontoNumerico = desconto.getValorNumerico();
+				double valorDescontoPorcentagem = desconto.getValorPorcetagem();
+				double valorCalculo = valorDescontoPorcentagem / 100;
+				double valorTotal = valorDescontoNumerico - (person.getSalario() * valorCalculo);
+				salarioTemp -= Math.abs(valorTotal);
+			}
+
+			person.setSalarioBeneficios(salarioTemp);
+
+		} catch (Exception e) {
+
 		}
-
-		for (Desconto desconto : person.getDescontos()) {
-			double valorDescontoNumerico = desconto.getValorNumerico();
-			double valorDescontoPorcentagem = desconto.getValorPorcetagem();
-			double valorCalculo = valorDescontoPorcentagem / 100;
-			double valorTotal = valorDescontoNumerico - (salarioTemp * valorCalculo);
-			salarioTemp -= Math.abs(valorTotal);
-		}
-
-		person.setSalarioBeneficios(salarioTemp);
 
 	}
 
