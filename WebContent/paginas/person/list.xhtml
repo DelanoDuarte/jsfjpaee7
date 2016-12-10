@@ -10,6 +10,9 @@
 	<ui:define name="content">
 
 		<h:form>
+
+			<p:messages />
+
 			<p:panel header="Todos os Funcionários Cadastrados">
 				<p:dataTable value="#{personBean.persons}" var="_person"
 					paginator="true" rows="10">

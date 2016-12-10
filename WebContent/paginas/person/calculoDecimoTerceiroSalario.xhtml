@@ -17,8 +17,10 @@
 		</f:metadata>
 
 		<h:form>
+
+			<p:messages />
 			<p:panel header="Calculo 13 Salario">
-				<p:panelGrid columns="2">
+				<p:panelGrid id="gridColunas" columns="2">
 					<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
 					<p:outputLabel id="labelNomeFuncionario"
 						value="#{personBean.person.nome}  #{personBean.person.sobrenome}" />
@@ -36,7 +38,7 @@
 
 				<p:commandButton value="Calcular"
 					action="#{personBean.calcular13Salario()}"
-					update="mesesTrabalhados" />
+					update="mesesTrabalhados" process="@form" />
 			</p:panel>
 		</h:form>
 
