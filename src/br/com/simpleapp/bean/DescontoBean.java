@@ -6,8 +6,8 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.repository.DescontoRepository;
@@ -16,8 +16,7 @@ import br.com.simpleapp.repository.DescontoRepository;
  * @author delan
  *
  */
-@ManagedBean
-@RequestScoped
+@Model
 public class DescontoBean implements Serializable {
 
 	/**
@@ -29,7 +28,8 @@ public class DescontoBean implements Serializable {
 	private List<Desconto> descontos = null;
 	private String tipoDesconto;
 
-	private DescontoRepository descontoRepository = new DescontoRepository();
+	@Inject
+	private DescontoRepository descontoRepository;
 
 	public String salvar() {
 		descontoRepository.create(desconto);

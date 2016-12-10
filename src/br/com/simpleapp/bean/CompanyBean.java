@@ -6,8 +6,8 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Company;
 import br.com.simpleapp.repository.CompanyRepository;
@@ -16,8 +16,7 @@ import br.com.simpleapp.repository.CompanyRepository;
  * @author delan
  *
  */
-@ManagedBean
-@RequestScoped
+@Model
 public class CompanyBean implements Serializable {
 
 	/**
@@ -28,7 +27,8 @@ public class CompanyBean implements Serializable {
 	private Company company = new Company();
 	private List<Company> companies = null;
 
-	private CompanyRepository companyRepository = new CompanyRepository();
+	@Inject
+	private CompanyRepository companyRepository;
 
 	public String salvar() {
 		companyRepository.create(company);

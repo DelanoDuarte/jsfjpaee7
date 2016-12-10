@@ -6,6 +6,7 @@ package br.com.simpleapp.rest;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -20,13 +21,15 @@ import br.com.simpleapp.repository.PersonRepository;
  *
  */
 @Path("/person")
-public class PersonRestService implements Serializable{
+public class PersonRestService implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private PersonRepository personRepository = new PersonRepository();
+
+	@Inject
+	private PersonRepository personRepository;
 
 	@Path("/list")
 	@GET
@@ -48,14 +51,6 @@ public class PersonRestService implements Serializable{
 		} catch (Exception e) {
 			return null;
 		}
-	}
-
-	public PersonRepository getPersonRepository() {
-		return personRepository;
-	}
-
-	public void setPersonRepository(PersonRepository personRepository) {
-		this.personRepository = personRepository;
 	}
 
 }

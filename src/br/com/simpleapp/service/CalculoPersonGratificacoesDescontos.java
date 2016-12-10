@@ -1,5 +1,7 @@
 package br.com.simpleapp.service;
 
+import javax.enterprise.context.RequestScoped;
+
 /**
  * @author delano.junior
  *
@@ -9,6 +11,7 @@ import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.domain.Person;
 
+@RequestScoped
 public class CalculoPersonGratificacoesDescontos {
 
 	public void calcularSalarioGratificacoesDescontos(Person person) {

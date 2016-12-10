@@ -6,8 +6,8 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.domain.TipoContrato;
@@ -18,8 +18,7 @@ import br.com.simpleapp.service.PersonService;
  * @author delano.junior
  *
  */
-@ManagedBean
-@RequestScoped
+@Model
 public class PersonBean implements Serializable {
 
 	/**
@@ -36,9 +35,11 @@ public class PersonBean implements Serializable {
 
 	}
 
-	private PersonRepository personRepository = new PersonRepository();
+	@Inject
+	private PersonRepository personRepository;
 
-	private PersonService personService = new PersonService();
+	@Inject
+	private PersonService personService;
 
 	public String salvar() {
 		personService.salvarFuncionario(person);

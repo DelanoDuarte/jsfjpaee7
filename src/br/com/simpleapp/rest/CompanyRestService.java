@@ -6,6 +6,7 @@ package br.com.simpleapp.rest;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -25,21 +26,15 @@ public class CompanyRestService implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private CompanyRepository companyRepository = new CompanyRepository();
+
+	@Inject
+	private CompanyRepository companyRepository;
 
 	@Path("/list")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Company> todasEmpresasJSON() {
 		return companyRepository.buscarTodos();
-	}
-
-	public CompanyRepository getCompanyRepository() {
-		return companyRepository;
-	}
-
-	public void setCompanyRepository(CompanyRepository companyRepository) {
-		this.companyRepository = companyRepository;
 	}
 
 }

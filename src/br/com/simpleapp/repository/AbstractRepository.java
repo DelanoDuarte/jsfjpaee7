@@ -4,7 +4,6 @@
 package br.com.simpleapp.repository;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -27,11 +26,13 @@ public abstract class AbstractRepository<T> implements Serializable {
 
 	protected EntityManager entityManager = JPAUtil.getEntityManager();
 
-	protected Class<T> clazz = null;
+	private Class<T> clazz;
 
-	@SuppressWarnings("unchecked")
 	protected AbstractRepository() {
-		Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+
+	protected AbstractRepository(Class<T> clazz) {
+		this();
 		this.clazz = clazz;
 	}
 

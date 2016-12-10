@@ -6,8 +6,8 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.repository.BeneficioRepository;
@@ -17,8 +17,7 @@ import br.com.simpleapp.repository.BeneficioRepository;
  *
  */
 
-@ManagedBean
-@RequestScoped
+@Model
 public class BeneficioBean implements Serializable {
 
 	/**
@@ -31,7 +30,8 @@ public class BeneficioBean implements Serializable {
 	private List<Beneficio> beneficios = null;
 	private String tipoGratificacao;
 
-	private BeneficioRepository beneficioRepository = new BeneficioRepository();
+	@Inject
+	private BeneficioRepository beneficioRepository;
 
 	public String salvar() {
 		beneficioRepository.create(beneficio);
