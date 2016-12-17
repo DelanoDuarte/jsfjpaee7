@@ -23,7 +23,7 @@ public class Calculo13Salario {
 			return total;
 
 		} catch (Exception e) {
-
+			System.out.println("Erro na Classe" + this.getClass().getName());
 			return 0;
 		}
 

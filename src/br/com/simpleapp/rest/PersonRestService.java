@@ -6,6 +6,7 @@ package br.com.simpleapp.rest;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -21,6 +22,8 @@ import br.com.simpleapp.service.PersonService;
  *
  */
 @Path("/person")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class PersonRestService implements Serializable {
 
 	/**
@@ -34,7 +37,6 @@ public class PersonRestService implements Serializable {
 
 	@Path("/list")
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Person> todosFuncionáriosJSON() {
 		try {
 			return personRepository.buscarTodos();
@@ -45,7 +47,6 @@ public class PersonRestService implements Serializable {
 
 	@Path("/{id}")
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public Person funcionarioPorIdJSON(@PathParam(value = "id") Long id) {
 		try {
 			return personRepository.findById(id);
@@ -59,9 +60,9 @@ public class PersonRestService implements Serializable {
 	public double calcular13SalarioFuncionario(@PathParam(value = "id") Long id,
 			@PathParam(value = "meses") Integer meses) {
 		try {
-			Person person = personRepository.findById(id);
-			double resultado = personService.calcular13Salario(person, meses);
-			return resultado;
+			Person person = new Person();
+			person = personRepository.findById(id);
+			return personService.calcular13Salario(person, meses);
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.getMessage());
 			return 0.0;

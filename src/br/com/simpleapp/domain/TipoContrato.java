@@ -10,4 +10,5 @@ package br.com.simpleapp.domain;
 public enum TipoContrato {
 
 	CLT, ESTAGIO
+
 }
