@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<div align="center">
+				<b:well>
+					<h2>Gratificações e Descontos Cadastrados</h2>
+    					Clique na aba para ver a tabela ! 
+				</b:well>
+			</div>
+
+			<p:accordionPanel>
+				<p:tab title="Gratificações Cadastradas">
+					<p:dataTable value="#{beneficioBean.beneficios}" var="_beneficio">
+
+						<p:column>
+							<f:facet name="header">Nome</f:facet>
+							<h:outputLabel value="#{_beneficio.nome}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Valor em Reais</f:facet>
+							<h:outputLabel value="R$ #{_beneficio.valorNumerico}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Valor em Porcentagem</f:facet>
+							<h:outputLabel value="% #{_beneficio.valorPorcetagem}" />
+						</p:column>
+
+
+						<f:facet name="footer">
+							Total de #{beneficioBean.beneficios.size()} Gratificações Cadastradas		
+						</f:facet>
+					</p:dataTable>
+				</p:tab>
+
+				<p:tab title="Descontos Cadastrados">
+					<p:dataTable value="#{descontoBean.descontos}" var="_desconto">
+
+						<p:column>
+							<f:facet name="header">Nome</f:facet>
+							<h:outputLabel value="#{_desconto.nome}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Valor em Reais</f:facet>
+							<h:outputLabel value="R$ #{_desconto.valorNumerico}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Valor em Porcentagem</f:facet>
+							<h:outputLabel value="% #{_desconto.valorPorcetagem}" />
+						</p:column>
+
+						<f:facet name="footer">
+							Total de #{descontoBean.descontos.size()} Descontos Cadastrados		
+						</f:facet>
+					</p:dataTable>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

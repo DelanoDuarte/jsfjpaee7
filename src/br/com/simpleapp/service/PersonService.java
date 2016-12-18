@@ -4,6 +4,8 @@
 package br.com.simpleapp.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -45,6 +47,20 @@ public class PersonService implements Serializable {
 			return 0.0;
 		}
 
+	}
+
+	public List<Person> reCalcularSalarioFuncionarios() {
+
+		List<Person> persons = personRepository.buscarTodos();
+
+		List<Person> funcionarios = new ArrayList<>();
+
+		for (Person personTemp : persons) {
+			gratificacoesDescontos.calcularSalarioGratificacoesDescontos(personTemp);
+			funcionarios.add(personTemp);
+		}
+
+		return funcionarios;
 	}
 
 	public Calculo13Salario getCalculo13Salario() {

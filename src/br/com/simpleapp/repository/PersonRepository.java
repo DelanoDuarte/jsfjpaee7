@@ -39,4 +39,16 @@ public class PersonRepository extends AbstractRepository<Person> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Person> buscarSalarioTodosFuncionarios() {
+		try {
+			EntityManager entityManager = JPAUtil.getEntityManager();
+			List<Person> persons = entityManager.createQuery("from Person p").getResultList();
+			return persons;
+		} catch (Exception e) {
+			e.getMessage();
+			return null;
+		}
+	}
+
 }
