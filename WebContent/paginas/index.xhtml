@@ -15,6 +15,51 @@
 			</div>
 		</b:jumbotron>
 
+		<b:row>
+			<b:column col-sm="6" col-md="4">
+				<b:thumbnail>
+					<h:graphicImage value="/imagens/gratficacoes_descontos_img.jpg" />
+					<f:facet name="caption">
+						<h3>Gratificações e Descontos</h3>
+						<p>Cadastre Aqui uma Gratificação ou um Desconto.</p>
+						<p>
+							<b:button look="primary" value="Cadastrar Nova Gratificação"
+								outcome="/paginas/beneficio_descontos/createGratificacao" />
+							<b:button look="success" value="Cadastrar Novo Desconto"
+								outcome="/paginas/beneficio_descontos/createDesconto" />
+						</p>
+					</f:facet>
+				</b:thumbnail>
+			</b:column>
+			<b:column col-sm="6" col-md="4">
+				<b:thumbnail>
+					<h:graphicImage value="/imagens/empresa.jpg" />
+					<f:facet name="caption">
+						<h3>Empresa</h3>
+						<p>Cadastre Aqui uma Empresa.</p>
+						<p>
+							<b:button look="primary" value="Cadastrar Nova Empresa"
+								outcome="/paginas/company/create" />
+						</p>
+					</f:facet>
+				</b:thumbnail>
+			</b:column>
+
+			<b:column col-sm="6" col-md="4">
+				<b:thumbnail>
+					<h:graphicImage value="/imagens/funcionarios.jpg" />
+					<f:facet name="caption">
+						<h3>Funcionários</h3>
+						<p>Cadastre Aqui um Novo Funcionário na sua Empresa.</p>
+						<p>
+							<b:button look="primary" value="Cadastrar Novo Funcionário"
+								outcome="/paginas/person/create" />
+						</p>
+					</f:facet>
+				</b:thumbnail>
+			</b:column>
+		</b:row>
+
 	</ui:define>
 
 </ui:composition>

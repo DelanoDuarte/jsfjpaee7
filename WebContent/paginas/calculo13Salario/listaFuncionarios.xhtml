@@ -6,12 +6,18 @@
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	template="/template/template.xhtml">
 
-
 	<ui:define name="content">
 
 		<h:form>
 
 			<p:messages />
+
+			<div align="center">
+				<b:well>
+					<h2>Preparando para Realizar Cálculo de 13 Salário</h2>
+    					Selecione um Funcionário para realizar o cálculo. 
+				</b:well>
+			</div>
 
 			<p:panel header="Todos os Funcionários Cadastrados">
 				<p:dataTable value="#{personBean.persons}" var="_person"
@@ -33,8 +39,9 @@
 
 					<p:column>
 						<div align="center">
-							<b:button value="Visualizar Funcionário"
-								outcome="/paginas/person/detalhesFuncionario" look="success">
+							<b:button value="Selecionar"
+								outcome="/paginas/calculo13Salario/calculoDecimoTerceiroSalario"
+								look="success">
 								<f:param name="funcionarioId" value="#{_person.id}" />
 							</b:button>
 						</div>
@@ -42,6 +49,9 @@
 				</p:dataTable>
 			</p:panel>
 		</h:form>
+
+
+
 	</ui:define>
 
 </ui:composition>

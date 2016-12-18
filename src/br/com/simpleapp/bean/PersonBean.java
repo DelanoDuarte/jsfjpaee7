@@ -13,6 +13,7 @@ import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.domain.TipoContrato;
 import br.com.simpleapp.repository.PersonRepository;
 import br.com.simpleapp.service.PersonService;
+import br.com.simpleapp.util.MessageUtil;
 
 /**
  * @author delano.junior
@@ -41,8 +42,12 @@ public class PersonBean implements Serializable {
 	@Inject
 	private PersonService personService;
 
+	@Inject
+	private MessageUtil messageUtil;
+
 	public String salvar() {
 		personService.salvarFuncionario(person);
+		messageUtil.msgInfo("Novo Funcionário Cadastrado com Sucesso !");
 		return "/paginas/person/list";
 	}
 

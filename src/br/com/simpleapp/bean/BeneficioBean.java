@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.repository.BeneficioRepository;
+import br.com.simpleapp.util.MessageUtil;
 
 /**
  * @author delan
@@ -33,9 +34,13 @@ public class BeneficioBean implements Serializable {
 	@Inject
 	private BeneficioRepository beneficioRepository;
 
+	@Inject
+	private MessageUtil messageUtil;
+
 	public String salvar() {
 		beneficioRepository.create(beneficio);
-		return "/paginas/company/create";
+		messageUtil.msgInfo("Novo Beneficio Cadastrado com Sucesso !");
+		return "/paginas/decisoes_tela/decisaoGratificacaoDesconto";
 	}
 
 	public Beneficio getBeneficio() {

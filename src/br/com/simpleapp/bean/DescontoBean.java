@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.repository.DescontoRepository;
+import br.com.simpleapp.util.MessageUtil;
 
 /**
  * @author delan
@@ -31,9 +32,13 @@ public class DescontoBean implements Serializable {
 	@Inject
 	private DescontoRepository descontoRepository;
 
+	@Inject
+	private MessageUtil messageUtil;
+
 	public String salvar() {
 		descontoRepository.create(desconto);
-		return "/paginas/company/create";
+		messageUtil.msgInfo("Novo Desconto Cadastrado com Sucesso !");
+		return "/paginas/decisoes_tela/decisaoGratificacaoDesconto";
 	}
 
 	public Desconto getDesconto() {

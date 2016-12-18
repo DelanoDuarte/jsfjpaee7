@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<p:messages />
+
+			<div align="center">
+				<h1>O que você Deseja fazer Agora ?</h1>
+			</div>
+
+			<div align="center">
+
+				<p:panel>
+
+					<b:row>
+
+						<div align="center">
+
+							<b:column col-sm="6" col-md="6">
+								<div align="center">
+									<b:thumbnail>
+										<h:graphicImage value="" />
+										<f:facet name="caption">
+											<h3>Cadastrar uma nova Empresa?</h3>
+											<p>
+												<b:button look="primary" value="Cadastrar Nova Empresa"
+													outcome="/paginas/company/create" />
+												<b:button look="success" value="Ver Empresas Cadastradas"
+													outcome="/paginas/company/list" />
+											</p>
+										</f:facet>
+									</b:thumbnail>
+								</div>
+							</b:column>
+
+							<b:column col-sm="6" col-md="6">
+								<div align="center">
+									<b:thumbnail>
+										<f:facet name="caption">
+											<h3>Cadastrar um Funcionário na sua Empresa ?</h3>
+											<p>
+												<b:button look="primary" value="Cadastrar Novo Funcionário"
+													outcome="/paginas/person/create" />
+												<b:button look="success"
+													value="Ver Funcionários Cadastrados"
+													outcome="/paginas/person/list" />
+											</p>
+										</f:facet>
+									</b:thumbnail>
+								</div>
+							</b:column>
+
+						</div>
+					</b:row>
+
+				</p:panel>
+
+			</div>
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

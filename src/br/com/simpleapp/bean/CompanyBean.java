@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Company;
 import br.com.simpleapp.repository.CompanyRepository;
+import br.com.simpleapp.util.MessageUtil;
 
 /**
  * @author delan
@@ -30,9 +31,13 @@ public class CompanyBean implements Serializable {
 	@Inject
 	private CompanyRepository companyRepository;
 
+	@Inject
+	private MessageUtil messageUtil;
+
 	public String salvar() {
 		companyRepository.create(company);
-		return "/paginas/person/create";
+		messageUtil.msgInfo("Nova Empresa Cadastrada com Sucesso !");
+		return "/paginas/decisoes_tela/decisaoEmpresa";
 	}
 
 	public void buscarEmpresaPorId() {
