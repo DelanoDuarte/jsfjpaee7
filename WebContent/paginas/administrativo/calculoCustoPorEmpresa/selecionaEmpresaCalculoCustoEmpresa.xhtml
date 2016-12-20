@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<div align="center">
+			<b:well>
+				<h2>Preparando para Realizar Cálculo de Custo por Empresa</h2>
+    					Selecione uma Empresa para realizar o cálculo. 
+				</b:well>
+		</div>
+
+		<h:form>
+			<p:panel header="Todas as Empresas Cadastradas">
+				<p:dataTable value="#{companyBean.companies}" var="_empresa">
+
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_empresa.nomeFantasia}" />
+					</p:column>
+
+					<p:column>
+						<div align="center">
+							<b:button value="Selecionar" look="success"
+								outcome="/paginas/administrativo/calculoCustoPorEmpresa/detalhesCalculoEmpresa">
+								<f:param name="companyId" value="#{_empresa.id}" />
+							</b:button>
+						</div>
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

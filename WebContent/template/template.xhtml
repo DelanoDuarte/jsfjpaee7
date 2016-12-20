@@ -36,6 +36,11 @@
 					outcome="/paginas/person/list" />
 			</b:dropMenu>
 
+			<b:dropMenu value="Cálculos">
+				<b:navLink value="Cálculo 13º Salário"
+					outcome="/paginas/calculo13Salario/listaFuncionarios" />
+			</b:dropMenu>
+
 		</b:navbarLinks>
 
 		<b:navbarLinks pull="right">
@@ -44,6 +49,10 @@
 					outcome="/paginas/administrativo/recalculoFuncionarios" />
 				<b:navLink value="Gratificações/Descontos"
 					outcome="/paginas/administrativo/gratificacoes_Descontos" />
+				<b:navLink value="Cálculo de Custo por Empresa"
+					outcome="/paginas/administrativo/calculoCustoPorEmpresa/selecionaEmpresaCalculoCustoEmpresa" />
+				<b:navLink value="Cálculo de Custo Todos os Funcionários"
+					outcome="/paginas/administrativo/calculoCustoTodosFuncionarios/iniciarCalculoTodosFuncionarios" />
 			</b:dropMenu>
 		</b:navbarLinks>
 	</b:navBar>

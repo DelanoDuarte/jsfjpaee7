@@ -40,13 +40,13 @@ public class PersonRepository extends AbstractRepository<Person> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Person> buscarSalarioTodosFuncionarios() {
+	public List<Person> buscarTodosFuncionarioPorIdEmpresa(Long id) {
 		try {
 			EntityManager entityManager = JPAUtil.getEntityManager();
-			List<Person> persons = entityManager.createQuery("from Person p").getResultList();
+			List<Person> persons = entityManager.createQuery("from Person p where p.company.id = " + id)
+					.getResultList();
 			return persons;
 		} catch (Exception e) {
-			e.getMessage();
 			return null;
 		}
 	}

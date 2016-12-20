@@ -6,6 +6,7 @@ package br.com.simpleapp.service;
 import javax.enterprise.context.RequestScoped;
 
 import br.com.simpleapp.domain.Person;
+import br.com.simpleapp.domain.TipoContrato;
 
 /**
  * @author delan
@@ -20,11 +21,15 @@ public class Calculo13Salario {
 			double salario = person.getSalario();
 			double total = (salario / 12) * meses;
 
-			return total;
+			if (person.getTipoContrato().toString() == TipoContrato.CLT.toString()) {
+				return total;
+			} else {
+				return 0.0;
+			}
 
 		} catch (Exception e) {
 			System.out.println("Erro na Classe : " + this.getClass().getName() + e.getMessage());
-			return 0;
+			return 0.0;
 		}
 
 	}

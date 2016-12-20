@@ -6,23 +6,21 @@
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	template="/template/template.xhtml">
 
-
 	<ui:define name="content">
 
+		<div align="center">
+			<b:well>
+				<h2>Preparando Para Calcular o Custo de Todos os Funcionários</h2>
+    					Clique no botão realizar cálculo.
+				</b:well>
+		</div>
+
 		<h:form>
-			<b:dataTable value="#{companyBean.companies}" var="_company"
-				customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
-				<b:dataTableColumn value="#{_company.nomeFantasia}" label="Nome" />
-
-				<b:dataTableColumn label="">
-					<b:button value="Show" look="success"
-						outcome="/paginas/company/detalhesCompany">
-						<f:param name="companyId" value="#{_company.id}" />
-					</b:button>
-				</b:dataTableColumn>
-			</b:dataTable>
+			<div align="center">
+				<b:commandButton value="Realizar Cálculo"
+					action="#{calculoValorTotalTodosFuncionariosBean.calcularCustoTodosFuncionarios()}"
+					look="primary" />
+			</div>
 		</h:form>
-
 	</ui:define>
-
 </ui:composition>

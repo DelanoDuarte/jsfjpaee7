@@ -8,17 +8,20 @@
 
 	<ui:define name="content">
 
+
 		<h:form>
 			<p:messages />
 
 			<div align="center">
 				<b:well>
-					<h2>Funcionários Cálculados com Sucesso !</h2>
+					<h2>Cálculo de Custo de Todos os Funcionários foi finalizado
+						com Sucesso !</h2>
 				</b:well>
 			</div>
 
 			<p:panel header="Todos os Funcionários Cadastrados">
-				<p:dataTable value="#{recalculoFuncionariosBean.persons}"
+				<p:dataTable
+					value="#{calculoValorTotalTodosFuncionariosBean.persons}"
 					var="_person" paginator="true" rows="10">
 					<p:column>
 						<f:facet name="header">Nome</f:facet>
@@ -48,9 +51,11 @@
 
 			<p:panel header="Informações de Pagamento">
 				<br />
-				<p:outputLabel value="Valor Total da Gasto: " for="fieldValorTotal" />
-				<p:outputLabel id="fieldValorTotal"
-					value="R$ #{recalculoFuncionariosBean.valorTotalFolha}" />
+				<div align="center">
+					<p:outputLabel value="Valor Total da Gasto: " for="fieldValorTotal" />
+					<p:outputLabel id="fieldValorTotal"
+						value="R$ #{calculoValorTotalTodosFuncionariosBean.valorTotalTodosFuncionarios}" />
+				</div>
 			</p:panel>
 		</h:form>
 

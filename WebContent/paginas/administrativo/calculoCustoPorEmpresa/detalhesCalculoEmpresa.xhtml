@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+
+		<f:metadata>
+			<f:viewParam name="companyId"
+				value="#{calculoValorTotalPorEmpresaBean.company.id}" />
+			<f:event
+				listener="#{calculoValorTotalPorEmpresaBean.buscarEmpresaPorIdParaCalculo()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
+		<div align="center">
+			<b:well>
+				<h3>Cálculo de Custo da Empresa
+					#{companyBean.company.nomeFantasia} foi realizado com Sucesso !</h3>
+			</b:well>
+		</div>
+
+		<h:form>
+			<p:panel header="Dados da Empresa">
+				<br />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
+					<p:outputLabel id="labelNomeEmpresa"
+						value="#{calculoValorTotalPorEmpresaBean.company.nomeFantasia}" />
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+
+		<br />
+
+		<h:form>
+			<p:panel header="Funcionários da Empresa ">
+				<p:dataTable
+					value="#{calculoValorTotalPorEmpresaBean.company.persons}"
+					var="_person">
+
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_person.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Sobrenome</f:facet>
+						<p:outputLabel value="#{_person.sobrenome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Salario</f:facet>
+						<p:outputLabel value="#{_person.salario}" />
+					</p:column>
+
+					<p:column>
+						<div align="center">
+							<b:button value="Visualizar Funcionário"
+								outcome="/paginas/person/detalhesFuncionario" look="success">
+								<f:param name="funcionarioId" value="#{_person.id}" />
+							</b:button>
+						</div>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+
+		<div align="center">
+			<b:well>
+				<h5 style="font: bold;">Custo Total da Empresa :R$
+					#{calculoValorTotalPorEmpresaBean.valorTotalPorEmpresa}</h5>
+			</b:well>
+		</div>
+
+
+
+	</ui:define>
+</ui:composition>

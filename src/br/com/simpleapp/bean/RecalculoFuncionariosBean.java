@@ -26,11 +26,13 @@ public class RecalculoFuncionariosBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<Person> persons;
+	private double valorTotalFolha;
 
 	@Inject
 	private PersonService personService;
 
 	public String recalcularFuncionarios() {
+		valorTotalFolha = personService.calculoValorTotalTodosFuncionariosFolha();
 		this.persons = null;
 		return "/paginas/administrativo/listaFuncionariosCalculados";
 	}
@@ -44,6 +46,14 @@ public class RecalculoFuncionariosBean implements Serializable {
 
 	public void setPersons(List<Person> persons) {
 		this.persons = persons;
+	}
+
+	public double getValorTotalFolha() {
+		return valorTotalFolha;
+	}
+
+	public void setValorTotalFolha(double valorTotalFolha) {
+		this.valorTotalFolha = valorTotalFolha;
 	}
 
 }

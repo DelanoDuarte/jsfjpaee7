@@ -12,14 +12,13 @@ import javax.inject.Inject;
 import br.com.simpleapp.domain.Company;
 import br.com.simpleapp.repository.CompanyRepository;
 import br.com.simpleapp.service.PersonService;
-import br.com.simpleapp.util.MessageUtil;
 
 /**
- * @author delan
+ * @author delano.duarte
  *
  */
 @Model
-public class CompanyBean implements Serializable {
+public class CalculoValorTotalPorEmpresaBean implements Serializable {
 
 	/**
 	 * 
@@ -34,18 +33,9 @@ public class CompanyBean implements Serializable {
 	private CompanyRepository companyRepository;
 
 	@Inject
-	private MessageUtil messageUtil;
-
-	@Inject
 	private PersonService personService;
 
-	public String salvar() {
-		companyRepository.create(company);
-		messageUtil.msgInfo("Nova Empresa Cadastrada com Sucesso !");
-		return "/paginas/decisoes_tela/decisaoEmpresa";
-	}
-
-	public void buscarEmpresaPorId() {
+	public void buscarEmpresaPorIdParaCalculo() {
 		this.company = companyRepository.findById(this.company.getId());
 		valorTotalPorEmpresa = personService.calculoValorTotalTodosFuncionariosPorEmpresaFolha(this.company.getId());
 	}
@@ -59,21 +49,14 @@ public class CompanyBean implements Serializable {
 	}
 
 	public List<Company> getCompanies() {
-		if (this.companies == null)
+		if (this.companies == null) {
 			this.companies = companyRepository.buscarTodos();
+		}
 		return companies;
 	}
 
 	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
-	}
-
-	public CompanyRepository getCompanyRepository() {
-		return companyRepository;
-	}
-
-	public void setCompanyRepository(CompanyRepository companyRepository) {
-		this.companyRepository = companyRepository;
 	}
 
 	public double getValorTotalPorEmpresa() {
