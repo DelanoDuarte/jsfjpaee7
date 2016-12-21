@@ -62,7 +62,8 @@ public class PersonRestService implements Serializable {
 		try {
 			Person person = new Person();
 			person = personRepository.findById(id);
-			return personService.calcular13Salario(person, meses);
+			personService.calcular13Salario(person, meses);
+			return 0.0; // Adaptar Método Rest
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.getMessage());
 			return 0.0;

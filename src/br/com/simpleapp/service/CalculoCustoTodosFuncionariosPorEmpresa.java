@@ -31,9 +31,11 @@ public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
 
 		List<Person> persons = personRepository.buscarTodosFuncionarioPorIdEmpresa(id);
 		double valorTotal = 0.0;
+		double valor13Salario = 0.0;
 
 		for (Person person : persons) {
-			valorTotal += person.getSalarioBeneficios();
+			valor13Salario = person.getSalarioDecimoTerceiro();
+			valorTotal += person.getSalarioBeneficios() + valor13Salario;
 		}
 		return valorTotal;
 	}

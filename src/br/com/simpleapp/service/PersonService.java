@@ -47,8 +47,9 @@ public class PersonService implements Serializable {
 		personRepository.update(person);
 	}
 
-	public double calcular13Salario(Person person, Integer meses) {
-		return calculo13Salario.calcular13Salario(person, meses);
+	public void calcular13Salario(Person person, Integer meses) {
+		calculo13Salario.calcular13Salario(person, meses);
+		personRepository.update(person);
 	}
 
 	public List<Person> reCalcularSalarioFuncionarios() {

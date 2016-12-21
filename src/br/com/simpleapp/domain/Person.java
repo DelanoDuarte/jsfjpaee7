@@ -4,6 +4,7 @@
 package br.com.simpleapp.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,6 +56,12 @@ public class Person implements Serializable {
 	@Column
 	private double salarioBeneficios;
 
+	@Column
+	private double salarioDecimoTerceiro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCalculoDecimoTerceiroSalario;
+
 	@ManyToOne
 	@JoinColumn(name = "id_company")
 	private Company company;
@@ -74,13 +83,16 @@ public class Person implements Serializable {
 		super();
 	}
 
-	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, Company company,
-			List<Beneficio> beneficios, List<Desconto> descontos, TipoContrato tipoContrato) {
+	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, double salarioDecimoTerceiro,
+			Date dataCalculoDecimoTerceiroSalario, Company company, List<Beneficio> beneficios,
+			List<Desconto> descontos, TipoContrato tipoContrato) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.salario = salario;
 		this.salarioBeneficios = salarioBeneficios;
+		this.salarioDecimoTerceiro = salarioDecimoTerceiro;
+		this.dataCalculoDecimoTerceiroSalario = dataCalculoDecimoTerceiroSalario;
 		this.company = company;
 		this.beneficios = beneficios;
 		this.descontos = descontos;
@@ -127,6 +139,22 @@ public class Person implements Serializable {
 		this.salarioBeneficios = salarioBeneficios;
 	}
 
+	public double getSalarioDecimoTerceiro() {
+		return salarioDecimoTerceiro;
+	}
+
+	public void setSalarioDecimoTerceiro(double salarioDecimoTerceiro) {
+		this.salarioDecimoTerceiro = salarioDecimoTerceiro;
+	}
+
+	public Date getDataCalculoDecimoTerceiroSalario() {
+		return dataCalculoDecimoTerceiroSalario;
+	}
+
+	public void setDataCalculoDecimoTerceiroSalario(Date dataCalculoDecimoTerceiroSalario) {
+		this.dataCalculoDecimoTerceiroSalario = dataCalculoDecimoTerceiroSalario;
+	}
+
 	public Company getCompany() {
 		return company;
 	}
@@ -165,6 +193,8 @@ public class Person implements Serializable {
 		int result = 1;
 		result = prime * result + ((beneficios == null) ? 0 : beneficios.hashCode());
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
+		result = prime * result
+				+ ((dataCalculoDecimoTerceiroSalario == null) ? 0 : dataCalculoDecimoTerceiroSalario.hashCode());
 		result = prime * result + ((descontos == null) ? 0 : descontos.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -172,6 +202,8 @@ public class Person implements Serializable {
 		temp = Double.doubleToLongBits(salario);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(salarioBeneficios);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(salarioDecimoTerceiro);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
 		result = prime * result + ((tipoContrato == null) ? 0 : tipoContrato.hashCode());
@@ -197,6 +229,11 @@ public class Person implements Serializable {
 				return false;
 		} else if (!company.equals(other.company))
 			return false;
+		if (dataCalculoDecimoTerceiroSalario == null) {
+			if (other.dataCalculoDecimoTerceiroSalario != null)
+				return false;
+		} else if (!dataCalculoDecimoTerceiroSalario.equals(other.dataCalculoDecimoTerceiroSalario))
+			return false;
 		if (descontos == null) {
 			if (other.descontos != null)
 				return false;
@@ -216,6 +253,8 @@ public class Person implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(salarioBeneficios) != Double.doubleToLongBits(other.salarioBeneficios))
 			return false;
+		if (Double.doubleToLongBits(salarioDecimoTerceiro) != Double.doubleToLongBits(other.salarioDecimoTerceiro))
+			return false;
 		if (sobrenome == null) {
 			if (other.sobrenome != null)
 				return false;
@@ -229,8 +268,9 @@ public class Person implements Serializable {
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", salario=" + salario
-				+ ", salarioBeneficios=" + salarioBeneficios + ", company=" + company + ", beneficios=" + beneficios
-				+ ", descontos=" + descontos + ", tipoContrato=" + tipoContrato + "]";
+				+ ", salarioBeneficios=" + salarioBeneficios + ", salarioDecimoTerceiro=" + salarioDecimoTerceiro
+				+ ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario + ", company=" + company
+				+ ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato=" + tipoContrato + "]";
 	}
 
 }

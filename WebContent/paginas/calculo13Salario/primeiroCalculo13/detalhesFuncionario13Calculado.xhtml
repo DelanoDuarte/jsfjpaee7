@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<f:viewParam name="funcionarioId"
+				value="#{calculo13SalarioBean.person.id}" />
+			<f:event listener="#{calculo13SalarioBean.buscarPersonPorId()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
+		<p:messages />
+
+		<div align="center">
+			<b:well>
+				<h2>13º Salário do Funcionário Cálculado com Sucesso !</h2>
+			</b:well>
+		</div>
+
+		<h:form>
+			<p:panel header="Dados do Empresa">
+				<br />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
+					<p:outputLabel id="labelNomeEmpresa"
+						value="#{calculo13SalarioBean.person.company.nomeFantasia}" />
+
+				</p:panelGrid>
+				<br />
+			</p:panel>
+		</h:form>
+
+
+		<h:form>
+			<p:panel header="Dados do Funcionário">
+				<br />
+				<p:panelGrid columns="4">
+					<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
+					<p:outputLabel id="labelNomeFuncionario"
+						value="#{calculo13SalarioBean.person.nome}  #{calculo13SalarioBean.person.sobrenome}" />
+					<p:outputLabel value="Tipo de Contrato:" for="labelTipoContrato" />
+					<p:outputLabel id="labelTipoContrato"
+						value="#{calculo13SalarioBean.person.tipoContrato}" />
+					<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
+					<p:outputLabel id="labelSalarioAtual"
+						value="R$ #{calculo13SalarioBean.person.salario}" />
+					<p:outputLabel value="Salario(Com Descontos e Gratificações):"
+						for="labelSalario" />
+					<p:outputLabel id="labelSalario"
+						value="R$ #{calculo13SalarioBean.person.salarioBeneficios}" />
+					<p:outputLabel value="13º Salário:" for="labelSalario13" />
+					<p:outputLabel id="labelSalario13"
+						value="R$ #{calculo13SalarioBean.person.salarioDecimoTerceiro}" />
+					<p:outputLabel value="Data Ultimo Cálculo 13º Salário:"
+						for="labelDataSalario13" />
+					<p:outputLabel id="labelDataSalario13"
+						value="R$ #{calculo13SalarioBean.person.dataCalculoDecimoTerceiroSalario}" />
+				</p:panelGrid>
+				<br />
+			</p:panel>
+		</h:form>
+
+		<br />
+
+		<h:form>
+			<div align="center">
+				<b:button value="Voltar" outcome="/paginas/person/list"
+					look="primary" />
+			</div>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

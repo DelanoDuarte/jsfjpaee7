@@ -29,8 +29,6 @@ public class PersonBean implements Serializable {
 
 	private Person person = new Person();
 	private List<Person> persons = null;
-	private Integer mesesTrabalhados;
-	private double decimo13Salario;
 
 	public PersonBean() {
 
@@ -49,11 +47,6 @@ public class PersonBean implements Serializable {
 		personService.salvarFuncionario(person);
 		messageUtil.msgInfo("Novo Funcionário Cadastrado com Sucesso !");
 		return "/paginas/person/list";
-	}
-
-	public void calcular13Salario() {
-		buscarPersonPorId();
-		decimo13Salario = personService.calcular13Salario(person, mesesTrabalhados);
 	}
 
 	public void buscarPersonPorId() {
@@ -96,22 +89,6 @@ public class PersonBean implements Serializable {
 
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
-	}
-
-	public Integer getMesesTrabalhados() {
-		return mesesTrabalhados;
-	}
-
-	public void setMesesTrabalhados(Integer mesesTrabalhados) {
-		this.mesesTrabalhados = mesesTrabalhados;
-	}
-
-	public double getDecimo13Salario() {
-		return decimo13Salario;
-	}
-
-	public void setDecimo13Salario(double decimo13Salario) {
-		this.decimo13Salario = decimo13Salario;
 	}
 
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+
+		<f:metadata>
+			<f:viewParam name="funcionarioId"
+				value="#{calculo13SalarioBean.person.id}" />
+			<f:event listener="#{calculo13SalarioBean.buscarPersonPorId()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
+		<h:form>
+
+			<p:messages />
+			<p:panel header="Calculo 13 Salario">
+				<br />
+				<div align="center">
+					<p:panelGrid id="gridColunas" columns="2">
+						<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
+						<p:outputLabel id="labelNomeFuncionario"
+							value="#{calculo13SalarioBean.person.nome} #{calculo13SalarioBean.person.sobrenome}" />
+						<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
+						<p:outputLabel id="labelSalarioAtual"
+							value="R$ #{calculo13SalarioBean.person.salario}" />
+						<p:outputLabel value="Meses Trabalhados: " />
+						<p:inputText value="#{calculo13SalarioBean.mesesTrabalhados}" />
+					</p:panelGrid>
+				</div>
+				<br />
+
+				<div align="center">
+					<b:commandButton value="Realizar Cálculo"
+						action="#{calculo13SalarioBean.calcular13Salario()}"
+						look="primary">
+						<f:param name="funcionarioId"
+							value="#{calculo13SalarioBean.person.id}" />
+					</b:commandButton>
+				</div>
+
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

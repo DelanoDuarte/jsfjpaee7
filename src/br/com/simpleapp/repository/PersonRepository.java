@@ -51,4 +51,28 @@ public class PersonRepository extends AbstractRepository<Person> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Person> buscarTodosFuncionarioCom13SalarioNaoCalculado() {
+		try {
+			EntityManager entityManager = JPAUtil.getEntityManager();
+			List<Person> persons = entityManager
+					.createQuery("from Person p where p.dataCalculoDecimoTerceiroSalario = null").getResultList();
+			return persons;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Person> buscarTodosFuncionarioCom13SalarioCalculado() {
+		try {
+			EntityManager entityManager = JPAUtil.getEntityManager();
+			List<Person> persons = entityManager
+					.createQuery("from Person p where p.dataCalculoDecimoTerceiroSalario != null").getResultList();
+			return persons;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }
