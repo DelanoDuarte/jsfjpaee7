@@ -10,9 +10,9 @@
 
 		<f:metadata>
 			<f:viewParam name="funcionarioId"
-				value="#{calculo13SalarioBean.person.id}" />
+				value="#{recalculo13Salario.person.id}" />
 			<f:event
-				listener="#{calculo13SalarioBean.buscarPersonPorIdParaCalcular()}"
+				listener="#{recalculo13Salario.buscarPersonPorIdParaCalcular()}"
 				type="preRenderView" />
 
 		</f:metadata>
@@ -21,7 +21,7 @@
 
 		<div align="center">
 			<b:well>
-				<h2>13º Salário do Funcionário Cálculado com Sucesso !</h2>
+				<h2>13º Salário do Funcionário ReCálculado com Sucesso !</h2>
 			</b:well>
 		</div>
 
@@ -31,7 +31,7 @@
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
 					<p:outputLabel id="labelNomeEmpresa"
-						value="#{calculo13SalarioBean.person.company.nomeFantasia}" />
+						value="#{recalculo13Salario.person.company.nomeFantasia}" />
 
 				</p:panelGrid>
 				<br />
@@ -45,24 +45,24 @@
 				<p:panelGrid columns="4">
 					<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
 					<p:outputLabel id="labelNomeFuncionario"
-						value="#{calculo13SalarioBean.person.nome}  #{calculo13SalarioBean.person.sobrenome}" />
+						value="#{recalculo13Salario.person.nome}  #{recalculo13Salario.person.sobrenome}" />
 					<p:outputLabel value="Tipo de Contrato:" for="labelTipoContrato" />
 					<p:outputLabel id="labelTipoContrato"
-						value="#{calculo13SalarioBean.person.tipoContrato}" />
+						value="#{recalculo13Salario.person.tipoContrato}" />
 					<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
 					<p:outputLabel id="labelSalarioAtual"
-						value="R$ #{calculo13SalarioBean.person.salario}" />
+						value="R$ #{recalculo13Salario.person.salario}" />
 					<p:outputLabel value="Salario(Com Descontos e Gratificações):"
 						for="labelSalario" />
 					<p:outputLabel id="labelSalario"
-						value="R$ #{calculo13SalarioBean.person.salarioBeneficios}" />
+						value="R$ #{recalculo13Salario.person.salarioBeneficios}" />
 					<p:outputLabel value="13º Salário:" for="labelSalario13" />
 					<p:outputLabel id="labelSalario13"
-						value="R$ #{calculo13SalarioBean.person.salarioDecimoTerceiro}" />
+						value="R$ #{recalculo13Salario.person.salarioDecimoTerceiro}" />
 					<p:outputLabel value="Data Ultimo Cálculo 13º Salário:"
 						for="labelDataSalario13" />
 					<p:outputLabel id="labelDataSalario13"
-						value="R$ #{calculo13SalarioBean.person.dataCalculoDecimoTerceiroSalario}" />
+						value="R$ #{recalculo13Salario.person.dataCalculoDecimoTerceiroSalario}" />
 				</p:panelGrid>
 				<br />
 			</p:panel>

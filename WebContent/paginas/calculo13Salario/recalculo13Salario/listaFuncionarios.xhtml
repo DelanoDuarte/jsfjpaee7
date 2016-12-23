@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<p:messages />
+
+			<div align="center">
+				<b:well>
+					<h2>Preparando para Realizar ReCálculo do 13 Salário de um
+						Funcionário</h2>
+    					Selecione um Funcionário para realizar o recálculo. 
+				</b:well>
+			</div>
+
+			<p:panel header="Todos os Funcionários Cadastrados">
+				<p:dataTable value="#{recalculo13Salario.persons}" var="_person"
+					paginator="true" rows="10">
+					<p:column>
+						<f:facet name="header">Nome</f:facet>
+						<p:outputLabel value="#{_person.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Sobrenome</f:facet>
+						<p:outputLabel value="#{_person.sobrenome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Empresa</f:facet>
+						<p:outputLabel value="#{_person.company.nomeFantasia}" />
+					</p:column>
+
+					<p:column>
+						<div align="center">
+							<b:button value="Selecionar"
+								outcome="/paginas/calculo13Salario/recalculo13Salario/reCalculoDecimoTerceiroSalario"
+								look="success">
+								<f:param name="funcionarioId" value="#{_person.id}" />
+							</b:button>
+						</div>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>

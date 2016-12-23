@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+
+		<f:metadata>
+			<f:viewParam name="funcionarioId"
+				value="#{recalculo13Salario.person.id}" />
+			<f:event listener="#{recalculo13Salario.buscarPersonPorId()}"
+				type="preRenderView" />
+
+		</f:metadata>
+
+		<h:form>
+
+			<p:messages />
+			<p:panel header="Calculo 13 Salario">
+				<br />
+				<div align="center">
+					<p:panelGrid id="gridColunas" columns="2">
+						<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
+						<p:outputLabel id="labelNomeFuncionario"
+							value="#{recalculo13Salario.person.nome} #{recalculo13Salario.person.sobrenome}" />
+						<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
+						<p:outputLabel id="labelSalarioAtual"
+							value="R$ #{recalculo13Salario.person.salario}" />
+						<p:outputLabel value="Meses Trabalhados: " />
+						<p:inputText value="#{recalculo13Salario.mesesTrabalhados}" />
+					</p:panelGrid>
+				</div>
+				<br />
+
+				<p:panel header="Ultimo Cálculo 13º Salário">
+					<div align="center">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="13º Salário:" for="label13Salario" />
+							<p:outputLabel id="label13Salario"
+								value="R$ #{recalculo13Salario.person.salarioDecimoTerceiro}" />
+							<p:outputLabel value="Data do Ultimo Cálculo:"
+								for="labelDataCalculo" />
+							<p:outputLabel id="labelDataCalculo"
+								value="#{recalculo13Salario.person.dataCalculoDecimoTerceiroSalario}" />
+
+						</p:panelGrid>
+					</div>
+				</p:panel>
+
+				<br />
+
+				<div align="center">
+					<b:commandButton value="Realizar Recálculo"
+						action="#{recalculo13Salario.reCalcular13SalarioFuncionario()}"
+						look="primary">
+						<f:param name="funcionarioId"
+							value="#{recalculo13Salario.person.id}" />
+					</b:commandButton>
+				</div>
+
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

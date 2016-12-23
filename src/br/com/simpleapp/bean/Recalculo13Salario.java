@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.simpleapp.bean;
 
 import java.io.Serializable;
@@ -13,27 +10,23 @@ import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.PersonRepository;
 import br.com.simpleapp.service.PersonService;
 
-/**
- * @author delan
- *
- */
 @Model
-public class Calculo13SalarioBean implements Serializable {
+public class Recalculo13Salario implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer mesesTrabalhados;
-	private Person person = new Person();
 	private List<Person> persons = null;
-
-	@Inject
-	private PersonService personService;
+	private Person person = new Person();
+	private Integer mesesTrabalhados;
 
 	@Inject
 	private PersonRepository personRepository;
+
+	@Inject
+	private PersonService personService;
 
 	public void buscarPersonPorId() {
 		this.person = personRepository.findById(this.person.getId());
@@ -44,26 +37,18 @@ public class Calculo13SalarioBean implements Serializable {
 		personService.calcular13Salario(person, mesesTrabalhados);
 	}
 
-	public String calcular13Salario() {
-		return "/paginas/calculo13Salario/primeiroCalculo13/detalhesFuncionario13Calculado";
-	}
-
-	public Integer getMesesTrabalhados() {
-		return mesesTrabalhados;
+	public String reCalcular13SalarioFuncionario() {
+		return "/paginas/calculo13Salario/recalculo13Salario/detalhesFuncionario13ReCalculado";
 	}
 
 	public List<Person> getPersons() {
 		if (this.persons == null)
-			this.persons = personRepository.buscarTodosFuncionarioCom13SalarioNaoCalculado();
+			this.persons = personRepository.buscarTodosFuncionarioCom13SalarioCalculado();
 		return persons;
 	}
 
 	public void setPersons(List<Person> persons) {
 		this.persons = persons;
-	}
-
-	public void setMesesTrabalhados(Integer mesesTrabalhados) {
-		this.mesesTrabalhados = mesesTrabalhados;
 	}
 
 	public Person getPerson() {
@@ -72,6 +57,14 @@ public class Calculo13SalarioBean implements Serializable {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public Integer getMesesTrabalhados() {
+		return mesesTrabalhados;
+	}
+
+	public void setMesesTrabalhados(Integer mesesTrabalhados) {
+		this.mesesTrabalhados = mesesTrabalhados;
 	}
 
 }
