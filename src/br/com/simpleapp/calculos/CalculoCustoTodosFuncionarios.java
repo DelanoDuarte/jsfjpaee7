@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.simpleapp.service;
+package br.com.simpleapp.calculos;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,7 +17,7 @@ import br.com.simpleapp.repository.PersonRepository;
  *
  */
 @RequestScoped
-public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
+public class CalculoCustoTodosFuncionarios implements Serializable {
 
 	/**
 	 * 
@@ -27,9 +27,9 @@ public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
 	@Inject
 	private PersonRepository personRepository;
 
-	public double calculoValorTotalTodosFuncionariosPorEmpresaFolha(Long id) {
+	public double calculoValorTotalTodosFuncionariosFolha() {
 
-		List<Person> persons = personRepository.buscarTodosFuncionarioPorIdEmpresa(id);
+		List<Person> persons = personRepository.buscarTodos();
 		double valorTotal = 0.0;
 		double valor13Salario = 0.0;
 
@@ -39,4 +39,5 @@ public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
 		}
 		return valorTotal;
 	}
+
 }

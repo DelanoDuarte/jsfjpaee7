@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.simpleapp.service;
+package br.com.simpleapp.calculos;
 
 import java.util.Date;
 

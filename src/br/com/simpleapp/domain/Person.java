@@ -78,7 +78,9 @@ public class Person implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private TipoContrato tipoContrato;
-
+	
+	private CalculoInss calculoInss;
+	
 	public Person() {
 		super();
 	}
@@ -186,7 +188,22 @@ public class Person implements Serializable {
 	public void setTipoContrato(TipoContrato tipoContrato) {
 		this.tipoContrato = tipoContrato;
 	}
+	
+	
+	
+	
 
+	public CalculoInss getCalculoInss() {
+		return calculoInss;
+	}
+
+	public void setCalculoInss(CalculoInss calculoInss) {
+		this.calculoInss = calculoInss;
+	}
+
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -9,6 +9,11 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import br.com.simpleapp.calculos.Calculo13Salario;
+import br.com.simpleapp.calculos.CalculoCustoTodosFuncionarios;
+import br.com.simpleapp.calculos.CalculoCustoTodosFuncionariosPorEmpresa;
+import br.com.simpleapp.calculos.CalculoPersonGratificacoesDescontos;
+import br.com.simpleapp.calculos.ReCalculoSalarioFuncionarios;
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.PersonRepository;
 
