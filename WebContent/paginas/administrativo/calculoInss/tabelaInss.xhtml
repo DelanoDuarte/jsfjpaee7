@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<p:panel header="Contribuição Minima">
+				<p:dataTable value="#{calculoInssBean.valoresTabela}"
+					var="_calculoInss">
+
+					<p:column>
+						<f:facet name="header">Contribuição Salario Minima</f:facet>
+						<p:outputLabel
+							value="R$ #{_calculoInss.contribuicaoSalarioMinima}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Contribuição Aliquota Minima</f:facet>
+						<p:outputLabel
+							value="% #{_calculoInss.contribuicaoAliquotaMinima}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:panel header="Contribuição Media">
+				<p:dataTable value="#{calculoInssBean.valoresTabela}"
+					var="_calculoInss">
+
+					<p:column>
+						<f:facet name="header">Contribuição Salario Media</f:facet>
+						<p:outputLabel value="R$ #{_calculoInss.contribuicaoSalarioMedia}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Contribuição Aliquota Media</f:facet>
+						<p:outputLabel value="% #{_calculoInss.contribuicaoAliquotaMedia}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:panel header="Contribuição Maxima">
+				<p:dataTable value="#{calculoInssBean.valoresTabela}"
+					var="_calculoInss">
+
+					<p:column>
+						<f:facet name="header">Contribuição Salario Maxima</f:facet>
+						<p:outputLabel
+							value="R$ #{_calculoInss.contribuicaoSalarioMaxima}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Contribuição Aliquota Maxima</f:facet>
+						<p:outputLabel
+							value="% #{_calculoInss.contribuicaoAliquotaMaxima}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<br />
+
+			<b:button value="Cadastrar Novo Calculo"
+				outcome="/paginas/administrativo/calculoInss/novoCalculoInss"
+				look="success" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>

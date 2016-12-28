@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+			<p:panel header="Contribuição Mínima">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Salario Minimo de Contribuição:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMinima}"
+						placeholder="R$" symbol="R$" decimalPlaces="2" />
+					<p:outputLabel value="Aliquota Minima de Recolhimento:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMinima}"
+						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
+				</p:panelGrid>
+			</p:panel>
+
+			<p:panel header="Contribuição Média">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Salario Medio de Contribuição:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMedia}"
+						placeholder="R$" symbol="R$" decimalPlaces="2" />
+					<p:outputLabel value="Aliquota Media de Recolhimento:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMedia}"
+						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
+				</p:panelGrid>
+			</p:panel>
+
+			<p:panel header="Contribuição Maxima">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Salario Maxima de Contribuição:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMaxima}"
+						placeholder="R$" symbol="R$" decimalPlaces="2" />
+					<p:outputLabel value="Aliquota Maxima de Recolhimento:" />
+					<p:inputNumber
+						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMaxima}"
+						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
+				</p:panelGrid>
+			</p:panel>
+
+			<br />
+
+			<div align="center">
+				<b:commandButton value="Salvar" look="primary"
+					action="#{calculoInssBean.salvar()}" />
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
