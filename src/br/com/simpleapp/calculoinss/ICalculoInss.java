@@ -9,7 +9,7 @@ import br.com.simpleapp.domain.Person;
  * @author delan
  *
  */
-public interface CalculoInss {
+public interface ICalculoInss {
 
 	public void calcularContribuicaoInss(Person person);
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import br.com.simpleapp.calculoinss.CalculoInssMaker;
 import br.com.simpleapp.calculos.Calculo13Salario;
 import br.com.simpleapp.calculos.CalculoCustoTodosFuncionarios;
 import br.com.simpleapp.calculos.CalculoCustoTodosFuncionariosPorEmpresa;
@@ -45,10 +46,14 @@ public class PersonService implements Serializable {
 	private ReCalculoSalarioFuncionarios reCalculoSalarioFuncionarios;
 
 	@Inject
+	private CalculoInssMaker calculoContribuicaoInss;
+
+	@Inject
 	private Calculo13Salario calculo13Salario = new Calculo13Salario();
 
 	public void salvarFuncionario(Person person) {
 		gratificacoesDescontos.calcularSalarioGratificacoesDescontos(person);
+		calculoContribuicaoInss.calcularContribuicaoInss(person);
 		personRepository.update(person);
 	}
 

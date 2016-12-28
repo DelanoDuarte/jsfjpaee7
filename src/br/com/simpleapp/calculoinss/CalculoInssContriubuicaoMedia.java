@@ -10,7 +10,7 @@ import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.CalculoInssRepository;
 
 @RequestScoped
-public class CalculoInssContriubuicaoMinima implements ICalculoInss {
+public class CalculoInssContriubuicaoMedia implements ICalculoInss {
 
 	@Inject
 	private CalculoInssRepository calculoInssRepository = new CalculoInssRepository();
@@ -25,11 +25,12 @@ public class CalculoInssContriubuicaoMinima implements ICalculoInss {
 			double salario = person.getSalario();
 			double salarioBeneficios = person.getSalarioBeneficios();
 
-			if (salario > 0 && salario < calculoInss2.getContribuicaoSalarioMinima()) {
-
-				System.out.println("Chamou no Minimo ! ");
-				double aliquotaMinima = calculoInss2.getContribuicaoAliquotaMinima();
-				double valorTotal = aliquotaMinima / 100;
+			if (salario > calculoInss2.getContribuicaoSalarioMinima()
+					&& salario <= calculoInss2.getContribuicaoSalarioMedia()) {
+				
+				System.out.println("Chamou no Medio ! ");
+				double aliquotaMedia = calculoInss2.getContribuicaoAliquotaMedia();
+				double valorTotal = aliquotaMedia / 100;
 				double valorAbate = salario * valorTotal;
 				double valor = salarioBeneficios - valorAbate;
 
