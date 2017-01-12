@@ -79,13 +79,23 @@ public class Person implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoContrato tipoContrato;
 
+	@Column(name = "flag_13_calculado")
+	private boolean flag13Calculado;
+
+	@Column(name = "flag_calculaInss")
+	private boolean calculaINSS;
+
+	@Column(name = "flag_calculaIrrf")
+	private boolean calculaIRRF;
+
 	public Person() {
 		super();
 	}
 
 	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, double salarioDecimoTerceiro,
 			Date dataCalculoDecimoTerceiroSalario, Company company, List<Beneficio> beneficios,
-			List<Desconto> descontos, TipoContrato tipoContrato) {
+			List<Desconto> descontos, TipoContrato tipoContrato, boolean flag13Calculado, boolean calculaINSS,
+			boolean calculaIRRF) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -97,6 +107,9 @@ public class Person implements Serializable {
 		this.beneficios = beneficios;
 		this.descontos = descontos;
 		this.tipoContrato = tipoContrato;
+		this.flag13Calculado = flag13Calculado;
+		this.calculaINSS = calculaINSS;
+		this.calculaIRRF = calculaIRRF;
 	}
 
 	public Long getId() {
@@ -187,15 +200,42 @@ public class Person implements Serializable {
 		this.tipoContrato = tipoContrato;
 	}
 
+	public boolean isFlag13Calculado() {
+		return flag13Calculado;
+	}
+
+	public void setFlag13Calculado(boolean flag13Calculado) {
+		this.flag13Calculado = flag13Calculado;
+	}
+
+	public boolean isCalculaINSS() {
+		return calculaINSS;
+	}
+
+	public void setCalculaINSS(boolean calculaINSS) {
+		this.calculaINSS = calculaINSS;
+	}
+
+	public boolean isCalculaIRRF() {
+		return calculaIRRF;
+	}
+
+	public void setCalculaIRRF(boolean calculaIRRF) {
+		this.calculaIRRF = calculaIRRF;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((beneficios == null) ? 0 : beneficios.hashCode());
+		result = prime * result + (calculaINSS ? 1231 : 1237);
+		result = prime * result + (calculaIRRF ? 1231 : 1237);
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
 		result = prime * result
 				+ ((dataCalculoDecimoTerceiroSalario == null) ? 0 : dataCalculoDecimoTerceiroSalario.hashCode());
 		result = prime * result + ((descontos == null) ? 0 : descontos.hashCode());
+		result = prime * result + (flag13Calculado ? 1231 : 1237);
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
@@ -224,6 +264,10 @@ public class Person implements Serializable {
 				return false;
 		} else if (!beneficios.equals(other.beneficios))
 			return false;
+		if (calculaINSS != other.calculaINSS)
+			return false;
+		if (calculaIRRF != other.calculaIRRF)
+			return false;
 		if (company == null) {
 			if (other.company != null)
 				return false;
@@ -238,6 +282,8 @@ public class Person implements Serializable {
 			if (other.descontos != null)
 				return false;
 		} else if (!descontos.equals(other.descontos))
+			return false;
+		if (flag13Calculado != other.flag13Calculado)
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -270,7 +316,9 @@ public class Person implements Serializable {
 		return "Person [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", salario=" + salario
 				+ ", salarioBeneficios=" + salarioBeneficios + ", salarioDecimoTerceiro=" + salarioDecimoTerceiro
 				+ ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario + ", company=" + company
-				+ ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato=" + tipoContrato + "]";
+				+ ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato=" + tipoContrato
+				+ ", flag13Calculado=" + flag13Calculado + ", calculaINSS=" + calculaINSS + ", calculaIRRF="
+				+ calculaIRRF + "]";
 	}
 
 }

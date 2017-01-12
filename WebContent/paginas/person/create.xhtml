@@ -45,7 +45,7 @@
 
 				<p:panel header="Gratificações:">
 					<p:outputLabel value="Gratificações:" />
-					<p:selectManyMenu value="#{personBean.person.beneficios}"
+					<p:selectManyCheckbox value="#{personBean.person.beneficios}"
 						converter="entityConverter" showCheckbox="true" filter="true"
 						filterMatchMode="contains">
 						<f:selectItems value="#{beneficioBean.beneficios}"
@@ -55,23 +55,30 @@
 							<h:outputLabel value="Nome: " />
 						</p:column>
 
-					</p:selectManyMenu>
+					</p:selectManyCheckbox>
 				</p:panel>
 
 				<p:panel header="Descontos">
 					<p:outputLabel value="Descontos:" />
-					<p:selectManyMenu value="#{personBean.person.descontos}"
+					<p:selectManyCheckbox value="#{personBean.person.descontos}"
 						converter="entityConverter" showCheckbox="true" filter="true"
 						filterMatchMode="contains">
 						<f:selectItems value="#{descontoBean.descontos}" var="_desconto"
 							itemLabel="#{_desconto.nome}" />
 
 
-						<p:column>
-							<h:outputLabel value="Nome: " />
-						</p:column>
 
-					</p:selectManyMenu>
+					</p:selectManyCheckbox>
+				</p:panel>
+
+				<p:panel header="Descontos INSS / IRRF">
+					<br />
+					<p:panelGrid columns="4">
+						<h:outputLabel value="INSS - Previdência Social:" />
+						<p:selectBooleanCheckbox value="#{personBean.person.calculaINSS}" />
+						<h:outputLabel value="IRRF - Imposto de Renda:" />
+						<p:selectBooleanCheckbox value="#{personBean.person.calculaIRRF}" />
+					</p:panelGrid>
 				</p:panel>
 
 				<br />

@@ -25,9 +25,11 @@ public class CalculoInssMaker {
 	}
 
 	public void calcularContribuicaoInss(Person person) {
-		contriubuicaoMinima.calcularContribuicaoInss(person);
-		contriubuicaoMedia.calcularContribuicaoInss(person);
-		contriubuicaoMaxima.calcularContribuicaoInss(person);
+		if (person.isCalculaINSS() == true) {
+			contriubuicaoMinima.calcularContribuicaoInss(person);
+			contriubuicaoMedia.calcularContribuicaoInss(person);
+			contriubuicaoMaxima.calcularContribuicaoInss(person);
+		}
 	}
 
 }

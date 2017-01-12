@@ -17,7 +17,8 @@ public class CalculoInssContriubuicaoMinima implements ICalculoInss {
 
 	@Override
 	public void calcularContribuicaoInss(Person person) {
-
+		
+		
 		List<CalculoInss> tabelaValores = calculoInssRepository.buscarContriubuicaCalculoInss();
 
 		for (CalculoInss calculoInss2 : tabelaValores) {
