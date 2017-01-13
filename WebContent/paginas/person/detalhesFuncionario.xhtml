@@ -17,7 +17,7 @@
 
 
 		<h:form>
-			<p:panel header="Dados do Empresa">
+			<b:panel title="Dados do Empresa" look="success">
 				<br />
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
@@ -26,12 +26,12 @@
 
 				</p:panelGrid>
 				<br />
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 
 		<h:form>
-			<p:panel header="Dados do Funcionário">
+			<b:panel title="Dados do Funcionário" look="success">
 				<br />
 				<p:panelGrid columns="4">
 					<p:outputLabel value="Funcionário:" for="labelNomeFuncionario" />
@@ -43,20 +43,19 @@
 					<p:outputLabel value="Salario Atual:" for="labelSalarioAtual" />
 					<p:outputLabel id="labelSalarioAtual"
 						value="R$ #{personBean.person.salario}" />
-					<p:outputLabel
-						value="Salario(Com Descontos, Gratificações e Desconto INSS):"
+					<p:outputLabel value="Salario(Com Descontos, Gratificações):"
 						for="labelSalario" />
 					<p:outputLabel id="labelSalario"
 						value="R$ #{personBean.person.salarioBeneficios}" />
 
 				</p:panelGrid>
 				<br />
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 
 		<h:form>
-			<p:panel header="Gratificações do Funcionário ">
+			<b:panel title="Gratificações do Funcionário" look="success">
 				<p:dataTable value="#{personBean.person.beneficios}"
 					var="_beneficio">
 
@@ -75,11 +74,11 @@
 						<p:outputLabel value="% #{_beneficio.valorPorcetagem}" />
 					</p:column>
 				</p:dataTable>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 		<h:form>
-			<p:panel header="Descontos do Funcionário ">
+			<b:panel title="Descontos do Funcionário" look="success">
 				<p:dataTable value="#{personBean.person.descontos}" var="_desconto">
 
 					<p:column>
@@ -97,7 +96,7 @@
 						<p:outputLabel value="% #{_desconto.valorPorcetagem}" />
 					</p:column>
 				</p:dataTable>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 		<br />

@@ -17,7 +17,7 @@
 		</f:metadata>
 
 		<h:form>
-			<p:panel header="Cadastrar Novo Funcionário">
+			<b:panel title="Cadastro Novo Funcionário" look="primary">
 
 				<p:panelGrid columns="4">
 					<h:outputLabel value="Nome:" />
@@ -43,23 +43,18 @@
 
 				</p:panelGrid>
 
-				<p:panel header="Gratificações:">
-					<p:outputLabel value="Gratificações:" />
+				<b:panel title="Gratificações" look="primary">
+					<br />
 					<p:selectManyCheckbox value="#{personBean.person.beneficios}"
 						converter="entityConverter" showCheckbox="true" filter="true"
 						filterMatchMode="contains">
 						<f:selectItems value="#{beneficioBean.beneficios}"
 							var="_beneficio" itemLabel="#{_beneficio.nome}" />
-
-						<p:column>
-							<h:outputLabel value="Nome: " />
-						</p:column>
-
 					</p:selectManyCheckbox>
-				</p:panel>
+				</b:panel>
 
-				<p:panel header="Descontos">
-					<p:outputLabel value="Descontos:" />
+				<b:panel title="Descontos" look="primary">
+					<br />
 					<p:selectManyCheckbox value="#{personBean.person.descontos}"
 						converter="entityConverter" showCheckbox="true" filter="true"
 						filterMatchMode="contains">
@@ -69,24 +64,26 @@
 
 
 					</p:selectManyCheckbox>
-				</p:panel>
+				</b:panel>
 
-				<p:panel header="Descontos INSS / IRRF">
+				<b:panel title="Descontos INSS / IRRF" look="primary">
 					<br />
-					<p:panelGrid columns="4">
-						<h:outputLabel value="INSS - Previdência Social:" />
-						<p:selectBooleanCheckbox value="#{personBean.person.calculaINSS}" />
-						<h:outputLabel value="IRRF - Imposto de Renda:" />
-						<p:selectBooleanCheckbox value="#{personBean.person.calculaIRRF}" />
-					</p:panelGrid>
-				</p:panel>
+					<div align="center">
+						<p:panelGrid columns="4">
+							<h:outputLabel value="INSS - Previdência Social:" />
+							<p:selectBooleanCheckbox value="#{personBean.person.calculaINSS}" />
+							<h:outputLabel value="IRRF - Imposto de Renda:" />
+							<p:selectBooleanCheckbox value="#{personBean.person.calculaIRRF}" />
+						</p:panelGrid>
+					</div>
+				</b:panel>
 
 				<br />
 				<div align="center">
 					<b:commandButton value="Salvar" look="primary"
 						action="#{personBean.salvar()}" />
 				</div>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 	</ui:define>

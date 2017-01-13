@@ -9,8 +9,9 @@
 	<ui:define name="content">
 
 		<h:form>
-			<p:panel header="Contribuição Mínima">
-				<p:panelGrid columns="2">
+			<b:panel title="Contribuição Mínima" look="primary">
+				<br />
+				<p:panelGrid columns="4">
 					<p:outputLabel value="Salario Minimo de Contribuição:" />
 					<p:inputNumber
 						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMinima}"
@@ -20,10 +21,12 @@
 						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMinima}"
 						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
 				</p:panelGrid>
-			</p:panel>
+				<br />
+			</b:panel>
 
-			<p:panel header="Contribuição Média">
-				<p:panelGrid columns="2">
+			<b:panel title="Contribuição Média" look="primary">
+				<br />
+				<p:panelGrid columns="4">
 					<p:outputLabel value="Salario Medio de Contribuição:" />
 					<p:inputNumber
 						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMedia}"
@@ -33,10 +36,12 @@
 						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMedia}"
 						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
 				</p:panelGrid>
-			</p:panel>
+				<br />
+			</b:panel>
 
-			<p:panel header="Contribuição Maxima">
-				<p:panelGrid columns="2">
+			<b:panel title="Contribuição Maxima" look="primary">
+				<br />
+				<p:panelGrid columns="4">
 					<p:outputLabel value="Salario Maxima de Contribuição:" />
 					<p:inputNumber
 						value="#{calculoInssBean.calculoInss.contribuicaoSalarioMaxima}"
@@ -46,7 +51,8 @@
 						value="#{calculoInssBean.calculoInss.contribuicaoAliquotaMaxima}"
 						symbol="%" decimalPlaces="2" symbolPosition="suffix" />
 				</p:panelGrid>
-			</p:panel>
+				<br />
+			</b:panel>
 
 			<br />
 
