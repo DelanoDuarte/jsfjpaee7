@@ -26,6 +26,7 @@ public class Calculo13Salario {
 			if (person.getTipoContrato().toString() == TipoContrato.CLT.toString()) {
 				person.setDataCalculoDecimoTerceiroSalario(new Date());
 				person.setSalarioDecimoTerceiro(total);
+				person.setFlag13Calculado(true);
 
 			} else {
 				person.setDataCalculoDecimoTerceiroSalario(null);

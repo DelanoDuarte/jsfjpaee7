@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  *
  */
 @Entity
-@Table(name = "tb_person")
+@Table(name = "tb_funcionario")
 public class Person implements Serializable {
 
 	/**
@@ -44,19 +44,19 @@ public class Person implements Serializable {
 	@Column
 	private Long id;
 
-	@Column
+	@Column(name = "nome_funcionario")
 	private String nome;
 
-	@Column
+	@Column(name = "sobrenome_funcionario")
 	private String sobrenome;
 
-	@Column
+	@Column(name = "salario_funcionario")
 	private double salario;
 
-	@Column
+	@Column(name = "salarioGratificacoesDescontos_funcionario")
 	private double salarioBeneficios;
 
-	@Column
+	@Column(name = "salarioDecimoTerceiro_funcionario")
 	private double salarioDecimoTerceiro;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -222,6 +222,14 @@ public class Person implements Serializable {
 
 	public void setCalculaIRRF(boolean calculaIRRF) {
 		this.calculaIRRF = calculaIRRF;
+	}
+
+	public String retonarSimOuNao() {
+		if (flag13Calculado == true) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
 	}
 
 	@Override

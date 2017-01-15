@@ -33,4 +33,16 @@ public class CalculoInssRepository extends AbstractRepository<CalculoInss> {
 		return entityManager.createQuery("from CalculoInss c").getResultList();
 	}
 
+	public CalculoInss buscarCalculoInssIncideciaMinima() {
+		try {
+			EntityManager entityManager = JPAUtil.getEntityManager();
+			return (CalculoInss) entityManager
+					.createQuery("select c.contribuicaoSalarioMinima, c.contribuicaoAliquotaMinima from CalculoInss c")
+					.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }
