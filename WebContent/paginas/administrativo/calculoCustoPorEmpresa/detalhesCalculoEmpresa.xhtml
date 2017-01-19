@@ -44,6 +44,10 @@
 					value="#{calculoValorTotalPorEmpresaBean.company.persons}"
 					var="_person">
 
+					<p:column style="width:20px">
+						<p:rowToggler />
+					</p:column>
+
 					<p:column>
 						<f:facet name="header">Nome</f:facet>
 						<p:outputLabel value="#{_person.nome}" />
@@ -56,7 +60,7 @@
 
 					<p:column>
 						<f:facet name="header">Salario</f:facet>
-						<p:outputLabel value="#{_person.salario}" />
+						<p:outputLabel value="R$ #{_person.salario}" />
 					</p:column>
 
 					<p:column>
