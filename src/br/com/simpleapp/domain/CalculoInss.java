@@ -30,22 +30,22 @@ public class CalculoInss implements Serializable {
 	@Column
 	private Long id;
 
-	@Column
+	@Column(name = "contribuicao_salario_minima")
 	private double contribuicaoSalarioMinima;
 
-	@Column
+	@Column(name = "contribuicao_salario_media")
 	private double contribuicaoSalarioMedia;
 
-	@Column
+	@Column(name = "contribuicao_salario_maxima")
 	private double contribuicaoSalarioMaxima;
 
-	@Column
+	@Column(name = "contribuicao_aliquota_minima")
 	private double contribuicaoAliquotaMinima;
 
-	@Column
+	@Column(name = "contribuicao_aliquota_media")
 	private double contribuicaoAliquotaMedia;
 
-	@Column
+	@Column(name = "contribuicao_aliquota_maxima")
 	private double contribuicaoAliquotaMaxima;
 
 	public CalculoInss() {

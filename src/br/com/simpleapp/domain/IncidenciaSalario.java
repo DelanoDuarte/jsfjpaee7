@@ -35,13 +35,13 @@ public abstract class IncidenciaSalario implements Serializable {
 	@Column
 	private Long id;
 
-	@Column
+	@Column(name = "nome_incidencia_salarial")
 	private String nome;
 
-	@Column
+	@Column(name = "valor_numero_incidencia")
 	private double valorNumerico;
 
-	@Column
+	@Column(name = "valor_porcentagem_incidencia")
 	private double valorPorcetagem;
 
 	public IncidenciaSalario() {
