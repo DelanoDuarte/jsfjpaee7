@@ -27,6 +27,6 @@ public class CalculoIRRF implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_imposto_reda")
+	@Column(name = "id_imposto_renda")
 	private Long id;
 }

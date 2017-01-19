@@ -47,7 +47,7 @@
 					<br />
 					<p:selectManyCheckbox value="#{personBean.person.beneficios}"
 						converter="entityConverter" showCheckbox="true" filter="true"
-						filterMatchMode="contains">
+						filterMatchMode="contains" layout="grid" columns="3">
 						<f:selectItems value="#{beneficioBean.beneficios}"
 							var="_beneficio" itemLabel="#{_beneficio.nome}" />
 					</p:selectManyCheckbox>
@@ -57,11 +57,9 @@
 					<br />
 					<p:selectManyCheckbox value="#{personBean.person.descontos}"
 						converter="entityConverter" showCheckbox="true" filter="true"
-						filterMatchMode="contains">
+						filterMatchMode="contains" layout="grid" columns="3">
 						<f:selectItems value="#{descontoBean.descontos}" var="_desconto"
 							itemLabel="#{_desconto.nome}" />
-
-
 
 					</p:selectManyCheckbox>
 				</b:panel>

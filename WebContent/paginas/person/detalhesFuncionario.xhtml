@@ -103,6 +103,24 @@
 			</b:panel>
 		</h:form>
 
+		<h:form>
+			<b:panel title="Informações Cálculo 13º Salário" look="success"
+				rendered="#{personBean.person.flag13Calculado == true}">
+
+				<p:panelGrid columns="2">
+					<h:outputLabel value="13º Salário" />
+					<h:outputLabel
+						value="R$ #{personBean.person.salarioDecimoTerceiro}" />
+					<h:outputLabel value="Data do Ultimo Cálculo:" />
+					<h:outputLabel
+						value="#{personBean.person.dataCalculoDecimoTerceiroSalario}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" type="both" />
+					</h:outputLabel>
+				</p:panelGrid>
+
+			</b:panel>
+		</h:form>
+
 		<br />
 
 		<h:form>

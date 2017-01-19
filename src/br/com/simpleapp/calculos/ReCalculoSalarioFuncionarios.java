@@ -10,6 +10,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import br.com.simpleapp.calculoinss.CalculoInssMaker;
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.PersonRepository;
 
@@ -31,6 +32,9 @@ public class ReCalculoSalarioFuncionarios implements Serializable {
 	@Inject
 	private CalculoPersonGratificacoesDescontos calculoPersonGratificacoesDescontos;
 
+	@Inject
+	private CalculoInssMaker calculoInssMaker;
+
 	public List<Person> reCalcularSalarioFuncionarios() {
 
 		List<Person> funcionarios = new ArrayList<>();
@@ -38,6 +42,7 @@ public class ReCalculoSalarioFuncionarios implements Serializable {
 
 		for (Person personTemp : persons) {
 			calculoPersonGratificacoesDescontos.calcularSalarioGratificacoesDescontos(personTemp);
+			calculoInssMaker.calcularContribuicaoInss(personTemp);
 			funcionarios.add(personTemp);
 		}
 

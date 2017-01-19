@@ -67,6 +67,15 @@
 							</b:button>
 						</div>
 					</p:column>
+
+					<p:rowExpansion>
+						<p:panelGrid columns="2" style="width:300px">
+
+							<h:outputText value="13º Calculado:" />
+							<h:outputText value="#{_person.retonarSimOuNao()}" />
+
+						</p:panelGrid>
+					</p:rowExpansion>
 				</p:dataTable>
 			</p:panel>
 		</h:form>

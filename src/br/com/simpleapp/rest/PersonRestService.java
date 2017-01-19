@@ -6,12 +6,14 @@ package br.com.simpleapp.rest;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.PersonRepository;
@@ -31,60 +33,82 @@ public class PersonRestService implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private PersonRepository personRepository = new PersonRepository();
+	@Inject
+	private PersonRepository personRepository;
 
-	private PersonService personService = new PersonService();
+	@Inject
+	private PersonService personService;
 
 	@Path("/list")
 	@GET
-	public List<Person> todosFuncionáriosJSON() {
+	public Response todosFuncionáriosJSON() {
 		try {
-			return personRepository.buscarTodos();
+			List<Person> persons = personRepository.buscarTodos();
+			return Response.ok().entity(persons).build();
 		} catch (Exception e) {
-			return null;
+			return Response.status(500).build();
 		}
 	}
 
 	@Path("/{id}")
 	@GET
-	public Person funcionarioPorIdJSON(@PathParam(value = "id") Long id) {
+	public Response funcionarioPorIdJSON(@PathParam(value = "id") Long id) {
 		try {
-			return personRepository.findById(id);
+			Person person = personRepository.findById(id);
+			return Response.ok().entity(person).build();
 		} catch (Exception e) {
-			return null;
+			return Response.status(500).build();
 		}
 	}
 
 	@GET
 	@Path("/calculo13Salario/{id}/{meses}")
-	public double calcular13SalarioFuncionario(@PathParam(value = "id") Long id,
+	public Response calcular13SalarioFuncionario(@PathParam(value = "id") Long id,
 			@PathParam(value = "meses") Integer meses) {
 		try {
 			Person person = new Person();
 			person = personRepository.findById(id);
 			personService.calcular13Salario(person, meses);
-			return 0.0; // Adaptar Método Rest
+			return Response.ok().status(200).build();
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.getMessage());
-			return 0.0;
+
+			return Response.ok().status(500).build();
 		}
 
 	}
 
-	public PersonRepository getPersonRepository() {
-		return personRepository;
+	@GET
+	@Path("/reCalculoFuncionarios")
+	public Response recalcularFuncionarios() {
+		try {
+			List<Person> persons = personService.reCalcularSalarioFuncionarios();
+			return Response.ok().entity(persons).build();
+		} catch (Exception e) {
+			return Response.ok().status(500).build();
+		}
 	}
 
-	public void setPersonRepository(PersonRepository personRepository) {
-		this.personRepository = personRepository;
+	@GET
+	@Path("/calculoCustoPorEmpresa/{id}")
+	public Response calculoTodosFuncionariosPorEmpresa(@PathParam(value = "id") Long id) {
+		try {
+			double valorTotalCalculo = personService.calculoValorTotalTodosFuncionariosPorEmpresaFolha(id);
+			return Response.ok().entity(valorTotalCalculo).build();
+		} catch (Exception e) {
+			return Response.ok().status(500).build();
+		}
 	}
 
-	public PersonService getPersonService() {
-		return personService;
-	}
-
-	public void setPersonService(PersonService personService) {
-		this.personService = personService;
+	@GET
+	@Path("/calculoCustoTodosFuncionarios")
+	public Response calcularCustoTodosFuncionariosCadastrados() {
+		try {
+			double valorTotalCalculo = personService.calculoValorTotalTodosFuncionariosFolha();
+			return Response.ok().entity(valorTotalCalculo).build();
+		} catch (Exception e) {
+			return Response.ok().status(500).build();
+		}
 	}
 
 }
