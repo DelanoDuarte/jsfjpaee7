@@ -1,6 +1,9 @@
 package br.com.simpleapp.calculos;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
+import br.com.simpleapp.calculoinss.CalculoInssMaker;
 
 /**
  * @author delano.junior
@@ -13,6 +16,9 @@ import br.com.simpleapp.domain.Person;
 
 @RequestScoped
 public class CalculoPersonGratificacoesDescontos {
+
+	@Inject
+	private CalculoInssMaker calculoInss;
 
 	public void calcularSalarioGratificacoesDescontos(Person person) {
 
@@ -35,10 +41,14 @@ public class CalculoPersonGratificacoesDescontos {
 				salarioTemp -= Math.abs(valorTotal);
 			}
 
-			person.setSalarioBeneficios(salarioTemp);
+			double valorAbateInss = calculoInss.calcularContribuicaoInss(person);
+			double salarioFinalComDescontoInss = salarioTemp - valorAbateInss;
+
+			person.setSalarioBeneficios(salarioFinalComDescontoInss);
 
 		} catch (Exception e) {
-
+			System.out.println("Erro no Calculo Gratificaçoes e Descontos");
+			System.out.println(e.getMessage());
 		}
 
 	}

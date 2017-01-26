@@ -4,6 +4,7 @@
 package br.com.simpleapp.calculoinss;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Person;
 
@@ -14,22 +15,29 @@ import br.com.simpleapp.domain.Person;
 @RequestScoped
 public class CalculoInssMaker {
 
-	private CalculoInssContriubuicaoMinima contriubuicaoMinima;
-	private CalculoInssContriubuicaoMedia contriubuicaoMedia;
-	private CalculoInssContriubuicaoMaxima contriubuicaoMaxima;
+	@Inject
+	private CalculoInssContriubuicaoMinima calculoInssContriubuicaoMinima;
+
+	@Inject
+	private CalculoInssContriubuicaoMedia calculoInssContriubuicaoMedia;
+
+	@Inject
+	private CalculoInssContriubuicaoMaxima calculoInssContriubuicaoMaxima;
 
 	public CalculoInssMaker() {
-		contriubuicaoMinima = new CalculoInssContriubuicaoMinima();
-		contriubuicaoMedia = new CalculoInssContriubuicaoMedia();
-		contriubuicaoMaxima = new CalculoInssContriubuicaoMaxima();
+
 	}
 
-	public void calcularContribuicaoInss(Person person) {
+	public double calcularContribuicaoInss(Person person) {
+
 		if (person.isCalculaINSS() == true) {
-			contriubuicaoMinima.calcularContribuicaoInss(person);
-			contriubuicaoMedia.calcularContribuicaoInss(person);
-			contriubuicaoMaxima.calcularContribuicaoInss(person);
+			double a = calculoInssContriubuicaoMinima.calcularContribuicaoInss(person);
+			double b = calculoInssContriubuicaoMedia.calcularContribuicaoInss(person);
+			double c = calculoInssContriubuicaoMaxima.calcularContribuicaoInss(person);
+
+			return a + b + c;
 		}
+		return 0;
 	}
 
 }

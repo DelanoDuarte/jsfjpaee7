@@ -16,14 +16,14 @@ public class CalculoInssContriubuicaoMaxima implements ICalculoInss {
 	private CalculoInssRepository calculoInssRepository = new CalculoInssRepository();
 
 	@Override
-	public void calcularContribuicaoInss(Person person) {
+	public double calcularContribuicaoInss(Person person) {
 
+		double valorAbate = 0;
 		List<CalculoInss> tabelaValores = calculoInssRepository.buscarContriubuicaCalculoInss();
 
 		for (CalculoInss calculoInss2 : tabelaValores) {
 
 			double salario = person.getSalario();
-			double salarioBeneficios = person.getSalarioBeneficios();
 
 			if (salario > calculoInss2.getContribuicaoSalarioMedia()
 					&& salario <= calculoInss2.getContribuicaoSalarioMaxima()) {
@@ -31,11 +31,12 @@ public class CalculoInssContriubuicaoMaxima implements ICalculoInss {
 				System.out.println("Chamou no Maxima ! ");
 				double aliquotaMaxima = calculoInss2.getContribuicaoAliquotaMaxima();
 				double valorTotal = aliquotaMaxima / 100;
-				double valorAbate = salario * valorTotal;
-				double valor = salarioBeneficios - valorAbate;
-
-				person.setSalarioBeneficios(valor);
+				valorAbate = salario * valorTotal;
+			} else {
+				return 0;
 			}
 		}
+
+		return valorAbate;
 	}
 }

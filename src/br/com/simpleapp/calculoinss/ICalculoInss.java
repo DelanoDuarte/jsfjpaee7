@@ -11,5 +11,5 @@ import br.com.simpleapp.domain.Person;
  */
 public interface ICalculoInss {
 
-	public void calcularContribuicaoInss(Person person);
+	public double calcularContribuicaoInss(Person person);
 }

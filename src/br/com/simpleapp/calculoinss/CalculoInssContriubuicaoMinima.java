@@ -16,26 +16,26 @@ public class CalculoInssContriubuicaoMinima implements ICalculoInss {
 	private CalculoInssRepository calculoInssRepository = new CalculoInssRepository();
 
 	@Override
-	public void calcularContribuicaoInss(Person person) {
-		
-		
+	public double calcularContribuicaoInss(Person person) {
+
+		double valorAbate = 0;
 		List<CalculoInss> tabelaValores = calculoInssRepository.buscarContriubuicaCalculoInss();
 
 		for (CalculoInss calculoInss2 : tabelaValores) {
 
 			double salario = person.getSalario();
-			double salarioBeneficios = person.getSalarioBeneficios();
 
 			if (salario > 0 && salario < calculoInss2.getContribuicaoSalarioMinima()) {
 
 				System.out.println("Chamou no Minimo ! ");
 				double aliquotaMinima = calculoInss2.getContribuicaoAliquotaMinima();
 				double valorTotal = aliquotaMinima / 100;
-				double valorAbate = salario * valorTotal;
-				double valor = salarioBeneficios - valorAbate;
-
-				person.setSalarioBeneficios(valor);
+				valorAbate = salario * valorTotal;
+			} else {
+				return 0;
 			}
 		}
+
+		return valorAbate;
 	}
 }

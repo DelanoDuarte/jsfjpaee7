@@ -16,26 +16,28 @@ public class CalculoInssContriubuicaoMedia implements ICalculoInss {
 	private CalculoInssRepository calculoInssRepository = new CalculoInssRepository();
 
 	@Override
-	public void calcularContribuicaoInss(Person person) {
+	public double calcularContribuicaoInss(Person person) {
 
+		double valorAbate = 0;
 		List<CalculoInss> tabelaValores = calculoInssRepository.buscarContriubuicaCalculoInss();
 
 		for (CalculoInss calculoInss2 : tabelaValores) {
 
 			double salario = person.getSalario();
-			double salarioBeneficios = person.getSalarioBeneficios();
 
 			if (salario > calculoInss2.getContribuicaoSalarioMinima()
 					&& salario <= calculoInss2.getContribuicaoSalarioMedia()) {
-				
+
 				System.out.println("Chamou no Medio ! ");
 				double aliquotaMedia = calculoInss2.getContribuicaoAliquotaMedia();
 				double valorTotal = aliquotaMedia / 100;
-				double valorAbate = salario * valorTotal;
-				double valor = salarioBeneficios - valorAbate;
+				valorAbate = salario * valorTotal;
 
-				person.setSalarioBeneficios(valor);
+			} else {
+				return 0;
 			}
 		}
+
+		return valorAbate;
 	}
 }

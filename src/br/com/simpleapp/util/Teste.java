@@ -3,7 +3,7 @@
  */
 package br.com.simpleapp.util;
 
-import br.com.simpleapp.calculoinss.CalculoInssMaker;
+import br.com.simpleapp.calculos.CalculoPersonGratificacoesDescontos;
 import br.com.simpleapp.domain.CalculoInss;
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.repository.CalculoInssRepository;
@@ -23,11 +23,9 @@ public class Teste {
 
 		Person person = new Person();
 		person.setSalario(2594.93);
-		person.setSalarioBeneficios(2000.00);
 
-		CalculoInssMaker calculoInssMaker = new CalculoInssMaker();
-		calculoInssMaker.calcularContribuicaoInss(person);
-
+		CalculoPersonGratificacoesDescontos calculoPersonGratificacoesDescontos = new CalculoPersonGratificacoesDescontos();
+		calculoPersonGratificacoesDescontos.calcularSalarioGratificacoesDescontos(person);
 		System.out.println(person.getSalarioBeneficios());
 
 	}
