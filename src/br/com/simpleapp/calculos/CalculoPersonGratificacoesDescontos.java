@@ -24,6 +24,8 @@ public class CalculoPersonGratificacoesDescontos {
 
 		try {
 			double salarioTemp = person.getSalario();
+			double valorAbateInss = 0;
+			double salarioFinalComDescontoInss = 0;
 
 			for (Beneficio beneficio : person.getBeneficios()) {
 				double valorBeneficioNumerico = beneficio.getValorNumerico();
@@ -41,8 +43,8 @@ public class CalculoPersonGratificacoesDescontos {
 				salarioTemp -= Math.abs(valorTotal);
 			}
 
-			double valorAbateInss = calculoInss.calcularContribuicaoInss(person);
-			double salarioFinalComDescontoInss = salarioTemp - valorAbateInss;
+			valorAbateInss = calculoInss.calcularContribuicaoInss(person);
+			salarioFinalComDescontoInss = salarioTemp - valorAbateInss;
 
 			person.setSalarioBeneficios(salarioFinalComDescontoInss);
 

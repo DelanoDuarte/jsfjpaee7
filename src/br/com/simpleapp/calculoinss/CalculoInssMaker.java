@@ -31,11 +31,11 @@ public class CalculoInssMaker {
 	public double calcularContribuicaoInss(Person person) {
 
 		if (person.isCalculaINSS() == true) {
-			double a = calculoInssContriubuicaoMinima.calcularContribuicaoInss(person);
-			double b = calculoInssContriubuicaoMedia.calcularContribuicaoInss(person);
-			double c = calculoInssContriubuicaoMaxima.calcularContribuicaoInss(person);
+			double valorMinimo = calculoInssContriubuicaoMinima.calcularContribuicaoInss(person);
+			double valorMedio = calculoInssContriubuicaoMedia.calcularContribuicaoInss(person);
+			double valoMaximo = calculoInssContriubuicaoMaxima.calcularContribuicaoInss(person);
 
-			return a + b + c;
+			return valorMinimo + valorMedio + valoMaximo;
 		}
 		return 0;
 	}
