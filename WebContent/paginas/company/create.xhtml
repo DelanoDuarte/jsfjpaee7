@@ -9,11 +9,32 @@
 
 	<ui:define name="content">
 		<h:form>
-			<p:panel header="Cadastrat Nova Empresa">
+			<p:panel header="Cadastrar Nova Empresa">
 
 				<p:panelGrid columns="2">
 					<h:outputLabel value="Nome:" />
+					<p:inputText value="#{companyBean.company.nome}" />
+					<h:outputLabel value="Nome Fantasia:" />
 					<p:inputText value="#{companyBean.company.nomeFantasia}" />
+					<h:outputLabel value="CEP:" />
+					<p:inputMask mask="99.999-999" value="#{companyBean.company.cep}" />
+					<h:outputLabel value="CNPJ:" />
+					<p:inputMask mask="99.999.999/9999-99"
+						value="#{companyBean.company.cep}" />
+
+				</p:panelGrid>
+				<p:panelGrid columns="4">
+					<h:outputLabel value="Endereço:" />
+					<p:inputText value="#{companyBean.company.endereco}" />
+					<h:outputLabel value="Nº:" />
+					<p:inputNumber value="#{companyBean.company.numero_endereco}">
+						<f:convertNumber integerOnly="true" />
+					</p:inputNumber>
+				</p:panelGrid>
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Contato:" />
+					<p:inputMask mask="(99)9999-9999"
+						value="#{companyBean.company.numeroContato}" />
 				</p:panelGrid>
 				<br />
 

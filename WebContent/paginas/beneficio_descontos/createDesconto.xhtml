@@ -10,31 +10,35 @@
 		<h:form>
 			<b:panel title="Novo Desconto" look="primary">
 
-				<!-- <p:panel header="Tipo de Gratificação">
+				<p:panel header="Tipo de Gratificação">
 					<p:selectOneRadio id="radioTipoGratificacao"
 						value="#{descontoBean.tipoDesconto}" required="true">
 						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
 						<f:selectItem itemLabel="Porcentagem" itemValue="P" />
-						<f:ajax render="panelInputs" />
+						<f:ajax render="panelInputs" event="change" />
 					</p:selectOneRadio>
-				</p:panel> -->
+				</p:panel>
 
 				<br />
 				<br />
 
 
 				<p:panelGrid id="panelInputs" columns="2">
+
 					<p:outputLabel value="Nome:" />
 					<p:inputText value="#{descontoBean.desconto.nome}" />
-					<p:outputLabel value="Valor Numerico:" />
+					<p:outputLabel value="Valor Numerico:"
+						rendered="#{descontoBean.tipoDesconto == 'VF'}" />
 					<p:inputNumber value="#{descontoBean.desconto.valorNumerico}"
-						placeholder="R$" symbol="R$" decimalPlaces="2" />
+						placeholder="R$" symbol="R$" decimalPlaces="2"
+						rendered="#{descontoBean.tipoDesconto == 'VF'}" />
 
-					<p:outputLabel value="Valor Porcentagem:" />
+					<p:outputLabel value="Valor Porcentagem:"
+						rendered="#{descontoBean.tipoDesconto == 'P'}" />
 					<p:inputNumber value="#{descontoBean.desconto.valorPorcetagem}"
 						placeholder="R$" symbol="%" decimalPlaces="2"
-						symbolPosition="suffix" />
-
+						symbolPosition="suffix"
+						rendered="#{descontoBean.tipoDesconto == 'P'}" />
 				</p:panelGrid>
 
 				<br />

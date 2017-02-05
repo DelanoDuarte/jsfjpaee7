@@ -22,6 +22,10 @@
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
 					<p:outputLabel id="labelNomeEmpresa"
+						value="#{personBean.person.company.nome}" />
+					<p:outputLabel value="Nome Fantasia:"
+						for="labelNomeFantasiaEmpresa" />
+					<p:outputLabel id="labelNomeFantasiaEmpresa"
 						value="#{personBean.person.company.nomeFantasia}" />
 
 				</p:panelGrid>
@@ -50,6 +54,12 @@
 					<p:outputLabel value="13º Calculado:" for="label13Calculado" />
 					<p:outputLabel id="label13Calculado"
 						value="#{personBean.person.retonarSimOuNao()}">
+						<f:converter converterId="javax.faces.Boolean" />
+					</p:outputLabel>
+
+					<p:outputLabel value="Desconto INSS:" for="labelDescontoInss" />
+					<p:outputLabel id="labelDescontoInss"
+						value="#{personBean.person.calculaINSS}">
 						<f:converter converterId="javax.faces.Boolean" />
 					</p:outputLabel>
 				</p:panelGrid>

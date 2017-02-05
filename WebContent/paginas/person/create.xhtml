@@ -31,8 +31,7 @@
 					<p:selectOneMenu value="#{personBean.person.company}"
 						converter="entityConverter">
 						<f:selectItems value="#{companyBean.companies}" var="_company"
-							itemLabel="#{_company.nomeFantasia}"
-							noSelectionOption="--Selecione--" />
+							itemLabel="#{_company.nome}" noSelectionOption="--Selecione--" />
 					</p:selectOneMenu>
 
 					<h:outputLabel value="Tipo de Funcionário:" />

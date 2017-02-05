@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author delan
@@ -36,6 +37,7 @@ public abstract class IncidenciaSalario implements Serializable {
 	private Long id;
 
 	@Column(name = "nome_incidencia_salarial")
+	@NotNull
 	private String nome;
 
 	@Column(name = "valor_numero_incidencia")

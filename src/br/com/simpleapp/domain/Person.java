@@ -24,8 +24,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * @author delano.junior
  *
@@ -59,6 +57,9 @@ public class Person implements Serializable {
 	@Column(name = "salarioDecimoTerceiro_funcionario")
 	private double salarioDecimoTerceiro;
 
+	@Column(name = "cpf_funcionario")
+	private String cpf;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCalculoDecimoTerceiroSalario;
 
@@ -66,12 +67,12 @@ public class Person implements Serializable {
 	@JoinColumn(name = "id_company")
 	private Company company;
 
-	@JsonIgnore
+	// @JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_person_beneficios", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_beneficio"))
 	private List<Beneficio> beneficios;
 
-	@JsonIgnore
+	// @JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_person_descontos", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_desconto"))
 	private List<Desconto> descontos;
@@ -88,28 +89,16 @@ public class Person implements Serializable {
 	@Column(name = "flag_calculaIrrf")
 	private boolean calculaIRRF;
 
-	public Person() {
-		super();
+	public String retonarSimOuNao() {
+		if (flag13Calculado == true) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
 	}
 
-	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, double salarioDecimoTerceiro,
-			Date dataCalculoDecimoTerceiroSalario, Company company, List<Beneficio> beneficios,
-			List<Desconto> descontos, TipoContrato tipoContrato, boolean flag13Calculado, boolean calculaINSS,
-			boolean calculaIRRF) {
+	public Person() {
 		super();
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.salario = salario;
-		this.salarioBeneficios = salarioBeneficios;
-		this.salarioDecimoTerceiro = salarioDecimoTerceiro;
-		this.dataCalculoDecimoTerceiroSalario = dataCalculoDecimoTerceiroSalario;
-		this.company = company;
-		this.beneficios = beneficios;
-		this.descontos = descontos;
-		this.tipoContrato = tipoContrato;
-		this.flag13Calculado = flag13Calculado;
-		this.calculaINSS = calculaINSS;
-		this.calculaIRRF = calculaIRRF;
 	}
 
 	public Long getId() {
@@ -158,6 +147,14 @@ public class Person implements Serializable {
 
 	public void setSalarioDecimoTerceiro(double salarioDecimoTerceiro) {
 		this.salarioDecimoTerceiro = salarioDecimoTerceiro;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Date getDataCalculoDecimoTerceiroSalario() {
@@ -224,14 +221,6 @@ public class Person implements Serializable {
 		this.calculaIRRF = calculaIRRF;
 	}
 
-	public String retonarSimOuNao() {
-		if (flag13Calculado == true) {
-			return "Sim";
-		} else {
-			return "Não";
-		}
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -240,6 +229,7 @@ public class Person implements Serializable {
 		result = prime * result + (calculaINSS ? 1231 : 1237);
 		result = prime * result + (calculaIRRF ? 1231 : 1237);
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result
 				+ ((dataCalculoDecimoTerceiroSalario == null) ? 0 : dataCalculoDecimoTerceiroSalario.hashCode());
 		result = prime * result + ((descontos == null) ? 0 : descontos.hashCode());
@@ -280,6 +270,11 @@ public class Person implements Serializable {
 			if (other.company != null)
 				return false;
 		} else if (!company.equals(other.company))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
 			return false;
 		if (dataCalculoDecimoTerceiroSalario == null) {
 			if (other.dataCalculoDecimoTerceiroSalario != null)
@@ -323,10 +318,10 @@ public class Person implements Serializable {
 	public String toString() {
 		return "Person [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", salario=" + salario
 				+ ", salarioBeneficios=" + salarioBeneficios + ", salarioDecimoTerceiro=" + salarioDecimoTerceiro
-				+ ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario + ", company=" + company
-				+ ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato=" + tipoContrato
-				+ ", flag13Calculado=" + flag13Calculado + ", calculaINSS=" + calculaINSS + ", calculaIRRF="
-				+ calculaIRRF + "]";
+				+ ", cpf=" + cpf + ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario
+				+ ", company=" + company + ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato="
+				+ tipoContrato + ", flag13Calculado=" + flag13Calculado + ", calculaINSS=" + calculaINSS
+				+ ", calculaIRRF=" + calculaIRRF + "]";
 	}
 
 }
