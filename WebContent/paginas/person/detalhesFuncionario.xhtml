@@ -27,6 +27,9 @@
 						for="labelNomeFantasiaEmpresa" />
 					<p:outputLabel id="labelNomeFantasiaEmpresa"
 						value="#{personBean.person.company.nomeFantasia}" />
+					<p:outputLabel value="CPNJ:" for="labelCnpjEmpresa" />
+					<p:outputLabel id="labelCnpjEmpresa"
+						value="#{personBean.person.company.cnpj}" />
 
 				</p:panelGrid>
 				<br />
@@ -59,7 +62,7 @@
 
 					<p:outputLabel value="Desconto INSS:" for="labelDescontoInss" />
 					<p:outputLabel id="labelDescontoInss"
-						value="#{personBean.person.calculaINSS}">
+						value="#{personBean.person.retornaSimOuNaoInss()}">
 						<f:converter converterId="javax.faces.Boolean" />
 					</p:outputLabel>
 				</p:panelGrid>

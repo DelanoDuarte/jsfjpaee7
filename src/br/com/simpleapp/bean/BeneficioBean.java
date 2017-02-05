@@ -44,6 +44,8 @@ public class BeneficioBean implements Serializable {
 	}
 
 	public Beneficio getBeneficio() {
+		if (this.beneficio == null)
+			this.beneficio = new Beneficio();
 		return beneficio;
 	}
 

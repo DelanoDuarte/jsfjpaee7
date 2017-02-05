@@ -97,6 +97,14 @@ public class Person implements Serializable {
 		}
 	}
 
+	public String retornaSimOuNaoInss() {
+		if (calculaINSS == true) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
+	}
+
 	public Person() {
 		super();
 	}

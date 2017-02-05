@@ -62,7 +62,9 @@
 					<p:outputLabel value="Data Ultimo Cálculo 13º Salário:"
 						for="labelDataSalario13" />
 					<p:outputLabel id="labelDataSalario13"
-						value="#{calculo13SalarioBean.person.dataCalculoDecimoTerceiroSalario}" />
+						value="#{calculo13SalarioBean.person.dataCalculoDecimoTerceiroSalario}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" type="both" />
+					</p:outputLabel>
 				</p:panelGrid>
 				<br />
 			</p:panel>

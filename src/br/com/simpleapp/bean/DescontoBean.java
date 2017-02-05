@@ -42,6 +42,8 @@ public class DescontoBean implements Serializable {
 	}
 
 	public Desconto getDesconto() {
+		if (this.desconto == null)
+			this.desconto = new Desconto();
 		return desconto;
 	}
 
