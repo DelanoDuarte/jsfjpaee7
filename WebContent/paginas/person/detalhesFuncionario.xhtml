@@ -54,18 +54,30 @@
 						for="labelSalario" />
 					<p:outputLabel id="labelSalario"
 						value="R$ #{personBean.person.salarioBeneficios}" />
-					<p:outputLabel value="13º Calculado:" for="label13Calculado" />
-					<p:outputLabel id="label13Calculado"
-						value="#{personBean.person.retonarSimOuNao()}">
-						<f:converter converterId="javax.faces.Boolean" />
-					</p:outputLabel>
 
-					<p:outputLabel value="Desconto INSS:" for="labelDescontoInss" />
-					<p:outputLabel id="labelDescontoInss"
-						value="#{personBean.person.retornaSimOuNaoInss()}">
-						<f:converter converterId="javax.faces.Boolean" />
-					</p:outputLabel>
 				</p:panelGrid>
+				<br />
+				<b:panel title="13º Salario" look="success">
+					<p:panelGrid columns="2">
+						<p:outputLabel value="13º Calculado:" for="label13Calculado" />
+						<p:outputLabel id="label13Calculado"
+							value="#{personBean.person.retonarSimOuNao()}">
+							<f:converter converterId="javax.faces.Boolean" />
+						</p:outputLabel>
+					</p:panelGrid>
+				</b:panel>
+
+				<b:panel title="INSS" look="success">
+					<p:panelGrid columns="3">
+						<p:outputLabel value="Desconto INSS:" for="labelDescontoInss" />
+						<p:outputLabel id="labelDescontoInss"
+							value="#{personBean.person.retornaSimOuNaoInss()}">
+							<f:converter converterId="javax.faces.Boolean" />
+						</p:outputLabel>
+						<p:outputLabel value="Tabela Inss Vazia"
+							rendered="#{calculoInssBean.verificaTabelaVazia()}" />
+					</p:panelGrid>
+				</b:panel>
 				<br />
 			</b:panel>
 		</h:form>
