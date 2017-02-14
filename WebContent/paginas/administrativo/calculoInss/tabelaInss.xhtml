@@ -69,6 +69,13 @@
 				look="success"
 				disabled="#{calculoInssBean.desabilitarNovoCadastro()}" />
 
+			<b:button value="Editar Tabela"
+				outcome="/paginas/administrativo/calculoInss/novoCalculoInss"
+				look="primary"
+				disabled="#{calculoInssBean.desabilitarEditarCadastro()}"
+				rendered="#{calculoInssBean.mostrarEditarCadastro()}">
+			</b:button>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

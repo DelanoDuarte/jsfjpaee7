@@ -51,6 +51,26 @@ public class CalculoInssBean implements Serializable {
 		}
 	}
 
+	public boolean desabilitarEditarCadastro() {
+		if (this.valoresTabela.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean mostrarEditarCadastro() {
+		if (this.valoresTabela.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public void buscarTabelaPorId() {
+		this.calculoInss = calculoInssRepository.findById(this.calculoInss.getId());
+	}
+
 	public CalculoInss getCalculoInss() {
 		return calculoInss;
 	}

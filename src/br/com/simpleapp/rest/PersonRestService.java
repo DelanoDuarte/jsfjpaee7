@@ -6,6 +6,7 @@ package br.com.simpleapp.rest;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -23,6 +24,7 @@ import br.com.simpleapp.service.PersonService;
  * @author delan
  *
  */
+@Stateless
 @Path("/person")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -39,9 +41,9 @@ public class PersonRestService implements Serializable {
 	@Inject
 	private PersonService personService;
 
-	@Path("/list")
+	@Path("/listaFuncionarios")
 	@GET
-	public Response todosFuncionáriosJSON() {
+	public Response todosFuncionariosJSON() {
 		try {
 			List<Person> persons = personRepository.buscarTodos();
 			return Response.ok().entity(persons).build();

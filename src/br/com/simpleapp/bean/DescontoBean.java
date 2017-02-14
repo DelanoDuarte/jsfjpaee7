@@ -47,6 +47,13 @@ public class DescontoBean implements Serializable {
 		return desconto;
 	}
 
+	public void novoDesconto() {
+		if (this.desconto.getNome() == null
+				&& (this.desconto.getValorNumerico() == 0.0 || this.desconto.getValorPorcetagem() == 0.0)) {
+			this.desconto = new Desconto();
+		}
+	}
+
 	public void setDesconto(Desconto desconto) {
 		this.desconto = desconto;
 	}
@@ -76,5 +83,4 @@ public class DescontoBean implements Serializable {
 	public void setTipoDesconto(String tipoDesconto) {
 		this.tipoDesconto = tipoDesconto;
 	}
-
 }

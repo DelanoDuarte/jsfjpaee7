@@ -67,12 +67,10 @@ public class Person implements Serializable {
 	@JoinColumn(name = "id_company")
 	private Company company;
 
-	// @JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_person_beneficios", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_beneficio"))
 	private List<Beneficio> beneficios;
 
-	// @JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_person_descontos", joinColumns = @JoinColumn(name = "id_person"), inverseJoinColumns = @JoinColumn(name = "id_desconto"))
 	private List<Desconto> descontos;
