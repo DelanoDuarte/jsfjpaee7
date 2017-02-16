@@ -59,6 +59,15 @@
 						<p:outputLabel
 							value="% #{_calculoInss.contribuicaoAliquotaMaxima}" />
 					</p:column>
+
+					<b:button value="Editar Tabela"
+						outcome="/paginas/administrativo/calculoInss/novoCalculoInss"
+						look="primary"
+						disabled="#{calculoInssBean.desabilitarEditarCadastro()}"
+						rendered="#{calculoInssBean.mostrarEditarCadastro()}">
+
+						<f:param name="calculoInssId" value="#{_calculoInss.id}" />
+					</b:button>
 				</p:dataTable>
 			</p:panel>
 

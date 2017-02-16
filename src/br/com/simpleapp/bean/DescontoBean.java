@@ -36,7 +36,7 @@ public class DescontoBean implements Serializable {
 	private MessageUtil messageUtil;
 
 	public String salvar() {
-		descontoRepository.create(desconto);
+		descontoRepository.update(desconto);
 		messageUtil.msgInfo("Novo Desconto Cadastrado com Sucesso !");
 		return "/paginas/decisoes_tela/decisaoGratificacaoDesconto";
 	}
@@ -50,7 +50,7 @@ public class DescontoBean implements Serializable {
 	public void novoDesconto() {
 		if (this.desconto.getNome() == null
 				&& (this.desconto.getValorNumerico() == 0.0 || this.desconto.getValorPorcetagem() == 0.0)) {
-			this.desconto = new Desconto();
+			this.desconto = null;
 		}
 	}
 

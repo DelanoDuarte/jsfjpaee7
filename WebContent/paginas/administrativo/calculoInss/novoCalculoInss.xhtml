@@ -9,6 +9,16 @@
 	<ui:define name="content">
 
 		<h:form>
+
+			<f:metadata>
+				<f:viewParam name="calculoInssId"
+					value="#{calculoInssBean.calculoInss.id}" />
+				<f:event listener="#{calculoInssBean.buscarTabelaPorId()}"
+					type="preRenderView" />
+
+			</f:metadata>
+
+
 			<b:panel title="Contribuição Mínima" look="primary">
 				<br />
 				<p:panelGrid columns="4">

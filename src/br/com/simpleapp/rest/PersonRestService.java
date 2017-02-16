@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -25,7 +26,7 @@ import br.com.simpleapp.service.PersonService;
  *
  */
 @Stateless
-@Path("/person")
+@Path("/funcionario")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PersonRestService implements Serializable {
@@ -41,7 +42,19 @@ public class PersonRestService implements Serializable {
 	@Inject
 	private PersonService personService;
 
-	@Path("/listaFuncionarios")
+	@Path("/novoFuncionario")
+	@POST
+	public Response salvarFuncionario(Person person) {
+		try {
+			personService.salvarFuncionario(person);
+
+			return Response.ok().entity(person).build();
+		} catch (Exception e) {
+			return Response.serverError().build();
+		}
+	}
+
+	@Path("/listaFuncionariosJSON")
 	@GET
 	public Response todosFuncionariosJSON() {
 		try {
