@@ -87,6 +87,9 @@ public class Person implements Serializable {
 	@Column(name = "flag_calculaIrrf")
 	private boolean calculaIRRF;
 
+	@Column(name = "flag_insscalculado")
+	private boolean inssCalculado;
+
 	public String retonarSimOuNao() {
 		if (flag13Calculado == true) {
 			return "Sim";
@@ -103,8 +106,38 @@ public class Person implements Serializable {
 		}
 	}
 
+	public String retornaSimOuNaoInssCalculado() {
+		if (inssCalculado == true) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
+	}
+
 	public Person() {
 		super();
+	}
+
+	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, double salarioDecimoTerceiro,
+			String cpf, Date dataCalculoDecimoTerceiroSalario, Company company, List<Beneficio> beneficios,
+			List<Desconto> descontos, TipoContrato tipoContrato, boolean flag13Calculado, boolean calculaINSS,
+			boolean calculaIRRF, boolean inssCalculado) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.salario = salario;
+		this.salarioBeneficios = salarioBeneficios;
+		this.salarioDecimoTerceiro = salarioDecimoTerceiro;
+		this.cpf = cpf;
+		this.dataCalculoDecimoTerceiroSalario = dataCalculoDecimoTerceiroSalario;
+		this.company = company;
+		this.beneficios = beneficios;
+		this.descontos = descontos;
+		this.tipoContrato = tipoContrato;
+		this.flag13Calculado = flag13Calculado;
+		this.calculaINSS = calculaINSS;
+		this.calculaIRRF = calculaIRRF;
+		this.inssCalculado = inssCalculado;
 	}
 
 	public Long getId() {
@@ -227,6 +260,14 @@ public class Person implements Serializable {
 		this.calculaIRRF = calculaIRRF;
 	}
 
+	public boolean isInssCalculado() {
+		return inssCalculado;
+	}
+
+	public void setInssCalculado(boolean inssCalculado) {
+		this.inssCalculado = inssCalculado;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -241,6 +282,7 @@ public class Person implements Serializable {
 		result = prime * result + ((descontos == null) ? 0 : descontos.hashCode());
 		result = prime * result + (flag13Calculado ? 1231 : 1237);
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (inssCalculado ? 1231 : 1237);
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(salario);
@@ -299,6 +341,8 @@ public class Person implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (inssCalculado != other.inssCalculado)
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -327,7 +371,7 @@ public class Person implements Serializable {
 				+ ", cpf=" + cpf + ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario
 				+ ", company=" + company + ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato="
 				+ tipoContrato + ", flag13Calculado=" + flag13Calculado + ", calculaINSS=" + calculaINSS
-				+ ", calculaIRRF=" + calculaIRRF + "]";
+				+ ", calculaIRRF=" + calculaIRRF + ", inssCalculado=" + inssCalculado + "]";
 	}
 
 }

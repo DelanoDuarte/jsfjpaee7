@@ -18,20 +18,47 @@
 
 
 		<h:form>
-			<p:panel header="Dados da Empresa">
+			<b:panel title="Dados da Empresa" look="success">
 				<br />
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
 					<p:outputLabel id="labelNomeEmpresa"
+						value="#{companyBean.company.nome}" />
+					<p:outputLabel value="Nome Fantasia:"
+						for="labelNomeFantasiaEmpresa" />
+					<p:outputLabel id="labelNomeFantasiaEmpresa"
 						value="#{companyBean.company.nomeFantasia}" />
+					<p:outputLabel value="CNPJ:" for="labelCnpjEmpresa" />
+					<p:outputLabel id="labelCnpjEmpresa"
+						value="#{companyBean.company.cnpj}" />
 				</p:panelGrid>
-			</p:panel>
+
+
+				<b:panel title="Endereço da Empresa" look="success">
+					<p:panelGrid columns="2">
+						<p:outputLabel value="Endereço:" for="labelEnderecoEmpresa" />
+						<p:outputLabel id="labelEnderecoEmpresa"
+							value="#{companyBean.company.endereco}" />
+
+						<p:outputLabel value="Nº:" for="labelNumeroEnderecoEmpresa" />
+						<p:outputLabel id="labelNumeroEnderecoEmpresa"
+							value="#{companyBean.company.numero_endereco}" />
+
+						<p:outputLabel value="CEP:" for="labelCepEmpresa" />
+						<p:outputLabel id="labelCepEmpresa"
+							value="#{companyBean.company.cep}" />
+
+					</p:panelGrid>
+
+				</b:panel>
+
+			</b:panel>
 		</h:form>
 
 		<br />
 
 		<h:form>
-			<p:panel header="Funcionários da Empresa ">
+			<b:panel title="Funcionários da Empresa" look="success">
 				<p:dataTable value="#{companyBean.company.persons}" var="_person">
 
 					<p:column>
@@ -46,10 +73,18 @@
 
 					<p:column>
 						<f:facet name="header">Salario</f:facet>
-						<p:outputLabel value="#{_person.salario}" />
+						<p:outputLabel value="R$#{_person.salario}" />
+					</p:column>
+
+					<p:column>
+						<b:button value="Visualizar Funcionário" look="success"
+							outcome="/paginas/person/detalhesFuncionario">
+							<f:param name="funcionarioId" value="#{_person.id}" />
+						</b:button>
+
 					</p:column>
 				</p:dataTable>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 

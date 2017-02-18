@@ -44,6 +44,10 @@ public class CalculoPersonGratificacoesDescontos {
 			}
 
 			valorAbateInss = calculoInss.calcularContribuicaoInss(person);
+
+			if (valorAbateInss != 0)
+				person.setInssCalculado(true);
+
 			salarioFinalComDescontoInss = salarioTemp - valorAbateInss;
 
 			person.setSalarioBeneficios(salarioFinalComDescontoInss);

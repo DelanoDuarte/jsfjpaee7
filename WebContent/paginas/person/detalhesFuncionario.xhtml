@@ -15,6 +15,11 @@
 
 		</f:metadata>
 
+		<b:well>
+			<div align="center">
+				<h2>Visualizando Funcionário</h2>
+			</div>
+		</b:well>
 
 		<h:form>
 			<b:panel title="Dados do Empresa" look="success">
@@ -68,10 +73,15 @@
 				</b:panel>
 
 				<b:panel title="INSS" look="success">
-					<p:panelGrid columns="3">
-						<p:outputLabel value="Desconto INSS:" for="labelDescontoInss" />
+					<p:panelGrid columns="5">
+						<p:outputLabel value="Desconta INSS:" for="labelDescontoInss" />
 						<p:outputLabel id="labelDescontoInss"
 							value="#{personBean.person.retornaSimOuNaoInss()}">
+							<f:converter converterId="javax.faces.Boolean" />
+						</p:outputLabel>
+						<p:outputLabel value="INSS Calculado:" for="labelInssCalculado" />
+						<p:outputLabel id="labelInssCalculado"
+							value="#{personBean.person.retornaSimOuNaoInssCalculado()}">
 							<f:converter converterId="javax.faces.Boolean" />
 						</p:outputLabel>
 						<p:outputLabel value="Tabela Inss Vazia"
