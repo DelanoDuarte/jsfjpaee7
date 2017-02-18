@@ -22,13 +22,15 @@
 
 				<b:dataTable value="#{companyBean.companies}" var="_company"
 					customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
-					<b:dataTableColumn value="#{_company.nomeFantasia}" label="Nome" />
+					<b:dataTableColumn value="#{_company.nome}" label="Nome" />
 
 					<b:dataTableColumn label="">
-						<b:button value="Show" look="success"
-							outcome="/paginas/company/detalhesCompany">
-							<f:param name="companyId" value="#{_company.id}" />
-						</b:button>
+						<div align="center">
+							<b:button value="Visualizar Empresa" look="success"
+								outcome="/paginas/company/detalhesCompany">
+								<f:param name="companyId" value="#{_company.id}" />
+							</b:button>
+						</div>
 					</b:dataTableColumn>
 				</b:dataTable>
 

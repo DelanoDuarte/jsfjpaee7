@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:sh="http://shiro.apache.org/tags"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:form>
+			<b:dataTable value="#{cargoBean.cargos}" var="_cargo">
+				<b:dataTableColumn value="#{_cargo.nome_cargo}" label="Nome" />
+
+				<b:dataTableColumn label="">
+					<div align="center">
+						<b:button value="Visualizar Cargo" look="success"
+							outcome="/paginas/administrativo/cargo/detalhesCargo">
+							<f:param name="cargoId" value="#{_cargo.id}" />
+						</b:button>
+
+					</div>
+				</b:dataTableColumn>
+
+			</b:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

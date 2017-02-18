@@ -52,6 +52,21 @@
 
 				</b:panel>
 
+				<b:panel title="Contatos da Empresa" look="success">
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="Nome do Contato:"
+							for="labelNomeContatoEmpresa" />
+						<p:outputLabel id="labelNomeContatoEmpresa"
+							value="#{companyBean.company.nomeContato}" />
+						<p:outputLabel value="Telefone:" for="labelNumeroContatoEmpresa" />
+						<p:outputLabel id="labelNumeroContatoEmpresa"
+							value="#{companyBean.company.numeroContato}" />
+
+					</p:panelGrid>
+
+				</b:panel>
+
 			</b:panel>
 		</h:form>
 

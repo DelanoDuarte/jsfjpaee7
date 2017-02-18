@@ -16,8 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * @author delan
  *
@@ -54,10 +52,12 @@ public class Company implements Serializable {
 	@Column(name = "cnpj_empresa")
 	private String cnpj;
 
+	@Column(name = "nome_contato_enmpresa")
+	private String nomeContato;
+
 	@Column(name = "numero_contato_empresa")
 	private String numeroContato;
 
-	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "company", fetch = FetchType.LAZY)
 	private List<Person> persons;
 
@@ -66,7 +66,7 @@ public class Company implements Serializable {
 	}
 
 	public Company(String nome, String nomeFantasia, String endereco, Integer numero_endereco, String cep, String cnpj,
-			String numeroContato, List<Person> persons) {
+			String nomeContato, String numeroContato, List<Person> persons) {
 		super();
 		this.nome = nome;
 		this.nomeFantasia = nomeFantasia;
@@ -74,6 +74,7 @@ public class Company implements Serializable {
 		this.numero_endereco = numero_endereco;
 		this.cep = cep;
 		this.cnpj = cnpj;
+		this.nomeContato = nomeContato;
 		this.numeroContato = numeroContato;
 		this.persons = persons;
 	}
@@ -134,6 +135,14 @@ public class Company implements Serializable {
 		this.cnpj = cnpj;
 	}
 
+	public String getNomeContato() {
+		return nomeContato;
+	}
+
+	public void setNomeContato(String nomeContato) {
+		this.nomeContato = nomeContato;
+	}
+
 	public String getNumeroContato() {
 		return numeroContato;
 	}
@@ -159,6 +168,7 @@ public class Company implements Serializable {
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((nomeContato == null) ? 0 : nomeContato.hashCode());
 		result = prime * result + ((nomeFantasia == null) ? 0 : nomeFantasia.hashCode());
 		result = prime * result + ((numeroContato == null) ? 0 : numeroContato.hashCode());
 		result = prime * result + ((numero_endereco == null) ? 0 : numero_endereco.hashCode());
@@ -200,6 +210,11 @@ public class Company implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (nomeContato == null) {
+			if (other.nomeContato != null)
+				return false;
+		} else if (!nomeContato.equals(other.nomeContato))
+			return false;
 		if (nomeFantasia == null) {
 			if (other.nomeFantasia != null)
 				return false;
@@ -226,8 +241,8 @@ public class Company implements Serializable {
 	@Override
 	public String toString() {
 		return "Company [id=" + id + ", nome=" + nome + ", nomeFantasia=" + nomeFantasia + ", endereco=" + endereco
-				+ ", numero_endereco=" + numero_endereco + ", cep=" + cep + ", cnpj=" + cnpj + ", numeroContato="
-				+ numeroContato + ", persons=" + persons + "]";
+				+ ", numero_endereco=" + numero_endereco + ", cep=" + cep + ", cnpj=" + cnpj + ", nomeContato="
+				+ nomeContato + ", numeroContato=" + numeroContato + ", persons=" + persons + "]";
 	}
 
 }

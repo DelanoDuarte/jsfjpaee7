@@ -32,7 +32,11 @@ public class CargoBean implements Serializable {
 	public String salvarCargo() {
 		cargoRepository.update(cargo);
 
-		return "";
+		return "/paginas/administrativo/cargo/list";
+	}
+
+	public void buscaCargoPorId() {
+		this.cargo = cargoRepository.findById(this.cargo.getId());
 	}
 
 	public Cargo getCargo() {

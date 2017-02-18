@@ -11,6 +11,12 @@
 
 		<h:form>
 
+			<b:well>
+				<div align="center">
+					<h2>Lista de Todos Funcionários</h2>
+				</div>
+			</b:well>
+
 			<p:messages />
 
 			<p:panel header="Todos os Funcionários Cadastrados">
@@ -41,6 +47,10 @@
 					</p:column>
 				</p:dataTable>
 			</p:panel>
+
+			<br />
+			<b:button value="Cadastrar Novo Funcionário" look="primary"
+				outcome="/paginas/person/create" />
 		</h:form>
 	</ui:define>
 

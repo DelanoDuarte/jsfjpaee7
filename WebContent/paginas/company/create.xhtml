@@ -9,38 +9,64 @@
 
 	<ui:define name="content">
 		<h:form>
-			<p:panel header="Cadastrar Nova Empresa">
 
-				<p:panelGrid columns="2">
-					<h:outputLabel value="Nome:" />
-					<p:inputText value="#{companyBean.company.nome}" />
-					<h:outputLabel value="Nome Fantasia:" />
-					<p:inputText value="#{companyBean.company.nomeFantasia}" />
-					<h:outputLabel value="CEP:" />
-					<p:inputMask mask="99.999-999" value="#{companyBean.company.cep}" />
-					<h:outputLabel value="CNPJ:" />
-					<p:inputMask mask="99.999.999/9999-99"
-						value="#{companyBean.company.cnpj}" />
+			<p:messages />
 
-				</p:panelGrid>
-				<p:panelGrid columns="4">
-					<h:outputLabel value="Endereço:" />
-					<p:inputText value="#{companyBean.company.endereco}" />
-					<h:outputLabel value="Nº:" />
-					<p:inputNumber value="#{companyBean.company.numero_endereco}">
-						<f:convertNumber integerOnly="true" />
-					</p:inputNumber>
-				</p:panelGrid>
-				<p:panelGrid columns="2">
-					<h:outputLabel value="Contato:" />
-					<p:inputMask mask="(99)9999-9999"
-						value="#{companyBean.company.numeroContato}" />
-				</p:panelGrid>
+			<b:well>
+				<div align="center">
+					<h2>Cadastrar Nova Empresa</h2>
+				</div>
+			</b:well>
+
+			<b:panel title="Nova Empresa" look="success">
+				<b:panel title="Dados da Empresa" look="success">
+
+					<p:panelGrid columns="2">
+						<h:outputLabel value="Nome:" />
+						<p:inputText value="#{companyBean.company.nome}" required="true" />
+						<h:outputLabel value="Nome Fantasia:" />
+						<p:inputText value="#{companyBean.company.nomeFantasia}"
+							required="true" />
+
+						<h:outputLabel value="CNPJ:" />
+						<p:inputMask mask="99.999.999/9999-99"
+							value="#{companyBean.company.cnpj}" />
+					</p:panelGrid>
+				</b:panel>
+
+
+				<b:panel title="Endereço da Empresa" look="success">
+					<p:panelGrid columns="4">
+						<h:outputLabel value="Endereço:" />
+						<p:inputText value="#{companyBean.company.endereco}"
+							required="true" />
+						<h:outputLabel value="Nº:" />
+						<p:inputNumber value="#{companyBean.company.numero_endereco}"
+							required="true">
+							<f:convertNumber integerOnly="true" />
+						</p:inputNumber>
+						<h:outputLabel value="CEP:" />
+						<p:inputMask mask="99.999-999" value="#{companyBean.company.cep}"
+							required="true" />
+
+					</p:panelGrid>
+
+				</b:panel>
+
+				<b:panel title="Contatos da Empresa" look="success">
+					<p:panelGrid columns="2">
+						<h:outputLabel value="Nome do Contato" />
+						<p:inputText value="#{companyBean.company.nomeContato}" />
+						<h:outputLabel value="Número para Contato:" />
+						<p:inputMask mask="(99)9999-9999"
+							value="#{companyBean.company.numeroContato}" required="true" />
+					</p:panelGrid>
+				</b:panel>
 				<br />
 
 				<b:commandButton value="Salvar e Continuar" look="success"
 					action="#{companyBean.salvar()}" />
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 	</ui:define>
