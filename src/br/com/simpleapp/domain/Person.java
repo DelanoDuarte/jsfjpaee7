@@ -78,6 +78,10 @@ public class Person implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoContrato tipoContrato;
 
+	@ManyToOne
+	@JoinColumn(name = "id_cargo")
+	private Cargo cargo;
+
 	@Column(name = "flag_13_calculado")
 	private boolean flag13Calculado;
 
@@ -120,8 +124,8 @@ public class Person implements Serializable {
 
 	public Person(String nome, String sobrenome, double salario, double salarioBeneficios, double salarioDecimoTerceiro,
 			String cpf, Date dataCalculoDecimoTerceiroSalario, Company company, List<Beneficio> beneficios,
-			List<Desconto> descontos, TipoContrato tipoContrato, boolean flag13Calculado, boolean calculaINSS,
-			boolean calculaIRRF, boolean inssCalculado) {
+			List<Desconto> descontos, TipoContrato tipoContrato, Cargo cargo, boolean flag13Calculado,
+			boolean calculaINSS, boolean calculaIRRF, boolean inssCalculado) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -134,6 +138,7 @@ public class Person implements Serializable {
 		this.beneficios = beneficios;
 		this.descontos = descontos;
 		this.tipoContrato = tipoContrato;
+		this.cargo = cargo;
 		this.flag13Calculado = flag13Calculado;
 		this.calculaINSS = calculaINSS;
 		this.calculaIRRF = calculaIRRF;
@@ -236,6 +241,14 @@ public class Person implements Serializable {
 		this.tipoContrato = tipoContrato;
 	}
 
+	public Cargo getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
+	}
+
 	public boolean isFlag13Calculado() {
 		return flag13Calculado;
 	}
@@ -275,6 +288,7 @@ public class Person implements Serializable {
 		result = prime * result + ((beneficios == null) ? 0 : beneficios.hashCode());
 		result = prime * result + (calculaINSS ? 1231 : 1237);
 		result = prime * result + (calculaIRRF ? 1231 : 1237);
+		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result
@@ -313,6 +327,11 @@ public class Person implements Serializable {
 		if (calculaINSS != other.calculaINSS)
 			return false;
 		if (calculaIRRF != other.calculaIRRF)
+			return false;
+		if (cargo == null) {
+			if (other.cargo != null)
+				return false;
+		} else if (!cargo.equals(other.cargo))
 			return false;
 		if (company == null) {
 			if (other.company != null)
@@ -370,8 +389,8 @@ public class Person implements Serializable {
 				+ ", salarioBeneficios=" + salarioBeneficios + ", salarioDecimoTerceiro=" + salarioDecimoTerceiro
 				+ ", cpf=" + cpf + ", dataCalculoDecimoTerceiroSalario=" + dataCalculoDecimoTerceiroSalario
 				+ ", company=" + company + ", beneficios=" + beneficios + ", descontos=" + descontos + ", tipoContrato="
-				+ tipoContrato + ", flag13Calculado=" + flag13Calculado + ", calculaINSS=" + calculaINSS
-				+ ", calculaIRRF=" + calculaIRRF + ", inssCalculado=" + inssCalculado + "]";
+				+ tipoContrato + ", cargo=" + cargo + ", flag13Calculado=" + flag13Calculado + ", calculaINSS="
+				+ calculaINSS + ", calculaIRRF=" + calculaIRRF + ", inssCalculado=" + inssCalculado + "]";
 	}
 
 }

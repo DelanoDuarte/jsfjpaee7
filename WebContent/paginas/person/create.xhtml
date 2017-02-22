@@ -34,10 +34,17 @@
 							itemLabel="#{_company.nome}" noSelectionOption="--Selecione--" />
 					</p:selectOneMenu>
 
-					<h:outputLabel value="Tipo de Funcionário:" />
+					<h:outputLabel value="Tipo de Contrato:" />
 					<p:selectOneMenu value="#{personBean.person.tipoContrato}"
 						converter="entityConverter">
 						<f:selectItems value="#{personBean.tipoContratos}" />
+					</p:selectOneMenu>
+
+					<h:outputLabel value="Cargo:" />
+					<p:selectOneMenu value="#{personBean.person.cargo}"
+						converter="entityConverter">
+						<f:selectItems value="#{cargoBean.cargos}" var="_cargo"
+							itemLabel="#{_cargo.nome_cargo}" />
 					</p:selectOneMenu>
 
 				</p:panelGrid>

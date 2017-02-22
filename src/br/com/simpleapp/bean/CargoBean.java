@@ -49,7 +49,7 @@ public class CargoBean implements Serializable {
 
 	public List<Cargo> getCargos() {
 		if (this.cargos == null)
-			this.cargos = cargoRepository.findAll();
+			this.cargos = cargoRepository.buscarTodosCargos();
 		return cargos;
 	}
 
