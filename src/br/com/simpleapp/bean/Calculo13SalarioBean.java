@@ -45,7 +45,7 @@ public class Calculo13SalarioBean implements Serializable {
 	}
 
 	public String calcular13Salario() {
-		return "/paginas/calculo13Salario/primeiroCalculo13/detalhesFuncionario13Calculado";
+		return "/paginas/administrativo/calculo13Salario/primeiroCalculo13/detalhesFuncionario13Calculado";
 	}
 
 	public Integer getMesesTrabalhados() {

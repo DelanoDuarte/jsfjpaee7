@@ -9,6 +9,12 @@
 
 	<ui:define name="content">
 
+		<b:well>
+			<div align="center">
+				<h2>Lista de Todos os Cargos</h2>
+			</div>
+		</b:well>
+
 		<h:form>
 			<b:dataTable value="#{cargoBean.cargos}" var="_cargo">
 				<b:dataTableColumn value="#{_cargo.nome_cargo}" label="Nome" />

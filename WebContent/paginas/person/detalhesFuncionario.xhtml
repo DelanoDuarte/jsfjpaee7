@@ -70,6 +70,8 @@
 
 				</p:panelGrid>
 				<br />
+
+
 				<b:panel title="13º Salario" look="success">
 					<p:panelGrid columns="2">
 						<p:outputLabel value="13º Calculado:" for="label13Calculado" />
@@ -78,6 +80,14 @@
 							<f:converter converterId="javax.faces.Boolean" />
 						</p:outputLabel>
 					</p:panelGrid>
+					<br />
+
+					<b:button value="Realizar Cálculo Décimo Terceiro Salario"
+						look="success"
+						outcome="/paginas/administrativo/calculo13Salario/primeiroCalculo13/calculoDecimoTerceiroSalario"
+						disabled="#{personBean.person.flag13Calculado == true}">
+						<f:param name="funcionarioId" value="#{personBean.person.id}" />
+					</b:button>
 				</b:panel>
 
 				<b:panel title="INSS" look="success">
@@ -160,6 +170,14 @@
 						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" type="both" />
 					</h:outputLabel>
 				</p:panelGrid>
+
+				<br />
+
+				<b:button value="Recalcular Décimo Terceiro Salario" look="success"
+					outcome="/paginas/administrativo/calculo13Salario/recalculo13Salario/reCalculoDecimoTerceiroSalario"
+					disabled="#{personBean.person.flag13Calculado == false}">
+					<f:param name="funcionarioId" value="#{personBean.person.id}" />
+				</b:button>
 
 			</b:panel>
 		</h:form>

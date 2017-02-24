@@ -34,7 +34,7 @@ public class RecalculoFuncionariosBean implements Serializable {
 	public String recalcularFuncionarios() {
 		valorTotalFolha = personService.calculoValorTotalTodosFuncionariosFolha();
 		this.persons = null;
-		return "/paginas/administrativo/listaFuncionariosCalculados";
+		return "/paginas/administrativo/recalculoFuncionarios/listaFuncionariosCalculados";
 	}
 
 	public List<Person> getPersons() {

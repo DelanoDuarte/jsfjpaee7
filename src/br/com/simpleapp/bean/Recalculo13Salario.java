@@ -38,7 +38,7 @@ public class Recalculo13Salario implements Serializable {
 	}
 
 	public String reCalcular13SalarioFuncionario() {
-		return "/paginas/calculo13Salario/recalculo13Salario/detalhesFuncionario13ReCalculado";
+		return "/paginas/administrativo/calculo13Salario/recalculo13Salario/detalhesFuncionario13ReCalculado";
 	}
 
 	public List<Person> getPersons() {

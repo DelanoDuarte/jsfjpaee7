@@ -15,14 +15,7 @@
 	<b:navBar brand="Sistema" inverse="true" sticky="true">
 		<b:navbarLinks>
 			<b:navLink value="Home" outcome="/paginas/index"></b:navLink>
-			<b:dropMenu value="Incidencias de Salario">
-				<b:navLink value="Nova Gratificação"
-					outcome="/paginas/beneficio_descontos/createGratificacao" />
-				<b:navLink value="Novo Desconto"
-					outcome="/paginas/beneficio_descontos/createDesconto" />
-				<b:navLink value="Todas Incidencias Salariais"
-					outcome="/paginas/beneficio_descontos/listIncidenciasSalario" />
-			</b:dropMenu>
+
 
 			<b:dropMenu value="Empresa">
 				<b:navLink value="Nova Empresa" outcome="/paginas/company/create" />
@@ -36,27 +29,47 @@
 					outcome="/paginas/person/list" />
 			</b:dropMenu>
 
-			<b:dropMenu value="Cálculos">
-				<b:navLink value="Cálcular 13º Salário"
-					outcome="/paginas/calculo13Salario/primeiroCalculo13/listaFuncionarios" />
-				<b:navLink value="ReCalcular 13º Salário"
-					outcome="/paginas/calculo13Salario/recalculo13Salario/listaFuncionarios" />
-			</b:dropMenu>
+
 
 		</b:navbarLinks>
 
 		<b:navbarLinks pull="right">
 			<b:dropMenu value="Área Administrativa">
-				<b:navLink value="Recalcular Funcionários"
-					outcome="/paginas/administrativo/recalculoFuncionarios" />
-				<b:navLink value="Gratificações/Descontos"
-					outcome="/paginas/administrativo/gratificacoes_Descontos" />
-				<b:navLink value="Cálculo de Custo por Empresa"
-					outcome="/paginas/administrativo/calculoCustoPorEmpresa/selecionaEmpresaCalculoCustoEmpresa" />
-				<b:navLink value="Cálculo de Custo Todos os Funcionários"
-					outcome="/paginas/administrativo/calculoCustoTodosFuncionarios/iniciarCalculoTodosFuncionarios" />
-				<b:navLink value="Tabela Cálculo Inss"
-					outcome="/paginas/administrativo/calculoInss/tabelaInss" />
+
+
+				<b:dropMenu value="Cálculos">
+					<b:navLink value="Recalcular Funcionários"
+						outcome="/paginas/administrativo/recalculoFuncionarios/recalculoFuncionarios" />
+					<!-- <b:navLink value="Gratificações/Descontos"
+					outcome="/paginas/administrativo/gratificacoes_Descontos" /> -->
+					<b:navLink value="Cálculo de Custo por Empresa"
+						outcome="/paginas/administrativo/calculoCustoPorEmpresa/selecionaEmpresaCalculoCustoEmpresa" />
+					<b:navLink value="Cálculo de Custo Todos os Funcionários"
+						outcome="/paginas/administrativo/calculoCustoTodosFuncionarios/iniciarCalculoTodosFuncionarios" />
+				</b:dropMenu>
+
+				<b:dropMenu value="Gerencimanto de Tabelas INSS/IRRF">
+					<b:navLink value="Tabela Cálculo Inss"
+						outcome="/paginas/administrativo/calculoInss/tabelaInss" />
+				</b:dropMenu>
+
+				<b:dropMenu value="Cálculo 13º">
+					<b:navLink value="Cálcular 13º Salário"
+						outcome="/paginas/administrativo/calculo13Salario/primeiroCalculo13/listaFuncionarios" />
+					<b:navLink value="ReCalcular 13º Salário"
+						outcome="/paginas/administrativo/calculo13Salario/recalculo13Salario/listaFuncionarios" />
+				</b:dropMenu>
+
+				<b:dropMenu value="Incidencias de Salario">
+					<b:navLink value="Nova Gratificação"
+						outcome="/paginas/administrativo/beneficio_descontos/createGratificacao" />
+					<b:navLink value="Novo Desconto"
+						outcome="/paginas/administrativo/beneficio_descontos/createDesconto" />
+					<b:navLink value="Todas Incidencias Salariais"
+						outcome="/paginas/administrativo/beneficio_descontos/listIncidenciasSalario" />
+					<b:navLink value="Gratificações/Descontos"
+						outcome="/paginas/administrativo/gratificacoes_Descontos" />
+				</b:dropMenu>
 
 
 				<b:dropMenu value="Gerencimanto de Cargos">
@@ -77,7 +90,7 @@
 		<footer>
 		<div align="center">
 
-			<p class="text-muted">&copy; Todos Direitos Reservados - 2016</p>
+			<p class="text-muted">&copy; Todos Direitos Reservados - 2017</p>
 		</div>
 		</footer>
 	</div>

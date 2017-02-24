@@ -11,12 +11,12 @@
 			<b:panel title="Novo Desconto" look="primary">
 
 				<b:panel title="Tipo de Gratificação" look="primary">
-					<p:selectOneRadio id="radioTipoGratificacao"
+					<p:selectOneMenu id="radioTipoGratificacao"
 						value="#{descontoBean.tipoDesconto}" required="true">
 						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
 						<f:selectItem id="itemP" itemLabel="Porcentagem" itemValue="P" />
-						<f:ajax render="panelInputs" immediate="true"/>
-					</p:selectOneRadio>
+						<f:ajax render="panelInputs" immediate="true" />
+					</p:selectOneMenu>
 				</b:panel>
 
 				<br />
