@@ -44,10 +44,6 @@
 					value="#{calculoValorTotalPorEmpresaBean.company.persons}"
 					var="_person">
 
-					<p:column style="width:20px">
-						<p:rowToggler />
-					</p:column>
-
 					<p:column>
 						<f:facet name="header">Nome</f:facet>
 						<p:outputLabel value="#{_person.nome}" />
@@ -64,6 +60,11 @@
 					</p:column>
 
 					<p:column>
+						<f:facet name="header">13º Salário Calculado</f:facet>
+						<p:outputLabel value="#{_person.retonarSimOuNao()}" />
+					</p:column>
+
+					<p:column>
 						<div align="center">
 							<b:button value="Visualizar Funcionário"
 								outcome="/paginas/person/detalhesFuncionario" look="success">
@@ -72,14 +73,7 @@
 						</div>
 					</p:column>
 
-					<p:rowExpansion>
-						<p:panelGrid columns="2" style="width:300px">
 
-							<h:outputText value="13º Calculado:" />
-							<h:outputText value="#{_person.retonarSimOuNao()}" />
-
-						</p:panelGrid>
-					</p:rowExpansion>
 				</p:dataTable>
 			</p:panel>
 		</h:form>
@@ -87,8 +81,8 @@
 
 		<div align="center">
 			<b:well>
-				<h5 style="font: bold;">Custo Total da Empresa :R$
-					#{calculoValorTotalPorEmpresaBean.valorTotalPorEmpresa}</h5>
+				<h2 style="font: bold;">Custo Total da Empresa :R$
+					#{calculoValorTotalPorEmpresaBean.valorTotalPorEmpresa}</h2>
 			</b:well>
 		</div>
 

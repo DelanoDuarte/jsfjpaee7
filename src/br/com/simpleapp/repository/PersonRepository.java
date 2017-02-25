@@ -56,7 +56,8 @@ public class PersonRepository extends AbstractRepository<Person> {
 		try {
 			EntityManager entityManager = JPAUtil.getEntityManager();
 			List<Person> persons = entityManager
-					.createQuery("from Person p where p.dataCalculoDecimoTerceiroSalario = null").getResultList();
+					.createQuery("from Person p where p.flag13Calculado = false and p.tipoContrato = 'CLT' ")
+					.getResultList();
 			return persons;
 		} catch (Exception e) {
 			return null;
@@ -68,7 +69,8 @@ public class PersonRepository extends AbstractRepository<Person> {
 		try {
 			EntityManager entityManager = JPAUtil.getEntityManager();
 			List<Person> persons = entityManager
-					.createQuery("from Person p where p.dataCalculoDecimoTerceiroSalario != null").getResultList();
+					.createQuery("from Person p where p.flag13Calculado = true and p.tipoContrato = 'CLT'")
+					.getResultList();
 			return persons;
 		} catch (Exception e) {
 			return null;
