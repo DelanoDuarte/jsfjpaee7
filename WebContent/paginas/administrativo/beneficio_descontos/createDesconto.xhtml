@@ -10,13 +10,19 @@
 		<h:form>
 			<b:panel title="Novo Desconto" look="primary">
 
-				<b:panel title="Tipo de Gratificação" look="primary">
-					<p:selectOneMenu id="radioTipoGratificacao"
-						value="#{descontoBean.tipoDesconto}" required="true">
-						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
-						<f:selectItem id="itemP" itemLabel="Porcentagem" itemValue="P" />
-						<f:ajax render="panelInputs" immediate="true" />
-					</p:selectOneMenu>
+				<b:panel title="Tipo de Desconto" look="primary">
+					<div align="center">
+						<h:outputLabel
+							value="Por favor, primeiro Escolha o Tipo de Desconto:" />
+
+						<br /> <br />
+						<p:selectOneRadio id="radioTipoGratificacao"
+							value="#{descontoBean.tipoDesconto}" required="true">
+							<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
+							<f:selectItem id="itemP" itemLabel="Porcentagem" itemValue="P" />
+							<f:ajax render="panelInputs" immediate="true" />
+						</p:selectOneRadio>
+					</div>
 				</b:panel>
 
 				<br />
@@ -45,8 +51,10 @@
 				</b:panel>
 				<br />
 
-				<b:commandButton value="Salvar" action="#{descontoBean.salvar()}"
-					look="primary" />
+				<div align="center">
+					<b:commandButton value="Salvar" action="#{descontoBean.salvar()}"
+						look="primary" />
+				</div>
 			</b:panel>
 
 

@@ -65,8 +65,12 @@ public class PersonService implements Serializable {
 		return calculoCustoTodosFuncionarios.calculoValorTotalTodosFuncionariosFolha();
 	}
 
-	public double calculoValorTotalTodosFuncionariosPorEmpresaFolha(Long id) {
-		return calculoCustoTodosFuncionariosPorEmpresa.calculoValorTotalTodosFuncionariosPorEmpresaFolha(id);
+	public double calculoValorTotalAnualTodosFuncionariosPorEmpresaFolha(Long id) {
+		return calculoCustoTodosFuncionariosPorEmpresa.calculoValorTotalAnualTodosFuncionariosPorEmpresaFolha(id);
+	}
+
+	public double calculoValorTotalMensalTodosFuncionariosPorEmpresaFolha(Long id) {
+		return calculoCustoTodosFuncionariosPorEmpresa.calculoValorCustoTotalMensalPorEmpresa(id);
 	}
 
 	public Calculo13Salario getCalculo13Salario() {

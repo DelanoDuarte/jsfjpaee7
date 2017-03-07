@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import br.com.simpleapp.domain.Person;
 import br.com.simpleapp.domain.TipoContrato;
 import br.com.simpleapp.repository.PersonRepository;
+import br.com.simpleapp.service.CalculoDecimoTerceiroService;
 import br.com.simpleapp.service.PersonService;
 import br.com.simpleapp.util.MessageUtil;
 
@@ -43,6 +44,9 @@ public class PersonBean implements Serializable {
 	@Inject
 	private MessageUtil messageUtil;
 
+	@Inject
+	private CalculoDecimoTerceiroService calculoDecimoTerceiroService;
+
 	public String salvar() {
 		personService.salvarFuncionario(person);
 		messageUtil.msgInfo("Novo Funcionário Cadastrado com Sucesso !");
@@ -61,6 +65,15 @@ public class PersonBean implements Serializable {
 
 	public TipoContrato[] getTipoContratos() {
 		return TipoContrato.values();
+	}
+
+	public boolean desabilitaBotaoCalcular13Terceiro() {
+		// buscarPersonPorId();
+		return calculoDecimoTerceiroService.verificaFuncionario13CalculoETipoContratoCLT(person);
+	}
+
+	public boolean desabilitaAreaExibicao13Salario() {
+		return calculoDecimoTerceiroService.mostrarAreaFuncionario13CalculadoETipoContratoCLT(this.person);
 	}
 
 	public void setPersons(List<Person> persons) {

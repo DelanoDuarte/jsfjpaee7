@@ -6,8 +6,9 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.simpleapp.domain.Beneficio;
 import br.com.simpleapp.repository.BeneficioRepository;
@@ -18,7 +19,8 @@ import br.com.simpleapp.util.MessageUtil;
  *
  */
 
-@Model
+@Named
+@ViewScoped
 public class BeneficioBean implements Serializable {
 
 	/**

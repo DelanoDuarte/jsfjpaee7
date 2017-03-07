@@ -108,7 +108,7 @@ public class PersonRestService implements Serializable {
 	@Path("/calculoCustoPorEmpresa/{id}")
 	public Response calculoTodosFuncionariosPorEmpresa(@PathParam(value = "id") Long id) {
 		try {
-			double valorTotalCalculo = personService.calculoValorTotalTodosFuncionariosPorEmpresaFolha(id);
+			double valorTotalCalculo = personService.calculoValorTotalAnualTodosFuncionariosPorEmpresaFolha(id);
 			return Response.ok().entity(valorTotalCalculo).build();
 		} catch (Exception e) {
 			return Response.ok().status(500).build();

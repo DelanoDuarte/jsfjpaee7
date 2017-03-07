@@ -26,20 +26,24 @@
 		</div>
 
 		<h:form>
-			<p:panel header="Dados da Empresa">
+			<b:panel title="Dados da Empresa" look="primary">
 				<br />
 				<p:panelGrid columns="2">
 					<p:outputLabel value="Empresa:" for="labelNomeEmpresa" />
 					<p:outputLabel id="labelNomeEmpresa"
 						value="#{calculoValorTotalPorEmpresaBean.company.nome}" />
+					<p:outputLabel value="Nome Fantasia:"
+						for="labelNomeFantasiaEmpresa" />
+					<p:outputLabel id="labelNomeFantasiaEmpresa"
+						value="#{calculoValorTotalPorEmpresaBean.company.nomeFantasia}" />
 				</p:panelGrid>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 		<br />
 
 		<h:form>
-			<p:panel header="Funcionários da Empresa ">
+			<b:panel title="Funcionários da Empresa " look="primary">
 				<p:dataTable
 					value="#{calculoValorTotalPorEmpresaBean.company.persons}"
 					var="_person">
@@ -75,14 +79,17 @@
 
 
 				</p:dataTable>
-			</p:panel>
+			</b:panel>
 		</h:form>
 
 
 		<div align="center">
 			<b:well>
-				<h2 style="font: bold;">Custo Total da Empresa :R$
-					#{calculoValorTotalPorEmpresaBean.valorTotalPorEmpresa}</h2>
+				<h2 style="font: bold;">Custo Total Anual da Empresa: R$
+					#{calculoValorTotalPorEmpresaBean.valorTotalCustoAnualPorEmpresa}</h2>
+				<br />
+				<h2 style="font: bold;">Custo Total Mensal da Empresa: R$
+					#{calculoValorTotalPorEmpresaBean.valorTotalCustoMensalPorEmpresa}</h2>
 			</b:well>
 		</div>
 

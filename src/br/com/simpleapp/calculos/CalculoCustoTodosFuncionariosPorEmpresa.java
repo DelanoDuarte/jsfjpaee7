@@ -27,7 +27,7 @@ public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
 	@Inject
 	private PersonRepository personRepository;
 
-	public double calculoValorTotalTodosFuncionariosPorEmpresaFolha(Long id) {
+	public double calculoValorTotalAnualTodosFuncionariosPorEmpresaFolha(Long id) {
 
 		List<Person> persons = personRepository.buscarTodosFuncionarioPorIdEmpresa(id);
 		double valorTotal = 0.0;
@@ -35,7 +35,18 @@ public class CalculoCustoTodosFuncionariosPorEmpresa implements Serializable {
 
 		for (Person person : persons) {
 			valor13Salario = person.getSalarioDecimoTerceiro();
-			valorTotal += person.getSalarioBeneficios() + valor13Salario;
+			valorTotal += person.getSalarioBeneficios();
+			valorTotal += valor13Salario;
+		}
+		return valorTotal * 12;
+	}
+
+	public double calculoValorCustoTotalMensalPorEmpresa(Long id) {
+		List<Person> persons = personRepository.buscarTodosFuncionarioPorIdEmpresa(id);
+		double valorTotal = 0.0;
+
+		for (Person person : persons) {
+			valorTotal += person.getSalarioBeneficios();
 		}
 		return valorTotal;
 	}

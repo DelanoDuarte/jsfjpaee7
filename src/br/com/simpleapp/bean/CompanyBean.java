@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import br.com.simpleapp.domain.Company;
 import br.com.simpleapp.repository.CompanyRepository;
-import br.com.simpleapp.service.PersonService;
 import br.com.simpleapp.util.MessageUtil;
 
 /**
@@ -28,16 +27,12 @@ public class CompanyBean implements Serializable {
 
 	private Company company = new Company();
 	private List<Company> companies = null;
-	private double valorTotalPorEmpresa;
 
 	@Inject
 	private CompanyRepository companyRepository;
 
 	@Inject
 	private MessageUtil messageUtil;
-
-	@Inject
-	private PersonService personService;
 
 	public String salvar() {
 		companyRepository.create(company);
@@ -47,7 +42,6 @@ public class CompanyBean implements Serializable {
 
 	public void buscarEmpresaPorId() {
 		this.company = companyRepository.findById(this.company.getId());
-		valorTotalPorEmpresa = personService.calculoValorTotalTodosFuncionariosPorEmpresaFolha(this.company.getId());
 	}
 
 	public Company getCompany() {
@@ -74,14 +68,6 @@ public class CompanyBean implements Serializable {
 
 	public void setCompanyRepository(CompanyRepository companyRepository) {
 		this.companyRepository = companyRepository;
-	}
-
-	public double getValorTotalPorEmpresa() {
-		return valorTotalPorEmpresa;
-	}
-
-	public void setValorTotalPorEmpresa(double valorTotalPorEmpresa) {
-		this.valorTotalPorEmpresa = valorTotalPorEmpresa;
 	}
 
 }

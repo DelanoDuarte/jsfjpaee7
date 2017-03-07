@@ -6,8 +6,9 @@ package br.com.simpleapp.bean;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.simpleapp.domain.Desconto;
 import br.com.simpleapp.repository.DescontoRepository;
@@ -17,7 +18,8 @@ import br.com.simpleapp.util.MessageUtil;
  * @author delan
  *
  */
-@Model
+@Named
+@ViewScoped
 public class DescontoBean implements Serializable {
 
 	/**

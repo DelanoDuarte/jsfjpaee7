@@ -22,4 +22,5 @@ public class DescontoRepository extends AbstractRepository<Desconto> {
 	public DescontoRepository() {
 		super(Desconto.class);
 	}
+
 }

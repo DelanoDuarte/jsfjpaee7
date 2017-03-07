@@ -27,7 +27,8 @@ public class CalculoValorTotalPorEmpresaBean implements Serializable {
 
 	private Company company = new Company();
 	private List<Company> companies = null;
-	private double valorTotalPorEmpresa;
+	private double valorTotalCustoAnualPorEmpresa;
+	private double valorTotalCustoMensalPorEmpresa;
 
 	@Inject
 	private CompanyRepository companyRepository;
@@ -37,7 +38,10 @@ public class CalculoValorTotalPorEmpresaBean implements Serializable {
 
 	public void buscarEmpresaPorIdParaCalculo() {
 		this.company = companyRepository.findById(this.company.getId());
-		valorTotalPorEmpresa = personService.calculoValorTotalTodosFuncionariosPorEmpresaFolha(this.company.getId());
+		valorTotalCustoAnualPorEmpresa = personService
+				.calculoValorTotalAnualTodosFuncionariosPorEmpresaFolha(this.company.getId());
+		valorTotalCustoMensalPorEmpresa = personService
+				.calculoValorTotalMensalTodosFuncionariosPorEmpresaFolha(this.company.getId());
 	}
 
 	public Company getCompany() {
@@ -59,12 +63,20 @@ public class CalculoValorTotalPorEmpresaBean implements Serializable {
 		this.companies = companies;
 	}
 
-	public double getValorTotalPorEmpresa() {
-		return valorTotalPorEmpresa;
+	public double getValorTotalCustoAnualPorEmpresa() {
+		return valorTotalCustoAnualPorEmpresa;
 	}
 
-	public void setValorTotalPorEmpresa(double valorTotalPorEmpresa) {
-		this.valorTotalPorEmpresa = valorTotalPorEmpresa;
+	public void setValorTotalCustoAnualPorEmpresa(double valorTotalCustoAnualPorEmpresa) {
+		this.valorTotalCustoAnualPorEmpresa = valorTotalCustoAnualPorEmpresa;
+	}
+
+	public double getValorTotalCustoMensalPorEmpresa() {
+		return valorTotalCustoMensalPorEmpresa;
+	}
+
+	public void setValorTotalCustoMensalPorEmpresa(double valorTotalCustoMensalPorEmpresa) {
+		this.valorTotalCustoMensalPorEmpresa = valorTotalCustoMensalPorEmpresa;
 	}
 
 }

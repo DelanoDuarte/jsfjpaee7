@@ -13,35 +13,49 @@
 		<h:form>
 			<b:panel title="Nova Gratificação" look="primary">
 
-				<!-- <p:panel header="Tipo de Gratificação">
-					<p:selectOneRadio id="radioTipoGratificacao"
-						value="#{beneficioBean.tipoGratificacao}" required="true">
-						<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
-						<f:selectItem itemLabel="Porcentagem" itemValue="P" />
-						<p:ajax update="panelInputs" />
-					</p:selectOneRadio>
-				</p:panel> -->
+				<b:panel title="Tipo de Gratificação" look="primary">
+					<div align="center">
+						<h:outputLabel
+							value="Por favor, primeiro Escolha o Tipo de Gratificação:" />
+
+						<br /> <br />
+						<p:selectOneRadio id="radioTipoGratificacao"
+							value="#{beneficioBean.tipoGratificacao}" required="true">
+							<f:selectItem id="itemVF" itemLabel="Valor Fixo" itemValue="VF" />
+							<f:selectItem itemLabel="Porcentagem" itemValue="P" />
+							<f:ajax render="panelInputs" immediate="true" />
+						</p:selectOneRadio>
+					</div>
+				</b:panel>
 
 				<br />
 				<br />
 
-				<p:panelGrid id="panelInputs" columns="2">
-					<p:outputLabel value="Nome:" />
-					<p:inputText value="#{beneficioBean.beneficio.nome}" />
-					<p:outputLabel value="Valor:" />
-					<p:inputNumber value="#{beneficioBean.beneficio.valorNumerico}"
-						placeholder="R$" symbol="R$" decimalPlaces="2" />
-					<p:outputLabel value="Porcentagem:" />
-					<p:inputNumber value="#{beneficioBean.beneficio.valorPorcetagem}"
-						placeholder="%" symbol="%" decimalPlaces="2"
-						symbolPosition="suffix" />
+				<b:panel title="Dados da Gratificação" look="primary">
+					<p:panelGrid id="panelInputs" columns="2">
+						<p:outputLabel value="Nome:" />
+						<p:inputText value="#{beneficioBean.beneficio.nome}" />
+						<p:outputLabel value="Valor:"
+							rendered="#{beneficioBean.tipoGratificacao == 'VF'}" />
+						<p:inputNumber value="#{beneficioBean.beneficio.valorNumerico}"
+							placeholder="R$" symbol="R$" decimalPlaces="2"
+							rendered="#{beneficioBean.tipoGratificacao == 'VF'}" />
+						<p:outputLabel value="Porcentagem:"
+							rendered="#{beneficioBean.tipoGratificacao == 'P'}" />
+						<p:inputNumber value="#{beneficioBean.beneficio.valorPorcetagem}"
+							placeholder="%" symbol="%" decimalPlaces="2"
+							symbolPosition="suffix"
+							rendered="#{beneficioBean.tipoGratificacao == 'P'}" />
 
-				</p:panelGrid>
-
+					</p:panelGrid>
+				</b:panel>
 				<br />
 
-				<b:commandButton value="Salvar" action="#{beneficioBean.salvar()}"
-					look="primary" />
+				<div align="center">
+					<b:commandButton value="Salvar" action="#{beneficioBean.salvar()}"
+						look="primary" />
+
+				</div>
 			</b:panel>
 		</h:form>
 	</ui:define>
